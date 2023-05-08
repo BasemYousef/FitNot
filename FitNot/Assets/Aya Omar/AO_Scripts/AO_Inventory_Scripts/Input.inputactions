@@ -1,0 +1,45 @@
+{
+    "name": "Input",
+    "maps": [
+        {
+            "name": "PlayerUIInputs",
+            "id": "51159b94-7a55-432f-9838-cb93fe84349f",
+            "actions": [
+                {
+                    "name": "OpenInventory",
+                    "type": "Button",
+                    "id": "af5f43b0-b917-47cd-801b-4b5fdf0b9010",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "4002c4ba-6ab3-4577-88e4-31917ec9a6a9",
+                    "path": "<Keyboard>/i",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "29303feb-98b7-4663-b809-467b6e28340d",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenInventory",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        }
+    ],
+    "controlSchemes": []
+}

@@ -9,26 +9,42 @@ namespace AyaOmar
     public class InventoryUI : MonoBehaviour
     {
         [SerializeField] private GameObject inventory;
-        [SerializeField] private InputAction openInventory = new InputAction();
-       
-        void Update()
-        {
-            ShowInventory();
-        }
+        [SerializeField] private InputActionReference openInventory;
+
+        private bool isOpen = true;
+
         private void OnEnable()
         {
-            openInventory.Enable();
+            openInventory.action.Enable();
+            openInventory.action.performed += OnOpenInventory;
         }
         private void OnDisable()
         {
-            openInventory.Disable();
+            openInventory.action.Disable();
+            openInventory.action.performed -= OnOpenInventory;
         }
-        void ShowInventory()
+        private void OnOpenInventory(InputAction.CallbackContext context)
         {
-            
-             inventory.gameObject.SetActive(true);
-             Debug.Log("show");
-            
+            ShowInventory();
+        }
+        private void ShowInventory()
+        {
+            if (isOpen)
+            {
+                inventory.SetActive(true);
+                isOpen = false;
+            }
+            else
+            {
+                HideInventory();
+            }
+            //Debug.Log("Inventory shown");
+        }
+        private void HideInventory()
+        {
+            inventory.SetActive(false);
+            isOpen = true;
+            //Debug.Log("Inventory hiden");
         }
     }
 }
