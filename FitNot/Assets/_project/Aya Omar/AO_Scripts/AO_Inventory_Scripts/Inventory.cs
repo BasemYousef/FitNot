@@ -6,7 +6,8 @@ namespace AyaOmar
 {
     public class Inventory : MonoBehaviour
     {
-        public List<Slot> slots = new List<Slot>();
+        //public List<Slot> slots = new List<Slot>();
+        public Slot[] slots;
        
     }
 

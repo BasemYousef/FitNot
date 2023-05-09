@@ -13,6 +13,10 @@ namespace AyaOmar
 
         private bool isOpen = true;
 
+        private void Start()
+        {
+            inventory.SetActive(false);
+        }
         private void OnEnable()
         {
             openInventory.action.Enable();
