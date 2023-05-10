@@ -165,7 +165,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: SpitterAC
+  m_Name: SpitterAC 1
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: isPatrolling
@@ -312,7 +312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f9b8b6cdd89ccac4fa176e804a45fa72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: f1588bbf33fe796488b877341b9dbf0f, type: 2}
+  enemy: {fileID: 11400000, guid: 480d0ea5eb073244ab043b3247aadfe4, type: 2}
   mummyType: 0
 --- !u!114 &3842552641552606104
 MonoBehaviour:
@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c78d237d0a42204e85938ae34e98500, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: f1588bbf33fe796488b877341b9dbf0f, type: 2}
+  enemy: {fileID: 11400000, guid: 480d0ea5eb073244ab043b3247aadfe4, type: 2}
 --- !u!114 &4838261592755853448
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -339,7 +339,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a7257c55a260e249ab6e555f59dfc51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: f1588bbf33fe796488b877341b9dbf0f, type: 2}
+  enemy: {fileID: 11400000, guid: 480d0ea5eb073244ab043b3247aadfe4, type: 2}
 --- !u!1102 &6211653031554915728
 AnimatorState:
   serializedVersion: 6
@@ -379,7 +379,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f03c313757719c42887a13d92d4b869, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemy: {fileID: 11400000, guid: f1588bbf33fe796488b877341b9dbf0f, type: 2}
+  enemy: {fileID: 11400000, guid: 480d0ea5eb073244ab043b3247aadfe4, type: 2}
 --- !u!1102 &7680632375740583697
 AnimatorState:
   serializedVersion: 6

@@ -9,7 +9,7 @@ namespace AyaOmar
         private List<Transform> wayPoints = new List<Transform>();
         [SerializeField] private GameObject point;
         private Transform wayPointsParent;
-        int numOfPoints = 5;
+        int numOfPoints = 10;
         private void Awake()
         {
             base.RegisterSingleton();

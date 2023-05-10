@@ -15,7 +15,7 @@ namespace AyaOmar
 
         private void Start()
         {
-            inventory.SetActive(false);
+            //inventory.SetActive(false);
         }
         private void OnEnable()
         {

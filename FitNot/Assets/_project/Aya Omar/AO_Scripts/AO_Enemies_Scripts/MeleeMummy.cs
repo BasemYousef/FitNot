@@ -4,13 +4,12 @@ using UnityEngine;
 
 namespace AyaOmar
 {
-    public class MeleeMummy : Singleton<MeleeMummy>, IAttackable
+    public class MeleeMummy : MonoBehaviour, IAttackable
     {
         private Animator animator;
         private string ATTACK_PARAM = "isAttacking";
         private void Awake()
         {
-            base.RegisterSingleton();
             animator = GetComponent<Animator>();
         }
         public void Attack()

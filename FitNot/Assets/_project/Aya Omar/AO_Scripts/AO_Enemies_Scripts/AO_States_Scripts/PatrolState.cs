@@ -17,7 +17,7 @@ namespace AyaOmar
 
         Transform player;
 
-        int index = 0;
+        //int index = 0;
 
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -56,11 +56,11 @@ namespace AyaOmar
             {
                 animator.SetBool(CHASING_PARAM, true);
             }
-            index++;
-            if (index == 10)
-            {
-                index = 0;
-            }
+            //index++;
+            //if (index == 10)
+            //{
+            //    index = 0;
+            //}
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

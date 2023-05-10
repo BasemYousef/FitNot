@@ -12,7 +12,13 @@ namespace AyaOmar
         Transform player;
         NavMeshAgent agent;
         private AttackCoroutine attackCoroutine;
-        
+
+        string PATROLLING_PARAM = "isPatrolling";
+        string CHASING_PARAM = "isChasing";
+        string ATTACKING_PARAM = "isAttacking";
+
+        private SpitterMummy spitterRef;
+
         //private float chaseRange = 15;
 
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -29,21 +35,31 @@ namespace AyaOmar
             }
 
             // Start the coroutine to continuously check attack range
-            attackCoroutine.StartAttackCoroutine(player, enemy, mummyType);
-            
+            attackCoroutine.StartAttackCoroutine(player, enemy, mummyType,animator);
+
         }
 
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
             agent.SetDestination(player.position);
-
+            spitterRef = animator.GetComponent<SpitterMummy>();
             float distance = Vector3.Distance(player.position, animator.transform.position);
             if (distance > enemy.chaseRange)
             {
-                animator.SetBool("isChasing", false);
+                animator.SetBool(CHASING_PARAM, false);
             }
-            
+            //if (distance <= enemy.attackRange)
+            //{
+            //    //animator.SetBool(ATTACKING_PARAM, true);
+            //    if (mummyType == MUMMY_TYPES.Spitter_Mummy)
+            //    {
+            //        if (spitterRef != null)
+            //        {
+            //            spitterRef.Attack();
+            //        }
+            //    }
+            //}
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -4,33 +4,37 @@ using UnityEngine;
 
 namespace AyaOmar
 {
-    public class SpitterMummy : Singleton<SpitterMummy>,IAttackable
+    public class SpitterMummy :MonoBehaviour,IAttackable
     {
 
         [SerializeField] private Spit spitPrefab;
-        [SerializeField] private Transform spitPosition;
+        
         
         private float spitVelocity = 10f;
 
         private Animator animator;
+        private Transform spitPosition;
        
         private void Awake()
         {
-            base.RegisterSingleton();
+            //base.RegisterSingleton();
             animator = GetComponent<Animator>();
+            spitPosition = gameObject.transform.GetChild(0).gameObject.transform;
         }
         public void Attack()
         {
-
             animator.SetBool("isAttacking", true);
             Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
             spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
+            
+            //StartCoroutine(AttackAnimation());
 
         }
-        void Update()
+        IEnumerator AttackAnimation()
         {
-            
-        }
+            yield return new WaitForSeconds(1f);
+            animator.SetBool("isAttacking", true);
+        } 
        
     }
 
