@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 using UnityEngine.InputSystem;
 
 
@@ -9,46 +10,51 @@ namespace AyaOmar
     public class InventoryUI : MonoBehaviour
     {
         [SerializeField] private GameObject inventory;
-        [SerializeField] private InputActionReference openInventory;
+        [SerializeField] private InputAction openInventory  = new InputAction();
 
-        private bool isOpen = true;
+        [SerializeField] bool Pressed;
+        
+        private bool isOpen = false;
+        
 
         private void Start()
         {
-            //inventory.SetActive(false);
+            inventory.SetActive(false);
+            
+            
         }
         private void OnEnable()
         {
-            openInventory.action.Enable();
-            openInventory.action.performed += OnOpenInventory;
+            openInventory.Enable();
+           
         }
         private void OnDisable()
         {
-            openInventory.action.Disable();
-            openInventory.action.performed -= OnOpenInventory;
+            openInventory.Disable();
+           
         }
-        private void OnOpenInventory(InputAction.CallbackContext context)
+        private void Update()
         {
             ShowInventory();
+            Pressed = openInventory.triggered;
         }
         private void ShowInventory()
         {
-            if (isOpen)
-            {
-                inventory.SetActive(true);
-                isOpen = false;
-            }
-            else
+
+
+            if (openInventory.triggered)
             {
                 HideInventory();
+                
             }
-            //Debug.Log("Inventory shown");
         }
         private void HideInventory()
         {
-            inventory.SetActive(false);
-            isOpen = true;
-            //Debug.Log("Inventory hiden");
+            
+            isOpen = !isOpen;
+            inventory.SetActive(isOpen);
+            
+
         }
     }
 }

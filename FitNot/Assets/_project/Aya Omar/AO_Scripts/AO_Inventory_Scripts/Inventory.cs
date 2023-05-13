@@ -6,9 +6,10 @@ namespace AyaOmar
 {
     public class Inventory : MonoBehaviour
     {
-        //public List<Slot> slots = new List<Slot>();
-        public Slot[] slots;
-       
-    }
+        public bool[] isFull;
+        public GameObject[] slots;
+        public string[] itemType;
 
+      
+    }
 }
