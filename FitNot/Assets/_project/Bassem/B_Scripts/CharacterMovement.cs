@@ -3,6 +3,7 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
+using System.Collections.Generic;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class CharacterMovement : MonoBehaviour, ICharacterMovement
@@ -12,20 +13,23 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     #region Serialized Private Variables
     [SerializeField] private LayerMask walkingLayer = new LayerMask();
     [SerializeField] private InputAction movement = new InputAction();
-    [SerializeField] private InputAction roll = new InputAction();
-    [SerializeField] private AnimationCurve dodgeCurve;
-    [SerializeField] private float dodgeForce;
-   
+    [SerializeField] private InputAction dash = new InputAction();
+    [SerializeField] private GameObject clickIndicatorPrefab;
+    [SerializeField] private float dashDistance = 5f;
+    [SerializeField] private float dashDuration = 0.2f;
+
     #endregion
 
     #region Private Variables
+    private List<GameObject> clickIndicators = new List<GameObject>(); 
     private Camera cam = null;
-    private CharacterController characterController;
+    private Rigidbody rb;
     private NavMeshAgent agent = null;
     private Animator anim;
     private bool isDodging = false;
-    private float dodgeTimer;
-    private float velocityY;
+    RaycastHit hit;
+    private bool isButtonPressed = false; 
+    private float holdStartTime;
     #endregion
 
     void Start()
@@ -33,21 +37,19 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
         anim = GetComponent<Animator>();
         cam = Camera.main;
         agent = GetComponent<NavMeshAgent>();
-        characterController = GetComponent<CharacterController>();
-        Keyframe lastFrameDodge = dodgeCurve[dodgeCurve.length - 1];
-        dodgeTimer = lastFrameDodge.time;
+        rb = GetComponent<Rigidbody>();
     }
 
     private void OnEnable()
     {
         movement.Enable();
-        roll.Enable();
+        dash.Enable();
     }
 
     private void OnDisable()
     {
         movement.Disable();
-        roll.Disable();
+        dash.Disable();
     }
 
     private void FixedUpdate()
@@ -56,8 +58,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
             HandleInput();
 
         UpdateAnimation();
-            OnDodgeRoll();
-    
+        
     }
    
     private void UpdateAnimation()
@@ -79,50 +80,88 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
 
     public void HandleInput()
     {
-        if (movement.ReadValue<float>() == 1 )
+        if (movement.ReadValue<float>() == 1)
         {
-            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
             anim.SetBool("Move", true);
-            RaycastHit hit;
-            if (Physics.Raycast(ray, out hit, 500, walkingLayer))
+            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            if (!isButtonPressed)
             {
-                MoveTo(hit.point);
+                if (Physics.Raycast(ray, out hit, 999, walkingLayer))
+                {
+                    GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
+                    clickIndicators.Add(newIndicator);
+                    isButtonPressed = true;
+                    holdStartTime = Time.time;
+                    MoveTo(hit.point);
+                }
             }
-            
+
+            if (isButtonPressed)
+            {
+                if (Physics.Raycast(ray, out hit, 999, walkingLayer))
+                {
+                    MoveTo(hit.point);
+                }
+            }
+
+            if (isButtonPressed && Time.time - holdStartTime >= 5f)
+            {
+                if (Physics.Raycast(ray, out hit, 999, walkingLayer))
+                {
+                    Destroy(clickIndicators[clickIndicators.Count - 1]);
+                    clickIndicators.RemoveAt(clickIndicators.Count - 1);
+                    GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
+                    clickIndicators.Add(newIndicator);
+                    holdStartTime = Time.time;
+                    MoveTo(hit.point);
+                }
+            }
+            if (dash.ReadValue<float>() == 1 && !isDodging)
+            {
+                StartCoroutine(Dash());
+            }
         }
         else
         {
             anim.SetBool("Move", false);
+            if (isButtonPressed)
+            {
+                StartCoroutine(DestroyClickIndicators(2f));
+                isButtonPressed = false;
+            }
         }
     }
 
-    private void OnDodgeRoll()
+    private IEnumerator DestroyClickIndicators(float delay)
     {
-        if (roll.ReadValue<float>() == 1 && !isDodging && anim.GetCurrentAnimatorStateInfo(0).IsName("Run_N") )
+        yield return new WaitForSeconds(delay);
+        foreach (GameObject indicator in clickIndicators)
         {
-            StartCoroutine(Dodge());
+            Destroy(indicator);
         }
+        clickIndicators.Clear();
     }
-    IEnumerator Dodge()
+
+    private IEnumerator Dash()
     {
-        anim.SetTrigger("Roll");
         isDodging = true;
-        float timer = 0;
-        characterController.center = new Vector3(0, 0.3f, 0);
-        characterController.height = 0.3f;
-
-        while (timer < dodgeTimer)
+        anim.SetTrigger("Dash");
+        Vector3 startPosition = transform.position;
+        Vector3 dashDirection = agent.velocity.normalized;
+        Vector3 targetPosition = startPosition + dashDirection * dashDistance;
+        float timer = 0f;
+        while (timer < dashDuration)
         {
-            float speed = dodgeCurve.Evaluate(timer);
-            Vector3 dir = (transform.forward * speed) + (Vector3.up * velocityY);
-            characterController.Move(dir* dodgeForce * Time.deltaTime);
+            float elapsedTime = timer / dashDuration;
+            transform.position = Vector3.Lerp(startPosition, targetPosition, elapsedTime);
             timer += Time.deltaTime;
             yield return null;
         }
-        isDodging = false;
-        characterController.center = new Vector3(0, 0.9f, 0);
-        characterController.height = 1.8f;
-        
-    }
 
+        transform.position = targetPosition;
+
+        isDodging = false;
+    }
 }
+
