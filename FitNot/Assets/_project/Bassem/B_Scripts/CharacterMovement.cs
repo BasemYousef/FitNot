@@ -30,6 +30,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     RaycastHit hit;
     private bool isButtonPressed = false; 
     private float holdStartTime;
+    
     #endregion
 
     void Start()
@@ -163,5 +164,6 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
 
         isDodging = false;
     }
+    
 }
 
