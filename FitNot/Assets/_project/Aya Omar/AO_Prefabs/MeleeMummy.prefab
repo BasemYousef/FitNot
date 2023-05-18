@@ -235,6 +235,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1372649971411095020}
+  - component: {fileID: 1113876321}
+  - component: {fileID: 1113876320}
   m_Layer: 0
   m_Name: Weapon
   m_TagString: Untagged
@@ -258,6 +260,32 @@ Transform:
   m_Father: {fileID: 772663287167743534}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: -0.053, y: -124.224, z: 88.326}
+--- !u!65 &1113876321
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372649971411095023}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.06739914, y: 0.29155058, z: 0.5977044}
+  m_Center: {x: 0.008478255, y: 0.07232733, z: 0.9505603}
+--- !u!114 &1113876320
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1372649971411095023}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 800688d515263224987e263ecb161189, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  meleeMummy: {fileID: 11400000, guid: 2e63d334c86651c4c9e4ee2d9a1d7910, type: 2}
 --- !u!1 &1372649971576066437
 GameObject:
   m_ObjectHideFlags: 0
