@@ -10,7 +10,7 @@ namespace Youssef
     public class HungerSystem : MonoBehaviour
     {
         public float startingHungerLevel = 100f;
-        public float hungerDrainRate = 1f;
+        public float hungerDrainRate = 0.5f;
         public float hungerDamageRate = 5f;
         public float currentHungerLevel;
         public Slider hungerSlider;

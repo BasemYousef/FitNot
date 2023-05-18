@@ -9,7 +9,7 @@ namespace Youssef
     public class HealthManager : MonoBehaviour
     {
         [SerializeField] public float health = 100f;
-        public Slider healthBar;
+        public Slider healthBar = null;
 
         private float startingHealth;
 

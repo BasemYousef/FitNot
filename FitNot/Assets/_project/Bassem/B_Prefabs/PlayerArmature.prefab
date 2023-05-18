@@ -628,11 +628,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847b19d42d3e6934db3259933d745eec, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rollDestination: {fileID: 0}
-  rollSpeed: 10
-  obstacleLayers:
-    serializedVersion: 2
-    m_Bits: 0
   walkingLayer:
     serializedVersion: 2
     m_Bits: 8
@@ -653,22 +648,18 @@ MonoBehaviour:
       m_Action: Movement
       m_Flags: 0
     m_Flags: 0
-  roll:
-    m_Name: Roll
+  dash:
+    m_Name: Dash
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 57af06d2-2091-4c83-ae51-167a3ce3360e
+    m_Id: 8a9a5c9f-c447-4d1c-8057-5d896c043c64
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  dodgeCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  dodgeForce: 0
+  clickIndicatorPrefab: {fileID: 0}
+  dashDistance: 5
+  dashDuration: 0.2
 --- !u!195 &2191497205781240401
 NavMeshAgent:
   m_ObjectHideFlags: 0

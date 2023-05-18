@@ -2059,22 +2059,18 @@ MonoBehaviour:
       m_Action: Movement
       m_Flags: 0
     m_Flags: 0
-  roll:
-    m_Name: Roll
+  dash:
+    m_Name: Dash
     m_Type: 0
     m_ExpectedControlType: 
-    m_Id: 57af06d2-2091-4c83-ae51-167a3ce3360e
+    m_Id: dcd5df90-14d7-4314-9ddc-241058b4da0c
     m_Processors: 
     m_Interactions: 
     m_SingletonActionBindings: []
     m_Flags: 0
-  dodgeCurve:
-    serializedVersion: 2
-    m_Curve: []
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  dodgeForce: 0
+  clickIndicatorPrefab: {fileID: 0}
+  dashDistance: 5
+  dashDuration: 0.2
 --- !u!195 &7075976826040534292
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2124,6 +2120,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  healthBar: {fileID: 0}
 --- !u!114 &8960800371388768077
 MonoBehaviour:
   m_ObjectHideFlags: 0
