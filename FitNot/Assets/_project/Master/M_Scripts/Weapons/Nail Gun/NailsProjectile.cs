@@ -15,7 +15,7 @@ namespace Youssef
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.tag == "Enemy")
+            if (other.gameObject.tag == "MeleeMummy" || other.gameObject.tag == "SpitterMummy")
             {
             GameObject cloneEnemyImpactVFX = Instantiate(enemyImpactVFX, gameObject.transform.position, gameObject.transform.rotation); //vfx
             other.gameObject.GetComponent<HealthManager>().TakeDamage(nailDamage);
