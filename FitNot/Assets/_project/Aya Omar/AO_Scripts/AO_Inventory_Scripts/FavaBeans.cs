@@ -8,18 +8,18 @@ namespace AyaOmar
     public class FavaBeans : FoodItem
     {
         public GameObject effect;
-
-        
-        
+       
         void Update()
         {
             QuickSwitch();
             
         }
+        
         private void QuickSwitch()
         {
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
+                Debug.Log("FavaBeans used");
                 for (int i = 0; i < inventory.itemType.Length; i++)
                 {
                     if (inventory.itemType[i] == "FavaBeans")
@@ -27,8 +27,10 @@ namespace AyaOmar
                         if (gameObject != null)
                         {
                             this.Use();
+                            
                         }
                     }
+                    
                 }
             }
         }

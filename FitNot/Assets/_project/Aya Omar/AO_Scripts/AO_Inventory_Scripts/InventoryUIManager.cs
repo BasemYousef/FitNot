@@ -7,10 +7,15 @@ namespace AyaOmar
 {
     public class InventoryUIManager : Singleton<InventoryUIManager>
     {
+
+        public List<Image> QuickSwitchIcons = new List<Image>();
+
         private void Awake()
         {
             base.RegisterSingleton();
+           
         }
-        public List<Image> QuickSwitchIcons = new List<Image>();
+       
+        
     }
 }

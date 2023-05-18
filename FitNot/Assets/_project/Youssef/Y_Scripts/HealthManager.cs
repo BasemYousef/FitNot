@@ -9,17 +9,17 @@ namespace Youssef
     public class HealthManager : MonoBehaviour
     {
         [SerializeField] public float health = 100f;
-        public Slider healthBar;
+        //public Slider healthBar;
 
-        private float startingHealth;
+        public float startingHealth;
 
         bool isDead = false;
 
         private void Start()
         {
             startingHealth = health;
-            healthBar.maxValue = startingHealth;
-            healthBar.value = health;
+            //healthBar.maxValue = startingHealth;
+            //healthBar.value = health;
         }
         public bool IsDead()
         {
@@ -55,7 +55,7 @@ namespace Youssef
         {
             health = newHealthLevel;
             health = Mathf.Clamp(health, 0, startingHealth);
-            healthBar.value = health;
+            //healthBar.value = health;
         }
     }
 }

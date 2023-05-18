@@ -7,14 +7,6 @@ namespace AyaOmar
 {
     public class WeaponItem : MonoBehaviour
     {
-        
-        private Transform player;
-        void Start()
-        {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
-            
-        }
-
         public void Use(int index)
         {
             SwitchWeapon.Instance.SetUsedWeapon(index);

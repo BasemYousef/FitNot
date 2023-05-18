@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AyaOmar
 {
     public class SwitchWeapon : Singleton<SwitchWeapon>
     {
+        [SerializeField]private Image weaponImgUi;
+
+        
         private void Awake()
         {
             base.RegisterSingleton();
@@ -20,6 +24,7 @@ namespace AyaOmar
                 weapon.SetActive(false);
             }
             weapons[index].SetActive(true);
+            weaponImgUi.sprite = weaponSprites[index];
         }
     }
 }

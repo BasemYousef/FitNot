@@ -30,6 +30,7 @@ namespace AyaOmar
                         Destroy(gameObject);
                         inventory.isFull[i] = true;
                         inventory.itemType[i] = this.gameObject.tag;
+                        
                         Debug.Log(inventory.itemType[i]);
                         break;
                     }
