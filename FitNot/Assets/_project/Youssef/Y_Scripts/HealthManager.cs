@@ -11,9 +11,9 @@ namespace Youssef
         [SerializeField] public float health = 100f;
         public Slider healthBar = null;
 
-        private float startingHealth;
+        public float startingHealth;
 
-        bool isDead = false;
+        public bool isDead = false;
 
         private void Start()
         {
