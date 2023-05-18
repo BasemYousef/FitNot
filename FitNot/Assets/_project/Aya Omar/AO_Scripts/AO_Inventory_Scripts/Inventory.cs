@@ -9,7 +9,6 @@ namespace AyaOmar
         public bool[] isFull;
         public GameObject[] slots;
         public string[] itemType;
-
-      
+        
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
 using System.Collections.Generic;
+using UnityEngine.EventSystems;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(NavMeshAgent))]
 public class CharacterMovement : MonoBehaviour, ICharacterMovement
@@ -30,6 +32,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     RaycastHit hit;
     private bool isButtonPressed = false; 
     private float holdStartTime;
+    
     #endregion
 
     void Start()
@@ -85,21 +88,25 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
             anim.SetBool("Move", true);
             Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
 
+
+            //Debug.Log(EventSystem.current.IsPointerOverGameObject());
+
             if (!isButtonPressed)
             {
-                if (Physics.Raycast(ray, out hit, 999, walkingLayer))
+                if (Physics.Raycast(ray, out hit, Mathf.Infinity) && EventSystem.current.IsPointerOverGameObject() == false)
                 {
                     GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
                     clickIndicators.Add(newIndicator);
                     isButtonPressed = true;
                     holdStartTime = Time.time;
+
                     MoveTo(hit.point);
                 }
             }
 
-            if (isButtonPressed)
+            if (isButtonPressed )
             {
-                if (Physics.Raycast(ray, out hit, 999, walkingLayer))
+                if (Physics.Raycast(ray, out hit, 999) && EventSystem.current.IsPointerOverGameObject() == false)
                 {
                     MoveTo(hit.point);
                 }
@@ -163,5 +170,6 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
 
         isDodging = false;
     }
+    
 }
 

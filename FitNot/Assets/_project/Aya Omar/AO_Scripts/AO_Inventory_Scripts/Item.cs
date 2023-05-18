@@ -8,9 +8,8 @@ namespace AyaOmar
     public class Item : ScriptableObject
     {
         public string itemName;
-        public Sprite icon;
+        public float healingAmount;
         public string description;
-        public int index;
-        // Add any other relevant properties or methods for the item.
+       
     }
 }

@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022c43ceb8399e41bd3b2855cf8b7fa, type: 3}
   m_Name: MeleeMummy
   m_EditorClassIdentifier: 
-  walkSpeed: 1.2
-  runSpeed: 2.8
+  walkSpeed: 1.6
+  runSpeed: 3
   maxHealth: 100
   currentHealth: 100
   damageValue: 15
-  attackRange: 4
-  chaseRange: 30
-  waitingTimeToStartChasing: 8
-  waitingTimeToStartPatrolling: 5
+  attackRange: 5
+  chaseRange: 7
+  waitingTimeToStartChasing: 2
+  waitingTimeToStartPatrolling: 2

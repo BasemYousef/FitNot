@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Youssef;
 
 namespace AyaOmar
 {
@@ -17,6 +18,7 @@ namespace AyaOmar
         public void Use()
         {
             GameObject gameEffect = Instantiate(effect, player.position, Quaternion.identity);
+            player.GetComponent<HealthManager>().Heal(20f);
             Destroy(gameObject);
             Destroy(gameEffect, 5);
         }

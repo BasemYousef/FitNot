@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using Youssef;
 
 namespace AyaOmar
 {
@@ -17,7 +18,8 @@ namespace AyaOmar
 
         Transform player;
 
-        //int index = 0;
+        private int indexLayer;
+        private float healthPercentage;
 
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
@@ -32,6 +34,8 @@ namespace AyaOmar
                 wayPoints.Add(t);
             }
             agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
+
+            indexLayer = animator.GetLayerIndex("Injured");
             
         }
 
@@ -54,6 +58,9 @@ namespace AyaOmar
             float distance = Vector3.Distance(player.position, animator.transform.position);
             if (distance < enemy.chaseRange)
             {
+                healthPercentage = animator.GetComponent<HealthManager>().startingHealth / animator.GetComponent<HealthManager>().health;
+                float targetInjuredLayerWeight = 1 - healthPercentage;
+                animator.SetLayerWeight(layerIndex, targetInjuredLayerWeight);
                 animator.SetBool(CHASING_PARAM, true);
             }
             //index++;

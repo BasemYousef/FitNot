@@ -12,7 +12,7 @@ namespace AyaOmar
         void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").transform;
-            inventory = player.GetComponentInChildren<Inventory>();
+            inventory = player.GetComponent<Inventory>();
         }
         public virtual void Use() { }
         
