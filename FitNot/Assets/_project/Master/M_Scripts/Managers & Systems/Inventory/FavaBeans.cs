@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Youssef;
+
 namespace AyaOmar
 {
     public class FavaBeans : FoodItem
     {
-        public GameObject effect;
+        public Item beansItem;
        
         void Update()
         {
@@ -22,7 +24,7 @@ namespace AyaOmar
                 Debug.Log("FavaBeans used");
                 for (int i = 0; i < inventory.itemType.Length; i++)
                 {
-                    if (inventory.itemType[i] == "FavaBeans")
+                    if (inventory.itemType[i] == beansItem.itemName)
                     {
                         if (gameObject != null)
                         {
@@ -38,9 +40,10 @@ namespace AyaOmar
         public override void Use()
         {
             base.Use();
-            GameObject gameEffect = Instantiate(effect, player.position, Quaternion.identity);
+            GameObject gameEffect = Instantiate(beansItem.itemUseEffect, player.position, Quaternion.identity);
+            player.GetComponent<HealthManager>().Heal(beansItem.healingAmount);
             Destroy(this.gameObject);
-            Destroy(gameEffect, 5);
+            Destroy(gameEffect, beansItem.timeToDestroy);
         }
     }
 }

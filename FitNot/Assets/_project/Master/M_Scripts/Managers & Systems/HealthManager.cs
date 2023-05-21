@@ -44,8 +44,10 @@ namespace Youssef
         {
             if (isDead) return;
 
-            GetComponent<Animator>().SetTrigger("die"); // using trigger for the death animation
+            Animator animator = GetComponent<Animator>();
+            animator.SetTrigger("die"); // using trigger for the death animation
             isDead = true;
+            Destroy(animator.gameObject, 2.37f);
         }
         public void Heal(float healingAmount)
         {

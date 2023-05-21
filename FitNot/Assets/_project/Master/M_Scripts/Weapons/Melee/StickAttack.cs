@@ -7,7 +7,7 @@ using Youssef;
 
 namespace AyaOmar
 {
-    public class StickAttack : MonoBehaviour,IAttackable
+    public class StickAttack : MonoBehaviour, IAttackable
     {
         [SerializeField] private WeaponStats meleeStats;
         [SerializeField] private InputAction meleeAttack = new InputAction();
@@ -16,7 +16,7 @@ namespace AyaOmar
         //private parameters
         private Animator player;
         private int index;
-        private int currentDoAbility;
+        private int currentDurAbility;
 
         private Animator animator;
 
@@ -24,15 +24,21 @@ namespace AyaOmar
         private float attackCoolDown = 1.0f;
         private bool isAttacking = true;
         private float attackAnimationTime = 0.29f;
+        public LayerMask targetLayer;
+
+        [SerializeField] RuntimeAnimatorController meleeGunAnimatorState;
 
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-            currentDoAbility = meleeStats.doability;
+            currentDurAbility = meleeStats.durability;
+            player.runtimeAnimatorController = meleeGunAnimatorState;
         }
         private void Update()
         {
             Attack();
+            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+
         }
 
         private void OnEnable()
@@ -53,25 +59,8 @@ namespace AyaOmar
             {
                 if (canAttack)
                 {
-                    foreach (var weapon in SwitchWeapon.Instance.weapons)
-                    {
-                        if (weapon.activeInHierarchy)
-                        {
-                            index = SwitchWeapon.Instance.weapons.IndexOf(weapon);
-                        }
-                    }
-                    if (index == 0)
-                    {
-                        player.SetBool("Melee", true);
-                    }
-                    if (index == 1)
-                    {
-                        player.SetBool("Boome", true);
-                    }
-                    if (index == 2)
-                    {
-                        player.SetBool("Ranged", true);
-                    }
+                        
+                    player.SetBool("Melee", true);
                     canAttack = false;
                     StartCoroutine(ResetAttackCoolDown());
                 }
@@ -96,27 +85,26 @@ namespace AyaOmar
             yield return new WaitForSeconds(attackAnimationTime);
             isAttacking = false;
         }
+
+
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") && isAttacking)
             {
-                if (currentDoAbility > 0)
+                if (currentDurAbility > 0)
                 {
-                    currentDoAbility--;
+                    currentDurAbility--;
 
                 }
-                
+
                 animator = other.gameObject.GetComponent<Animator>();
                 animator.SetTrigger("Hit");
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(meleeStats.damage);
-                Mathf.Clamp(currentDoAbility, 0, meleeStats.doability);
-                Debug.Log("doability/      " + currentDoAbility);
+                Mathf.Clamp(currentDurAbility, 0, meleeStats.durability);
+                Debug.Log("doability/      " + currentDurAbility);
                 player.transform.LookAt(other.gameObject.transform);
             }
- 
-        }
-        
 
-       
+        }
     }
 }

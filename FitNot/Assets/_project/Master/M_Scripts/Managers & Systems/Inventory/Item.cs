@@ -9,7 +9,9 @@ namespace AyaOmar
     {
         public string itemName;
         public float healingAmount;
+        public GameObject itemUseEffect;
         public string description;
+        public float timeToDestroy;
        
     }
 }

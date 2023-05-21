@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+using Youssef;
+
 namespace AyaOmar
 {
     public class Koushara : FoodItem
     {
-        public GameObject effect;
+        public Item koushariItem;
         
         
         void Update()
@@ -21,7 +23,7 @@ namespace AyaOmar
             {
                 for (int i = 0; i < inventory.itemType.Length; i++)
                 {
-                    if (inventory.itemType[i] == "Koushari")
+                    if (inventory.itemType[i] == koushariItem.itemName)
                     {
                         if (gameObject != null)
                         {
@@ -35,9 +37,10 @@ namespace AyaOmar
         public override void Use()
         {
             base.Use();
-            GameObject gameEffect = Instantiate(effect, player.position, Quaternion.identity);
+            GameObject gameEffect = Instantiate(koushariItem.itemUseEffect, player.position, Quaternion.identity);
+            player.GetComponent<HealthManager>().Heal(koushariItem.healingAmount);
             Destroy(this.gameObject);
-            Destroy(gameEffect, 5);
+            Destroy(gameEffect, koushariItem.timeToDestroy);
         }
     }
 }

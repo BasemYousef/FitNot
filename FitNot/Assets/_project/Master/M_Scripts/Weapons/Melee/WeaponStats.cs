@@ -8,6 +8,7 @@ namespace AyaOmar
     public class WeaponStats : ScriptableObject
     {
         public int damage;
-        public int doability;
+        public int durability;
+        public float attackRange;
     }
 }

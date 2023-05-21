@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Youssef;
 
 namespace AyaOmar
 {
     public class Water : FoodItem
     {
-        public GameObject effect;
+        public Item waterItem;
 
         void Update()
         {
@@ -20,7 +21,7 @@ namespace AyaOmar
             {
                 for (int i = 0; i < inventory.itemType.Length; i++)
                 {
-                    if (inventory.itemType[i] == "Water")
+                    if (inventory.itemType[i] == waterItem.itemName)
                     {
                         if (gameObject != null)
                         {
@@ -34,9 +35,10 @@ namespace AyaOmar
         public override void Use()
         {
             base.Use();
-            GameObject gameEffect = Instantiate(effect, player.position, Quaternion.identity);
+            GameObject gameEffect = Instantiate(waterItem.itemUseEffect, player.position, Quaternion.identity);
+            player.GetComponent<HealthManager>().Heal(waterItem.healingAmount);
             Destroy(this.gameObject);
-            Destroy(gameEffect, 5);
+            Destroy(gameEffect, waterItem.timeToDestroy);
         }
     }
 }

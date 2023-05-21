@@ -7,7 +7,7 @@ namespace AyaOmar
 {
     public class RecoveryItem : MonoBehaviour
     {
-        public GameObject effect;
+        public Item recoveryItem;
         private Transform player;
 
         void Start()
@@ -17,10 +17,10 @@ namespace AyaOmar
         }
         public void Use()
         {
-            GameObject gameEffect = Instantiate(effect, player.position, Quaternion.identity);
-            player.GetComponent<HealthManager>().Heal(20f);
+            GameObject gameEffect = Instantiate(recoveryItem.itemUseEffect, player.position, Quaternion.identity);
+            player.GetComponent<HealthManager>().Heal(recoveryItem.healingAmount);
             Destroy(gameObject);
-            Destroy(gameEffect, 5);
+            Destroy(gameEffect, recoveryItem.timeToDestroy);
         }
     }
 }
