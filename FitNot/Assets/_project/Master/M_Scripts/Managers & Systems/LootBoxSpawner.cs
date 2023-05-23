@@ -1,64 +1,74 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class LootBoxSpawner : MonoBehaviour
 {
-    public GameObject boxPrefab;
-    public Transform[] spawnLocations;
-    public int numberOfBoxes = 5;
-    public float spawnInterval = 5f;
+    public GameObject lootBoxPrefab;
+    public Transform[] spawnPoints; 
+    public int maxSpawnedBoxes = 5; 
 
-    private int boxesSpawned = 0;
-    private List<int> usedSpawnIndexes = new List<int>();
-
+    private List<GameObject> spawnedBoxes = new List<GameObject>();
     private void Start()
     {
-        StartCoroutine(SpawnBoxes());
+        SpawnLootBoxes();
     }
 
-    private IEnumerator SpawnBoxes()
+    private void SpawnLootBoxes()
     {
-        while (boxesSpawned < numberOfBoxes)
+        for (int i = 0; i < maxSpawnedBoxes; i++)
         {
-            int randomLocationIndex = GetRandomUnusedSpawnIndex();
-            if (randomLocationIndex != -1)
-            {
-                SpawnBox(spawnLocations[randomLocationIndex]);
-                usedSpawnIndexes.Add(randomLocationIndex);
-            }
-            else
-            {
-                Debug.Log("No available spawn locations left!");
-            }
+            
+            Transform spawnPoint = GetRandomSpawnPoint();
 
-            yield return new WaitForSeconds(spawnInterval);
+            
+            GameObject newBox = Instantiate(lootBoxPrefab, spawnPoint.position, spawnPoint.rotation);
+            spawnedBoxes.Add(newBox);
+
+            
+            LootBox lootBox = newBox.GetComponent<LootBox>();
+            lootBox.lootBoxSpawner = this;
         }
     }
 
-    private int GetRandomUnusedSpawnIndex()
+    public void OnLootBoxDestroyed(GameObject box)
     {
-        List<int> unusedSpawnIndexes = new List<int>();
-        for (int i = 0; i < spawnLocations.Length; i++)
-        {
-            if (!usedSpawnIndexes.Contains(i))
-            {
-                unusedSpawnIndexes.Add(i);
-            }
-        }
+       
+        spawnedBoxes.Remove(box);
 
-        if (unusedSpawnIndexes.Count > 0)
+        
+        if (spawnedBoxes.Count < maxSpawnedBoxes)
         {
-            int randomIndex = Random.Range(0, unusedSpawnIndexes.Count);
-            return unusedSpawnIndexes[randomIndex];
-        }
+            Transform spawnPoint = GetRandomSpawnPoint();
+            GameObject newBox = Instantiate(lootBoxPrefab, spawnPoint.position, spawnPoint.rotation);
+            spawnedBoxes.Add(newBox);
 
-        return -1; // Return -1 if all spawn locations have been used
+            LootBox lootBox = newBox.GetComponent<LootBox>();
+            lootBox.lootBoxSpawner = this;
+        }
     }
 
-    private void SpawnBox(Transform spawnLocation)
+    private Transform GetRandomSpawnPoint()
     {
-        Instantiate(boxPrefab, spawnLocation.position, Quaternion.identity);
-        boxesSpawned++;
+        Transform spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+
+        
+        while (IsSpawnPointOccupied(spawnPoint))
+        {
+            spawnPoint = spawnPoints[Random.Range(0, spawnPoints.Length)];
+        }
+
+        return spawnPoint;
+    }
+
+    private bool IsSpawnPointOccupied(Transform spawnPoint)
+    {
+        foreach (GameObject box in spawnedBoxes)
+        {
+            if (box.transform.position == spawnPoint.position)
+            {
+                return true;
+            }
+        }
+        return false;
     }
 }
