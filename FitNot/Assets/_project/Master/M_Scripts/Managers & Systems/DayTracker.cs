@@ -1,13 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-
+using AyaOmar;
 namespace Youssef
 {
-    public class DayTracker : MonoBehaviour
+    public class DayTracker : Singleton<DayTracker>
     {
         public float incrementInterval = 20f;
         public TextMeshProUGUI daysCounterUI;
@@ -16,6 +15,10 @@ namespace Youssef
         private int day = 0;
 
         public int Day { get => day; set => day = value; }
+        private void Awake()
+        {
+            base.RegisterSingleton();
+        }
 
         void Update()
         {

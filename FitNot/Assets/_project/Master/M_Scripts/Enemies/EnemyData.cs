@@ -14,5 +14,15 @@ public class EnemyData : ScriptableObject
     public float chaseRange;
     public int waitingTimeToStartChasing;
     public int waitingTimeToStartPatrolling;
+    private SpawnerManager spawnerManager;
 
+    public float ModifiedDamageValue
+    {
+        get { return damageValue * spawnerManager.difficultyDamageMultiplier; }
+    }
+
+    public float ModifiedMaxHealth
+    {
+        get { return maxHealth * spawnerManager.difficultyHealthMultiplier; }
+    }
 }
