@@ -14,7 +14,9 @@ namespace AyaOmar
 
         private Animator animator;
         private Transform spitPosition;
-       
+
+        public ObjectPool objectPool;
+        Spit spit;
         private void Awake()
         {
             //base.RegisterSingleton();
@@ -24,16 +26,21 @@ namespace AyaOmar
         public void Attack()
         {
             animator.SetBool("isAttacking", true);
-            Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
+            //Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
+            //spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
+
+
+            spit = objectPool.GetObjectFromPool();
+            spit.transform.position = spitPosition.transform.position;
             spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
-            
-            //StartCoroutine(AttackAnimation());
+            StartCoroutine(SetPoolObject());
 
         }
-        IEnumerator AttackAnimation()
+        IEnumerator SetPoolObject()
         {
-            yield return new WaitForSeconds(1f);
-            animator.SetBool("isAttacking", true);
+            yield return new WaitForSeconds(5f);
+            spit.transform.position = spitPosition.transform.position;
+            objectPool.ReturnObjectToPool(spit);
         } 
        
     }

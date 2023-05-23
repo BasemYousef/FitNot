@@ -8,14 +8,13 @@ namespace AyaOmar
     {
         public EnemyData enemy;
         Transform player;
-        //private float attackRange = 3;
-
+        
         private AttackCoroutine attackCoroutine;
 
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.GetPlayerRef().transform;
             attackCoroutine = animator.GetComponent<AttackCoroutine>();
             if (attackCoroutine == null)
             {

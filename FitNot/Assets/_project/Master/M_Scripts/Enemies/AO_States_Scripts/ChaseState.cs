@@ -24,7 +24,7 @@ namespace AyaOmar
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.GetPlayerRef().transform;
             agent = animator.GetComponent<NavMeshAgent>();
             agent.speed = enemy.runSpeed;
 

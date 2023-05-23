@@ -10,5 +10,7 @@ namespace AyaOmar
         public int damage;
         public int durability;
         public float attackRange;
+        public int projectileCount;
+
     }
 }

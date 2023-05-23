@@ -28,11 +28,16 @@ namespace AyaOmar
 
         [SerializeField] RuntimeAnimatorController meleeGunAnimatorState;
 
+        public Collider attackCollider; // Reference to the attack collider
+
+        private bool isCollide = false;
+
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
             currentDurAbility = meleeStats.durability;
             player.runtimeAnimatorController = meleeGunAnimatorState;
+            
         }
         private void Update()
         {
@@ -57,9 +62,9 @@ namespace AyaOmar
 
             if (meleeAttack.triggered)
             {
+                StartAttack();
                 if (canAttack)
-                {
-                        
+                {   
                     player.SetBool("Melee", true);
                     canAttack = false;
                     StartCoroutine(ResetAttackCoolDown());
@@ -67,6 +72,7 @@ namespace AyaOmar
             }
             else
             {
+                StopAttack();
                 player.SetBool("Melee", false);
 
             }
@@ -86,7 +92,20 @@ namespace AyaOmar
             isAttacking = false;
         }
 
+        private void StartAttack()
+        {
+            // Enable the attack collider
+            attackCollider.enabled = true;
+            isCollide = true;
 
+        }
+        private void StopAttack()
+        {
+            // Disable the attack collider
+            attackCollider.enabled = false;
+            isCollide = false;
+
+        }
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") && isAttacking)

@@ -7,11 +7,19 @@ namespace AyaOmar
 {
     public class WeaponItem : MonoBehaviour
     {
+        private Animator playerAnimator;
         public void Use(int index)
         {
             SwitchWeapon.Instance.SetUsedWeapon(index);
-            //Image weaponImg = gameObject.GetComponentInChildren<Image>();
-            //weaponImg.sprite = SwitchWeapon.Instance.weaponSprites[index];
+            playerAnimator = GameManager.Instance.GetPlayerRef().GetComponent<Animator>();
+            if (index == 0)
+            {
+                playerAnimator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
+            }
+            else if (index == 1)
+            {
+                playerAnimator.runtimeAnimatorController = GameManager.Instance.GetRangedPlayerAnimator();
+            }
             Destroy(gameObject);
         }
     }

@@ -16,15 +16,14 @@ namespace AyaOmar
         List<Transform> wayPoints = new List<Transform>();
         NavMeshAgent agent;
 
-        Transform player;
-
+        private Transform player;
         private int indexLayer;
         private float healthPercentage;
 
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.GetPlayerRef().transform;
             agent = animator.GetComponent<NavMeshAgent>();
             agent.speed = enemy.walkSpeed;
             timer = 0;
@@ -42,8 +41,6 @@ namespace AyaOmar
         // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
         override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
-            
-
             if (agent.remainingDistance <= agent.stoppingDistance)
             {
                 agent.SetDestination(wayPoints[Random.Range(0, wayPoints.Count)].position);
@@ -63,11 +60,7 @@ namespace AyaOmar
                 animator.SetLayerWeight(layerIndex, targetInjuredLayerWeight);
                 animator.SetBool(CHASING_PARAM, true);
             }
-            //index++;
-            //if (index == 10)
-            //{
-            //    index = 0;
-            //}
+            
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

@@ -128,8 +128,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.06739914, y: 0.29155058, z: 0.5977044}
-  m_Center: {x: 0.008478255, y: 0.07232733, z: 0.9505603}
+  m_Size: {x: 0.06739914, y: 0.18798696, z: 0.5087723}
+  m_Center: {x: 0.008481283, y: 0.020548241, z: 0.9950226}
 --- !u!114 &1515801279
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,9 +143,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mummyMeleeStats: {fileID: 11400000, guid: be2c8ec0add88704eb7c5162a56f80d5, type: 2}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 8
 --- !u!1 &60714477812135612
 GameObject:
   m_ObjectHideFlags: 0
@@ -1846,7 +1843,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2311,7 +2308,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6924939322257117747
 Transform:
   m_ObjectHideFlags: 0
@@ -2377,9 +2374,9 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.01
-  m_Height: 0.06
+  m_Height: 0.05
   m_Direction: 1
-  m_Center: {x: 0, y: 0.03, z: 0.005}
+  m_Center: {x: 0, y: 0.027, z: 0.005}
 --- !u!114 &7462722841486235638
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -17,12 +17,14 @@ namespace AyaOmar
         
         private Animator player;
         
-        [SerializeField] RuntimeAnimatorController nailGunAnimatorState;
+        //[SerializeField] RuntimeAnimatorController nailGunAnimatorState;
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
-            currentDurAbility = nailGunStats.durability;
-            player.runtimeAnimatorController = nailGunAnimatorState;
+            currentDurAbility = nailGunStats.projectileCount;
+            //player.runtimeAnimatorController = nailGunAnimatorState;
+
+            player.runtimeAnimatorController = GameManager.Instance.GetRangedPlayerAnimator();
         }
         private void Update()
         {
@@ -47,7 +49,7 @@ namespace AyaOmar
             
             if (nailGunAttack.triggered)
             {
-                 
+                currentDurAbility--;
                  player.SetBool("Ranged", true);
 
             }

@@ -9,9 +9,8 @@ namespace AyaOmar
     public class EatableItems : FoodItem
     {
         //item scriptable object hold item data
-        public Item beansItem;
-        public Item koushariItem;
-        public Item waterItem;
+        public Item ItemData;
+        
         void Update()
         {
             QuickSwitch();
@@ -23,16 +22,16 @@ namespace AyaOmar
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                FindItem(koushariItem, 1);
+                FindItem(ItemData, 1);
             }
 
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                FindItem(beansItem, 2);
+                FindItem(ItemData, 2);
             }
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                FindItem(waterItem, 3);
+                FindItem(ItemData, 3);
             }
         }
 
@@ -42,13 +41,13 @@ namespace AyaOmar
             switch (index)
             {
                 case 1:
-                    SpawnItemUseEffect(koushariItem);
+                    SpawnItemUseEffect(ItemData);
                     break;
                 case 2:
-                    SpawnItemUseEffect(beansItem);
+                    SpawnItemUseEffect(ItemData);
                     break;
                 case 3:
-                    SpawnItemUseEffect(waterItem);
+                    SpawnItemUseEffect(ItemData);
                     break;
                 default:
                     break;

@@ -10,13 +10,15 @@ GameObject:
   m_Component:
   - component: {fileID: 674480782}
   - component: {fileID: 674480784}
+  - component: {fileID: 1351169288}
+  - component: {fileID: 1351169291}
   m_Layer: 0
-  m_Name: Gun (1)
+  m_Name: NailGun
   m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &674480782
 Transform:
   m_ObjectHideFlags: 0
@@ -46,6 +48,47 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.1306572, y: 0.2754665, z: 1}
   m_Center: {x: -0.0055828094, y: 0.079988, z: 0}
+--- !u!114 &1351169288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674480781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb716921900625e4194bb22516af37ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  weapon: {fileID: 11400000, guid: 722c3ab9d5ac2d944ae26a66f6e48533, type: 2}
+--- !u!114 &1351169291
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 674480781}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 266e86276c7f01e498c2b0fc48f805b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  projectilePrefab: {fileID: 7728603918882574087, guid: 2fce0e168107ff8449c4a913f4ed8191,
+    type: 3}
+  projectileSpawnPoint: {fileID: 0}
+  projectileCount: 10
+  projectileSpeed: 10
+  fireRate: 0.1
+  isOutOfAmmo: 0
+  shoot:
+    m_Name: Shoot
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 8009ea12-1896-4f68-81c5-7dde8fcf0acc
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
 --- !u!1 &18911411885645653
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1363,6 @@ GameObject:
   m_Component:
   - component: {fileID: 8086516484543583696}
   - component: {fileID: 3239497750329574641}
-  - component: {fileID: 3239497750329574642}
   m_Layer: 3
   m_Name: Extract2
   m_TagString: Untagged
@@ -1419,19 +1461,6 @@ SkinnedMeshRenderer:
     m_Center: {x: 0.1304586, y: 1.91872, z: 0.37525314}
     m_Extent: {x: 5.303973, y: 3.9277928, z: 1.8511882}
   m_DirtyAABB: 0
---- !u!65 &3239497750329574642
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5394771986752694860}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 11.094982, y: 25.01708, z: 34.169773}
-  m_Center: {x: 0.15479194, y: 22.711096, z: 6.40818}
 --- !u!1 &5518243768706164903
 GameObject:
   m_ObjectHideFlags: 0
@@ -2341,7 +2370,9 @@ MonoBehaviour:
   hitEffect: {fileID: 0}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
+  meleeGunAnimatorState: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183,
+    type: 2}
 --- !u!1 &7305466279021528031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2395,7 +2426,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &7820198779069992257
 Transform:
   m_ObjectHideFlags: 0
@@ -2405,7 +2436,7 @@ Transform:
   m_GameObject: {fileID: 7479702689913853947}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.65387, y: 0.03, z: -3.229164}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 0.15}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 8086516484543583696}
@@ -2505,7 +2536,7 @@ NavMeshAgent:
   m_Enabled: 1
   m_AgentTypeID: 0
   m_Radius: 2.2
-  m_Speed: 4
+  m_Speed: 8
   m_Acceleration: 100
   avoidancePriority: 50
   m_AngularSpeed: 1000
@@ -2515,7 +2546,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 12
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!54 &7713632784187426083
 Rigidbody:
@@ -3299,6 +3330,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2181520758834078788, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2181520758834078788, guid: 2ea809f1d1b168b499ce28652017d8dd,
+        type: 3}
       propertyPath: m_TagString
       value: Weapon
       objectReference: {fileID: 0}
@@ -3325,37 +3361,37 @@ PrefabInstance:
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -0.45
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.67
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: -0.38
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: -0.4831333
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.46801648
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.51960534
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.5268331
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8892131090412063740, guid: 2ea809f1d1b168b499ce28652017d8dd,
         type: 3}
@@ -3377,7 +3413,9 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5368241027445889583, guid: 2ea809f1d1b168b499ce28652017d8dd, type: 3}
+    - {fileID: 8950226851530734623, guid: 2ea809f1d1b168b499ce28652017d8dd, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 2ea809f1d1b168b499ce28652017d8dd, type: 3}
 --- !u!4 &2069042453058014302 stripped
 Transform:
@@ -3385,3 +3423,34 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 7480906945219397538}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8761705423594857446 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2181520758834078788, guid: 2ea809f1d1b168b499ce28652017d8dd,
+    type: 3}
+  m_PrefabInstance: {fileID: 7480906945219397538}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1626467240
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8761705423594857446}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bac15a0737e61c4448c98e893eef8874, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nailGunStats: {fileID: 11400000, guid: c70cd27c4cc0e8349b1a5c12852244de, type: 2}
+  nailGunAttack:
+    m_Name: Nail Gun Attack
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: a5c79c3c-9207-41ce-928e-aa762600a444
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
+  hitEffect: {fileID: 0}
+  nailGunAnimatorState: {fileID: 9100000, guid: efa79085ea091534e80682c2661b1608,
+    type: 2}

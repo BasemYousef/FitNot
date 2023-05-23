@@ -14,7 +14,7 @@ namespace AyaOmar
         //private Inventory inventory;
         private void Start()
         {
-            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+            inventory = GameManager.Instance.GetPlayerRef().GetComponent<Inventory>();
         }
         private void OnTriggerEnter(Collider other)
         {

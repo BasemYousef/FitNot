@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 6977604153464780887}
   - component: {fileID: 2546621976022607353}
   - component: {fileID: 1831035153512934399}
-  - component: {fileID: 4787881175033585038}
   - component: {fileID: 4643999710304518395}
+  - component: {fileID: -6245619877745068592}
   m_Layer: 5
   m_Name: Btn_Koushari_Instantiate
   m_TagString: Untagged
@@ -123,31 +123,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4787881175033585038}
-        m_TargetAssemblyTypeName: AyaOmar.Koushara, Assembly-CSharp
+      - m_Target: {fileID: -6245619877745068592}
+        m_TargetAssemblyTypeName: AyaOmar.EatableItems, Assembly-CSharp
         m_MethodName: Use
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 1
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4787881175033585038
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6003646783185704920}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 645700275ebe5944384d4a9f2f49dd97, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  koushariItem: {fileID: 11400000, guid: fe85e65e7d42af24aa5f4102d93adba7, type: 2}
 --- !u!114 &4643999710304518395
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +149,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 2813553855235818201, guid: 89f04f8ae633c5b43a6dc805561038cd,
     type: 3}
+--- !u!114 &-6245619877745068592
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6003646783185704920}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b7b48b43f5e1b48a30bc62a6648d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemData: {fileID: 11400000, guid: fe85e65e7d42af24aa5f4102d93adba7, type: 2}

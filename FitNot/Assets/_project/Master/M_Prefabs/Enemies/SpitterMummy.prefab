@@ -1932,6 +1932,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   point: {fileID: 4980658720248722338, guid: a1501a6481b0dc845b26f271b658faa4, type: 3}
+  wayPointsRange: 10
 --- !u!195 &7287227905774423472
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1968,6 +1969,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   spitPrefab: {fileID: 2188848925704759378, guid: d2a1b883fa1f71741b253a90e2512a1b,
     type: 3}
+  objectPool: {fileID: 4967389042282637370, guid: 976b3ba82f767d1469cbd0d6a1ac6d69,
+    type: 3}
 --- !u!114 &6281790735725530813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1981,7 +1984,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 100
+  healthBar: {fileID: 0}
   startingHealth: 0
+  isDead: 0
 --- !u!136 &1374919729
 CapsuleCollider:
   m_ObjectHideFlags: 0

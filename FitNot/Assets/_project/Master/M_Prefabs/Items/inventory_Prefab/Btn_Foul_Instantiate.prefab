@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 2327837564137968181}
   - component: {fileID: 8242111585551360756}
   - component: {fileID: 1102174895622005806}
-  - component: {fileID: -7842119893975937032}
   - component: {fileID: 5897924878823244001}
+  - component: {fileID: -5794835983889197461}
   m_Layer: 5
   m_Name: Btn_Foul_Instantiate
   m_TagString: Untagged
@@ -123,31 +123,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: -7842119893975937032}
-        m_TargetAssemblyTypeName: AyaOmar.FavaBeans, Assembly-CSharp
+      - m_Target: {fileID: -5794835983889197461}
+        m_TargetAssemblyTypeName: AyaOmar.EatableItems, Assembly-CSharp
         m_MethodName: Use
-        m_Mode: 1
+        m_Mode: 3
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
+          m_IntArgument: 2
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &-7842119893975937032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9100345219202997404}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a6504c1372b75a34a9768d04f2c70e5e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  beansItem: {fileID: 11400000, guid: 15ac49cf617c10243914f301882e3470, type: 2}
 --- !u!114 &5897924878823244001
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,3 +149,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 3832509235643078888, guid: 9dba6fbcdef6b914bae0917157299fac,
     type: 3}
+--- !u!114 &-5794835983889197461
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9100345219202997404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73b7b48b43f5e1b48a30bc62a6648d07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ItemData: {fileID: 11400000, guid: 15ac49cf617c10243914f301882e3470, type: 2}

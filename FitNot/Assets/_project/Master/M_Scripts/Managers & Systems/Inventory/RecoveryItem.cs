@@ -12,7 +12,8 @@ namespace AyaOmar
 
         void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            //player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.GetPlayerRef().transform;
 
         }
         public void Use()
