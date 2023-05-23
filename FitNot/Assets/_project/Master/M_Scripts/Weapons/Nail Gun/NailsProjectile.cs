@@ -11,6 +11,9 @@ namespace Youssef
         [SerializeField] GameObject environmentImpactVFX = null;
         private void Start()
         {
+            //Vector3 mouseWorldPosition = Camera.main.ScreenToWorldPoint(Input.mousePosition + Vector3.forward);
+            //Vector3 targetDirection = new Vector3(mouseWorldPosition.x - transform.position.x, 0f, mouseWorldPosition.z - transform.position.z);
+            //transform.LookAt(targetDirection );
             Destroy(gameObject,3f);
         }
         private void OnTriggerEnter(Collider other)
