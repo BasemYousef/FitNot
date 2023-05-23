@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 7582642623082788579}
   - component: {fileID: 7744646453480519078}
   - component: {fileID: -3681734625220496197}
+  - component: {fileID: 7436835072130503951}
+  - component: {fileID: 4300608019613550783}
   m_Layer: 0
   m_Name: LootBox
   m_TagString: LootBox
@@ -29,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 2042248790015211142}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -11.654069, y: 1.02, z: 8.3}
-  m_LocalScale: {x: 5, y: 5, z: 5}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -93,7 +95,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2042248790015211142}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -109,8 +111,44 @@ Rigidbody:
   m_Mass: 1
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
+  m_UseGravity: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 1
+--- !u!114 &7436835072130503951
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042248790015211142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3e1fe25e6f7ce6244b32cf10f429b68a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootBoxSpawner: {fileID: 0}
+  loot: {fileID: 0}
+--- !u!114 &4300608019613550783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042248790015211142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eeb32d61fef06614289b9b7f49ba90b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lootItems:
+  - itemPrefab: {fileID: 3832509235643078888, guid: 9dba6fbcdef6b914bae0917157299fac,
+      type: 3}
+    dropPercentage: 55.1
+  - itemPrefab: {fileID: 2621203095834077110, guid: 14c55e1dfeaf797489a1df902a68a3a1,
+      type: 3}
+    dropPercentage: 18.9
+  - itemPrefab: {fileID: 2972226999490830823, guid: e619d0ce6770225428ba6150e37c16ed,
+      type: 3}
+    dropPercentage: 39.8
