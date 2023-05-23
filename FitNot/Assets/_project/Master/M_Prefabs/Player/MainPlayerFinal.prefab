@@ -677,8 +677,6 @@ MonoBehaviour:
     m_SingletonActionBindings: []
     m_Flags: 0
   hitEffect: {fileID: 0}
-  nailGunAnimatorState: {fileID: 9100000, guid: efa79085ea091534e80682c2661b1608,
-    type: 2}
 --- !u!1 &1770511185579339718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2052,6 +2050,37 @@ Transform:
   m_Father: {fileID: 1545467033726752210}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &6622312973371474698
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8487716889878577244}
+  m_Layer: 3
+  m_Name: GrounCheckOrigin
+  m_TagString: Untagged
+  m_Icon: {fileID: -5397416234189338067, guid: 0000000000000000d000000000000000, type: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8487716889878577244
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6622312973371474698}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 24.9}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7979914327547564726}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6650955641403094470
 GameObject:
   m_ObjectHideFlags: 0
@@ -2357,6 +2386,7 @@ GameObject:
   - component: {fileID: 4061812667037780160}
   - component: {fileID: 4061812667037780161}
   - component: {fileID: 4061812667037780162}
+  - component: {fileID: 1998122385620996590}
   - component: {fileID: 4061812667037780163}
   m_Layer: 3
   m_Name: MainPlayerFinal
@@ -2379,6 +2409,7 @@ Transform:
   m_Children:
   - {fileID: 1301131960528011816}
   - {fileID: 3240890990734310837}
+  - {fileID: 8487716889878577244}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2426,7 +2457,7 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7346929419869849612}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 4.79
   m_Height: 34.9
@@ -2523,6 +2554,24 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   startingHealth: 0
   isDead: 0
+--- !u!114 &1998122385620996590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7346929419869849612}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 231085ac1bb795b458ff6654266974e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  objectPrefab: {fileID: 919132149155446097, guid: 5a96206af4201c545884d8a47b16c667,
+    type: 3}
+  groundCheckOrigin: {fileID: 8487716889878577244}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
 --- !u!114 &4061812667037780163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2569,7 +2618,7 @@ GameObject:
   - component: {fileID: 6418054258450719147}
   m_Layer: 0
   m_Name: final Nabot_low
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2650,8 +2699,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.022385022, y: 0.13794272, z: 0.02238509}
-  m_Center: {x: 0, y: 0.33597502, z: 0.00000003476938}
+  m_Size: {x: 0.02, y: 0.13, z: 0.02}
+  m_Center: {x: 0, y: 0.34, z: 0.000000035}
 --- !u!114 &6418054258450719147
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2675,7 +2724,7 @@ MonoBehaviour:
     m_SingletonActionBindings:
     - m_Name: 
       m_Id: 0b5692d4-8003-4a18-a431-eab1faf8baf0
-      m_Path: <Mouse>/rightButton
+      m_Path: <Keyboard>/z
       m_Interactions: 
       m_Processors: 
       m_Groups: 
@@ -2688,6 +2737,7 @@ MonoBehaviour:
     m_Bits: 128
   meleeGunAnimatorState: {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183,
     type: 2}
+  attackCollider: {fileID: 0}
 --- !u!1 &7367200755969847286
 GameObject:
   m_ObjectHideFlags: 0
