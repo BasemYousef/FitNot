@@ -6,6 +6,9 @@ public class CameraFollow : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.position = target.position;
+        if (target != null)
+        {
+            transform.position = target.position;
+        }
     }
 }

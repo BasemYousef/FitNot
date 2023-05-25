@@ -11,7 +11,7 @@ namespace AyaOmar
         private Transform player;
         void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.GetPlayerRef().transform;
         }
         public void SpawnDropedItem()
         {
