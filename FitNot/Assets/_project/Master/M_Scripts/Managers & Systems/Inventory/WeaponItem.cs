@@ -20,6 +20,7 @@ namespace AyaOmar
             {
                 playerAnimator.runtimeAnimatorController = GameManager.Instance.GetRangedPlayerAnimator();
             }
+            
             Destroy(gameObject);
         }
     }

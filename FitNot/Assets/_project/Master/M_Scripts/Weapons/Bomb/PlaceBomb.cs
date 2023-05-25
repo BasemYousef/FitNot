@@ -9,7 +9,7 @@ public class PlaceBomb : MonoBehaviour
     private void Start()
     {
         // Disable the object prefab initially
-        objectPrefab.SetActive(false);
+       // objectPrefab.SetActive(false);
     }
 
     public void PlaceObject()
@@ -21,7 +21,7 @@ public class PlaceBomb : MonoBehaviour
             Vector3 spawnPosition = hit.point + Vector3.up * 0.5f + (transform.forward * 2f);
 
             // Instantiate and activate the object at the calculated position
-            GameObject placedObject = Instantiate(objectPrefab, spawnPosition, Quaternion.Euler(new Vector3(-90,0,0)));
+            GameObject placedObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
             placedObject.SetActive(true);
         }
     }

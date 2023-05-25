@@ -28,7 +28,7 @@ namespace Youssef
             }
             if (daysCounterUI != null)
             {
-                daysCounterUI.text = "Days: " + Day.ToString("F0");
+                daysCounterUI.text = Day.ToString("F0");
             }
         }
     }
