@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &5860826658669973649
+--- !u!1 &3036080448901196579
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,44 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 5860826658669973655}
-  - component: {fileID: 5860826658669973654}
+  - component: {fileID: 3036080448901196588}
+  - component: {fileID: 3036080448901196589}
   m_Layer: 0
-  m_Name: Enemy Spawner Manager
+  m_Name: GameManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &5860826658669973655
+--- !u!4 &3036080448901196588
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5860826658669973649}
+  m_GameObject: {fileID: 3036080448901196579}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 20.328506, y: 22.46728, z: -11.307211}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5860826658669973654
+--- !u!114 &3036080448901196589
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5860826658669973649}
+  m_GameObject: {fileID: 3036080448901196579}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f8526780e42e0d6479c6ca2fc0e4588d, type: 3}
+  m_Script: {fileID: 11500000, guid: a691efc210c1bbc4aad6dfd59694ca62, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyPrefabs:
+  RefList:
+  - {fileID: 0}
   - {fileID: 9087545533677964024, guid: 62e47d7182f88f244a51209b036a11e9, type: 3}
-  player: {fileID: 0}
-  spawnerManager: {fileID: 11400000, guid: 9c28a911e3052274ba6125320e3da578, type: 2}
-  playerRadius: 20
+  - {fileID: 0}
+  PlayerAnimatorStates:
+  - {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
+  - {fileID: 9100000, guid: efa79085ea091534e80682c2661b1608, type: 2}
+  spitPos: {fileID: 0}

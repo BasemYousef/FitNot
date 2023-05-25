@@ -6,10 +6,12 @@ using UnityEngine;
   [CreateAssetMenu(fileName ="EnemyWaveController",menuName ="CreateWaveController/EnemySpawner")]
     public class SpawnerManager : ScriptableObject
     {
-        public float waveCooldown ;
+       [HideInInspector] public float difficultyDamageMultiplier = 1.0f;
+       [HideInInspector] public float difficultyHealthMultiplier = 1.0f;
+      
         public float spawnRadius ;
-        public int startingEnemyCount ;
+        public int startingEnemyCount = 0;
         public int enemyIncreasePerWave ;
-        public float difficultyMultiplier ;
+        public float waveCooldown;
     }
 
