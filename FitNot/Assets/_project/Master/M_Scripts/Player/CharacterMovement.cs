@@ -19,12 +19,13 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     [SerializeField] private GameObject clickIndicatorPrefab;
     [SerializeField] private float dashDistance = 5f;
     [SerializeField] private float dashDuration = 0.2f;
-
+    [SerializeField] private float dashCooldownDuration = 2f;
+    [SerializeField] private ParticleSystem dashVFX;
+    [SerializeField] private Camera cam;
     #endregion
 
     #region Private Variables
     private List<GameObject> clickIndicators = new List<GameObject>(); 
-    private Camera cam = null;
     private Rigidbody rb;
     private NavMeshAgent agent = null;
     private Animator anim;
@@ -32,12 +33,14 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     RaycastHit hit;
     private bool isButtonPressed = false; 
     private float holdStartTime;
+    private float lastDashTime = -999f;
     
     #endregion
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        if(cam==null)
         cam = Camera.main;
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
@@ -124,9 +127,10 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
                     MoveTo(hit.point);
                 }
             }
-            if (dash.ReadValue<float>() == 1 && !isDodging)
+            if (dash.ReadValue<float>() == 1 && !isDodging && Time.time - lastDashTime >= dashCooldownDuration)
             {
                 StartCoroutine(Dash());
+                lastDashTime = Time.time;
             }
         }
         else
@@ -157,6 +161,8 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
         Vector3 startPosition = transform.position;
         Vector3 dashDirection = agent.velocity.normalized;
         Vector3 targetPosition = startPosition + dashDirection * dashDistance;
+        dashVFX.Play();
+
         float timer = 0f;
         while (timer < dashDuration)
         {
@@ -165,11 +171,11 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
             timer += Time.deltaTime;
             yield return null;
         }
-
+        
         transform.position = targetPosition;
 
         isDodging = false;
     }
-    
+
 }
 
