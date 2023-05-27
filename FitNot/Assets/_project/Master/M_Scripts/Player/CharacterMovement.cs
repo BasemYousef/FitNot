@@ -10,8 +10,6 @@ using UnityEngine.Events;
 [RequireComponent(typeof(NavMeshAgent))]
 public class CharacterMovement : MonoBehaviour, ICharacterMovement
 {
-    
-
     #region Serialized Private Variables
     [SerializeField] private LayerMask walkingLayer = new LayerMask();
     [SerializeField] private InputAction movement = new InputAction();
@@ -25,23 +23,23 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     #endregion
 
     #region Private Variables
-    private List<GameObject> clickIndicators = new List<GameObject>(); 
+    private List<GameObject> clickIndicators = new List<GameObject>();
     private Rigidbody rb;
     private NavMeshAgent agent = null;
     private Animator anim;
     private bool isDodging = false;
     RaycastHit hit;
-    private bool isButtonPressed = false; 
+    private bool isButtonPressed = false;
     private float holdStartTime;
     private float lastDashTime = -999f;
-    
+    private bool isMoving = false;
     #endregion
 
-    void Start()
+    private void Start()
     {
         anim = GetComponent<Animator>();
-        if(cam==null)
-        cam = Camera.main;
+        if (cam == null)
+            cam = Camera.main;
         agent = GetComponent<NavMeshAgent>();
         rb = GetComponent<Rigidbody>();
     }
@@ -58,24 +56,20 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
         dash.Disable();
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
         if (!isDodging)
             HandleInput();
 
-        UpdateAnimation();
-        
-    }
-   
-    private void UpdateAnimation()
-    {
-        if (agent.velocity.magnitude > 0.1f)
+        if (!anim.GetBool("Move"))
         {
-            anim.SetBool("Move", true);
-        }
-        else
-        {
-            anim.SetBool("Move", false);
+            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                agent.velocity = Vector3.zero;
+                agent.SetDestination(hit.point);
+            }
         }
     }
 
@@ -86,52 +80,14 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
 
     public void HandleInput()
     {
-        if (movement.ReadValue<float>() == 1)
+        float movementValue = movement.ReadValue<float>();
+        float dashValue = dash.ReadValue<float>();
+
+        if (movementValue == 1)
         {
             anim.SetBool("Move", true);
-            Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
-
-
-            //Debug.Log(EventSystem.current.IsPointerOverGameObject());
-
-            if (!isButtonPressed)
-            {
-                if (Physics.Raycast(ray, out hit, Mathf.Infinity) && EventSystem.current.IsPointerOverGameObject() == false)
-                {
-                    GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
-                    clickIndicators.Add(newIndicator);
-                    isButtonPressed = true;
-                    holdStartTime = Time.time;
-
-                    MoveTo(hit.point);
-                }
-            }
-
-            if (isButtonPressed )
-            {
-                if (Physics.Raycast(ray, out hit, 999) && EventSystem.current.IsPointerOverGameObject() == false)
-                {
-                    MoveTo(hit.point);
-                }
-            }
-
-            if (isButtonPressed && Time.time - holdStartTime >= 5f)
-            {
-                if (Physics.Raycast(ray, out hit, 999, walkingLayer))
-                {
-                    Destroy(clickIndicators[clickIndicators.Count - 1]);
-                    clickIndicators.RemoveAt(clickIndicators.Count - 1);
-                    GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
-                    clickIndicators.Add(newIndicator);
-                    holdStartTime = Time.time;
-                    MoveTo(hit.point);
-                }
-            }
-            if (dash.ReadValue<float>() == 1 && !isDodging && Time.time - lastDashTime >= dashCooldownDuration)
-            {
-                StartCoroutine(Dash());
-                lastDashTime = Time.time;
-            }
+            HandleClickIndicator();
+            HandleDash(dashValue);
         }
         else
         {
@@ -141,6 +97,54 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
                 StartCoroutine(DestroyClickIndicators(2f));
                 isButtonPressed = false;
             }
+        }
+    }
+
+    private void HandleClickIndicator()
+    {
+        Ray ray = cam.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+        if (!isButtonPressed)
+        {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
+                clickIndicators.Add(newIndicator);
+                isButtonPressed = true;
+                holdStartTime = Time.time;
+
+                MoveTo(hit.point);
+            }
+        }
+
+        if (isButtonPressed)
+        {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer) && !EventSystem.current.IsPointerOverGameObject())
+            {
+                MoveTo(hit.point);
+            }
+        }
+
+        if (isButtonPressed && Time.time - holdStartTime >= 5f)
+        {
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer))
+            {
+                Destroy(clickIndicators[clickIndicators.Count - 1]);
+                clickIndicators.RemoveAt(clickIndicators.Count - 1);
+                GameObject newIndicator = Instantiate(clickIndicatorPrefab, hit.point + Vector3.up * 0.1f, Quaternion.identity);
+                clickIndicators.Add(newIndicator);
+                holdStartTime = Time.time;
+                MoveTo(hit.point);
+            }
+        }
+    }
+
+    private void HandleDash(float dashValue)
+    {
+        if (dashValue == 1 && !isDodging && Time.time - lastDashTime >= dashCooldownDuration)
+        {
+            StartCoroutine(Dash());
+            lastDashTime = Time.time;
         }
     }
 
@@ -157,11 +161,11 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     private IEnumerator Dash()
     {
         isDodging = true;
+        dashVFX.Play();
         anim.SetTrigger("Dash");
         Vector3 startPosition = transform.position;
         Vector3 dashDirection = agent.velocity.normalized;
         Vector3 targetPosition = startPosition + dashDirection * dashDistance;
-        dashVFX.Play();
 
         float timer = 0f;
         while (timer < dashDuration)
@@ -171,11 +175,9 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
             timer += Time.deltaTime;
             yield return null;
         }
-        
+
         transform.position = targetPosition;
 
         isDodging = false;
     }
-
 }
-

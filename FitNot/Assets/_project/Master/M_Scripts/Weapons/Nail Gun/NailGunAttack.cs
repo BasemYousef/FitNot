@@ -9,7 +9,7 @@ namespace AyaOmar
     {
         [SerializeField] private WeaponStats nailGunStats;
         [SerializeField] private InputAction nailGunAttack = new InputAction();
-        [SerializeField] private GameObject hitEffect;
+        
 
         //[SerializeField] AnimatorOverrideController weaponAnimatorOverride = null;
 

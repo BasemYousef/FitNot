@@ -11,8 +11,8 @@ namespace AyaOmar
     {
         [SerializeField] private WeaponStats meleeStats;
         [SerializeField] private InputAction meleeAttack = new InputAction();
-        [SerializeField] private GameObject hitEffect;
-
+        [SerializeField] private GameObject hitEffectVFX;
+        [SerializeField] private Transform hitTarget;
         //private parameters
         private Animator player;
         private int index;
@@ -115,13 +115,16 @@ namespace AyaOmar
                     currentDurAbility--;
 
                 }
-
+                
                 animator = other.gameObject.GetComponent<Animator>();
                 animator.SetTrigger("Hit");
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(meleeStats.damage);
+                GameObject clonehitVFX = Instantiate(hitEffectVFX,hitTarget.position, Quaternion.identity);
+                Destroy(clonehitVFX,1.5F);
                 Mathf.Clamp(currentDurAbility, 0, meleeStats.durability);
                 Debug.Log("doability/      " + currentDurAbility);
                 player.transform.LookAt(other.gameObject.transform);
+                
             }
 
         }

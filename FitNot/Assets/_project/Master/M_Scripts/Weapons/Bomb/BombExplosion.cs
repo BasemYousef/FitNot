@@ -34,6 +34,7 @@ public class BombExplosion : MonoBehaviour
             // Instantiate explosion particle effect
             Instantiate(explosionPrefab, explosion.position, transform.rotation);
 
+           
             // Apply explosion force to surrounding objects
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider hitCollider in colliders)
@@ -57,7 +58,7 @@ public class BombExplosion : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SpitterMummy") || other.CompareTag("MeleeMummy") || other.CompareTag("Player"))
+        if (other.CompareTag("SpitterMummy") || other.CompareTag("MeleeMummy"))
         {
             otherObjs.Add(other.gameObject);
             Debug.Log("other are added.............." + other.name);
@@ -66,21 +67,17 @@ public class BombExplosion : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("SpitterMummy") || other.CompareTag("MeleeMummy") || other.CompareTag("Player"))
+        if (other.CompareTag("SpitterMummy") || other.CompareTag("MeleeMummy"))
         {
              otherObjs.Remove(other.gameObject);
              Debug.Log("other are removed.............." + other.name);
 
         }
     }
-    //private void OnTriggerEnter(Collider other)
-    //{
-    //    //other.GetComponent<HealthManager>().startingHealth = 0;
-    //     if (other.CompareTag("SpitterMummy") || other.CompareTag("MeleeMummy") || other.CompareTag("Player"))
-    //     {
-    //        otherObjs.Add(other.gameObject);
-    //        Debug.Log("other are added.............." + other.name);
 
-    //    }
-    //}
+    private void OnDrawGizmosSelected()
+    {
+        Gizmos.DrawWireSphere(transform.position, explosionRadius);
+        Gizmos.color = Color.yellow;
+    }
 }

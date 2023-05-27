@@ -44,8 +44,10 @@ namespace AyaOmar
         }
         public void Use()
         {
+
             player.SetTrigger("Bomb");
             Destroy(gameObject);
         }
+        
     }
 }
