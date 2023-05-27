@@ -30,18 +30,22 @@ public class EnemySpawnerManager : MonoBehaviour
         {
             currentWave++;
             wavesSinceLastIncrement++;
-            int enemyCount = spawnerManager.startingEnemyCount + (spawnerManager.enemyIncreasePerWave * (currentWave - 1));
-            for (int i = 0; i < enemyCount; i++)
+            if (currentWave % 3 == 0)
             {
+                int enemyCount = spawnerManager.startingEnemyCount + (spawnerManager.enemyIncreasePerWave * ((currentWave / 3) - 1));
 
-                Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnerManager.spawnRadius;
-                Vector3 spawnPosition = player.position + new Vector3(randomCircle.x, 0f, randomCircle.y);
+                for (int i = 0; i < enemyCount; i++)
+                {
+
+                    Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnerManager.spawnRadius;
+                    Vector3 spawnPosition = player.position + new Vector3(randomCircle.x, 0f, randomCircle.y);
 
 
-                GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
+                    GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
 
-                 GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-                activeEnemies.Add(spawnedEnemy); 
+                    GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                    activeEnemies.Add(spawnedEnemy);
+                }
             }
             if (wavesSinceLastIncrement >= 10)
             {
