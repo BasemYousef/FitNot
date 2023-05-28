@@ -11,7 +11,7 @@ using UnityEngine;
       
         public float spawnRadius ;
         public int startingEnemyCount = 0;
-        public int enemyIncreasePerWave ;
+        public int enemyIncreasePerThreeWaves ;
         public float waveCooldown;
     }
 

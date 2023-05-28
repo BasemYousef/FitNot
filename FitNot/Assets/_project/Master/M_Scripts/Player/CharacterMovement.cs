@@ -32,7 +32,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
     private bool isButtonPressed = false;
     private float holdStartTime;
     private float lastDashTime = -999f;
-    private bool isMoving = false;
+    
     #endregion
 
     private void Start()
@@ -127,7 +127,7 @@ public class CharacterMovement : MonoBehaviour, ICharacterMovement
 
         if (isButtonPressed && Time.time - holdStartTime >= 5f)
         {
-            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer))
+            if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer) && !EventSystem.current.IsPointerOverGameObject())
             {
                 Destroy(clickIndicators[clickIndicators.Count - 1]);
                 clickIndicators.RemoveAt(clickIndicators.Count - 1);

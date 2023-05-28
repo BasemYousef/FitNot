@@ -37,10 +37,10 @@ namespace AyaOmar
         public override void Use()
         {
             base.Use();
-            GameObject gameEffect = Instantiate(koushariItem.itemUseEffect, player.position, Quaternion.identity);
+         //   GameObject gameEffect = Instantiate(koushariItem.itemUseEffect, player.position, Quaternion.identity);
             player.GetComponent<HealthManager>().Heal(koushariItem.healingAmount);
             Destroy(this.gameObject);
-            Destroy(gameEffect, koushariItem.timeToDestroy);
+          //  Destroy(gameEffect, koushariItem.timeToDestroy);
         }
     }
 }

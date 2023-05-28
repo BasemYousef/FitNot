@@ -9,10 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9400c7759729ede41bbdca781e528e77, type: 3}
-  m_Name: NailGun
+  m_Script: {fileID: 11500000, guid: eced5430162bb0b458e154b1eb47a720, type: 3}
+  m_Name: EnemyWaveController
   m_EditorClassIdentifier: 
-  damage: 7
-  durability: 10
-  attackRange: 0
-  projectileCount: 10
+  difficultyDamageMultiplier: 1.3000001
+  difficultyHealthMultiplier: 1.3000001
+  spawnRadius: 13
+  startingEnemyCount: 2
+  enemyIncreasePerThreeWaves: 1
+  waveCooldown: 15

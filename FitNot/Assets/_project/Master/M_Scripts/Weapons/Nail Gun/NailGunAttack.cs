@@ -10,19 +10,15 @@ namespace AyaOmar
         [SerializeField] private WeaponStats nailGunStats;
         [SerializeField] private InputAction nailGunAttack = new InputAction();
         
-
-        //[SerializeField] AnimatorOverrideController weaponAnimatorOverride = null;
-
         private int currentDurAbility;
-        
         private Animator player;
         
-        //[SerializeField] RuntimeAnimatorController nailGunAnimatorState;
+       
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
             currentDurAbility = nailGunStats.projectileCount;
-            //player.runtimeAnimatorController = nailGunAnimatorState;
+           
 
             player.runtimeAnimatorController = GameManager.Instance.GetRangedPlayerAnimator();
         }

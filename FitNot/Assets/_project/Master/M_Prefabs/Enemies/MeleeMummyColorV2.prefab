@@ -1760,7 +1760,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10d09e1d26136542b698eb3efc12855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  characterData: {fileID: 11400000, guid: 1877211ea2bd8a943b468982b0602f5b, type: 2}
   healthBar: {fileID: 7501840571711063019}
   startingHealth: 0
   isDead: 0
@@ -2282,7 +2282,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mummyMeleeStats: {fileID: 11400000, guid: be2c8ec0add88704eb7c5162a56f80d5, type: 2}
-  bloodVFX: {fileID: 0}
+  bloodVFX: {fileID: 168136, guid: 47c6eee70f9391f46a710b0592491a63, type: 3}
   bloodVFXTransform: {fileID: 0}
 --- !u!65 &7501840571836164607
 BoxCollider:

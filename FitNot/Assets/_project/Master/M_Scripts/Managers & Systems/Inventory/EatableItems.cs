@@ -57,10 +57,10 @@ namespace AyaOmar
         // function spawn effect when player use item
         private void SpawnItemUseEffect(Item item)
         {
-            GameObject gameEffect = Instantiate(item.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HealthManager>().Heal(item.healingAmount);
+           // GameObject gameEffect = Instantiate(item.itemUseEffect, player.position, Quaternion.identity);
+            player.GetComponent<HungerSystem>().Eat(item.healingAmount);
             Destroy(this.gameObject);
-            Destroy(gameEffect, item.timeToDestroy);
+           // Destroy(gameEffect, item.timeToDestroy);
         }
 
         private void FindItem(Item item,int index)

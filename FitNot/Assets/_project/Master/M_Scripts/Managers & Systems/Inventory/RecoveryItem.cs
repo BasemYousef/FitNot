@@ -18,10 +18,10 @@ namespace AyaOmar
         }
         public void Use()
         {
-            GameObject gameEffect = Instantiate(recoveryItem.itemUseEffect, player.position, Quaternion.identity);
+           // GameObject gameEffect = Instantiate(recoveryItem.itemUseEffect, player.position, Quaternion.identity);
             player.GetComponent<HealthManager>().Heal(recoveryItem.healingAmount);
             Destroy(gameObject);
-            Destroy(gameEffect, recoveryItem.timeToDestroy);
+          //  Destroy(gameEffect, recoveryItem.timeToDestroy);
         }
     }
 }

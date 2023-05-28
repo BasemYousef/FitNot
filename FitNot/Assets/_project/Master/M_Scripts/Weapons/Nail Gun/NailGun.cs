@@ -1,3 +1,4 @@
+using AyaOmar;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,15 +8,25 @@ namespace Youssef
 {
     public class NailGun : MonoBehaviour
     {
-        public GameObject projectilePrefab;
-        public Transform projectileSpawnPoint;
-        public int projectileCount = 10;
-        public float projectileSpeed = 10f;
-        public float fireRate = 0.1f;
-        public bool isOutOfAmmo = false;
-
+        [SerializeField] WeaponStats weaponStats;
         [SerializeField] private InputAction shoot = new InputAction();
+        [SerializeField] GameObject projectilePrefab;
+        [SerializeField] Transform projectileSpawnPoint;
+        [SerializeField] float projectileSpeed = 10f;
+        [SerializeField] float fireRate = 0.1f;
+
+        private int currentDurAbility;
+        private Animator animator;
+        private bool isOutOfAmmo = false;
         private float fireTimer;
+
+        private void Start()
+        {
+           // player = GetComponentInParent<Animator>();  
+            animator = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+            currentDurAbility = weaponStats.projectileCount;
+            animator.runtimeAnimatorController = GameManager.Instance.GetRangedPlayerAnimator();
+        }
         private void OnEnable()
         {
             shoot.Enable();
@@ -28,21 +39,33 @@ namespace Youssef
         private void Update()
         {
             fireTimer += Time.deltaTime;
-            //Mouse.current.rightButton.wasPressedThisFrame
-            if (shoot.triggered && fireTimer >= fireRate && projectileCount > 0)
+            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            if (shoot.triggered && fireTimer >= fireRate && currentDurAbility > 0)
             {
 
                 fireTimer = 0f;
-                projectileCount--;
-
+                currentDurAbility--;
+                animator.SetBool("Ranged", true);
                 GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
                 Rigidbody projectileRigidbody = newProjectile.GetComponent<Rigidbody>();
                 projectileRigidbody.velocity = projectileSpawnPoint.up * projectileSpeed;
+               
+
             }
-            if(projectileCount <= 0)
+            else
             {
-                isOutOfAmmo= true;
+                animator.SetBool("Ranged", false);
             }
+            if(currentDurAbility == 0)
+            {
+                animator.SetBool("Ranged", false);
+                isOutOfAmmo = true;
+                gameObject.SetActive(false);
+                animator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
+                currentDurAbility = weaponStats.durability;
+            }
+            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
         }
+        
     }
 }

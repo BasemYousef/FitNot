@@ -20,8 +20,11 @@ namespace Youssef
         private void Start()
         {
             startingHealth = health;
-            healthBar.maxValue = startingHealth;
-            healthBar.value = health;
+            if (healthBar != null)
+            {
+                healthBar.maxValue = startingHealth;
+                healthBar.value = health;
+            }
         }
         public bool IsDead()
         {
@@ -31,7 +34,7 @@ namespace Youssef
         {
             health -= damage; 
             health = Mathf.Max(health, 0);
-            UpdateHealthLevel(health);
+            if(healthBar != null) { UpdateHealthLevel(health); }
             print("Health :" +health);
             if (health == 0)
             {

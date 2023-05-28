@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 2299540085132563990}
   m_Layer: 0
   m_Name: Nail Projectile
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -61,9 +61,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1c359b9ecc27d14eb872723d0815c33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nailDamage: 10
   enemyImpactVFX: {fileID: 195742, guid: c83fb3ef04bb383408bb2064b89690b2, type: 3}
   environmentImpactVFX: {fileID: 107096, guid: 79b0a8abb1f641b4a8faa10b904758ea, type: 3}
+  weaponStats: {fileID: 11400000, guid: c70cd27c4cc0e8349b1a5c12852244de, type: 2}
 --- !u!54 &2299540085132563990
 Rigidbody:
   m_ObjectHideFlags: 0

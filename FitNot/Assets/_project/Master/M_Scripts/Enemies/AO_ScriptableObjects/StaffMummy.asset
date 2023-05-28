@@ -9,10 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9400c7759729ede41bbdca781e528e77, type: 3}
-  m_Name: MeleeStats
+  m_Script: {fileID: 11500000, guid: b022c43ceb8399e41bd3b2855cf8b7fa, type: 3}
+  m_Name: StaffMummy
   m_EditorClassIdentifier: 
-  damage: 20
-  durability: 10
-  attackRange: 2
-  projectileCount: 0
+  walkSpeed: 2
+  runSpeed: 3.5
+  maxHealth: 50
+  currentHealth: 0
+  damageValue: 6
+  attackRange: 4
+  chaseRange: 0
+  waitingTimeToStartChasing: 0
+  waitingTimeToStartPatrolling: 0

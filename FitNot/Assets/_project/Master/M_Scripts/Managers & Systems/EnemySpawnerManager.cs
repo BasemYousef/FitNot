@@ -15,7 +15,6 @@ public class EnemySpawnerManager : MonoBehaviour
     #region Private Variables
     private List<GameObject> activeEnemies = new List<GameObject>();
     private int currentWave = 0;
-    private bool isSpawning = false;
     private int wavesSinceLastIncrement = 0;
     #endregion
     private void Start()
@@ -32,7 +31,7 @@ public class EnemySpawnerManager : MonoBehaviour
             wavesSinceLastIncrement++;
             if (currentWave % 3 == 0)
             {
-                int enemyCount = spawnerManager.startingEnemyCount + (spawnerManager.enemyIncreasePerWave * ((currentWave / 3) - 1));
+                int enemyCount = spawnerManager.startingEnemyCount + (spawnerManager.enemyIncreasePerThreeWaves * ((currentWave / 3) - 1));
 
                 for (int i = 0; i < enemyCount; i++)
                 {
@@ -68,12 +67,12 @@ public class EnemySpawnerManager : MonoBehaviour
             GameObject enemy = activeEnemies[i];
             if (Vector3.Distance(enemy.transform.position, player.position) > playerRadius)
             {
-              //  activeEnemies.RemoveAt(i);
+              
                 DisableEnemy(enemy);
             }
             else if (!enemy.activeSelf && Vector3.Distance(enemy.transform.position, player.position) <= playerRadius)
             {
-               // activeEnemies.Add(enemy);
+               
                 EnableEnemy(enemy);
             }
         }

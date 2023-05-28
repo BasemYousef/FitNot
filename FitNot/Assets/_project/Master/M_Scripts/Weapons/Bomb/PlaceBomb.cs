@@ -5,7 +5,7 @@ public class PlaceBomb : MonoBehaviour
     [SerializeField]private GameObject objectPrefab;
     [SerializeField]private Transform groundCheckOrigin;
     [SerializeField]private LayerMask groundLayer;
-
+    
     private void Start()
     {
         // Disable the object prefab initially
@@ -19,9 +19,10 @@ public class PlaceBomb : MonoBehaviour
         {
             // Calculate the position in front of the player
             Vector3 spawnPosition = hit.point + Vector3.up * 0.5f + (transform.forward * 2f);
-
+            
             // Instantiate and activate the object at the calculated position
             GameObject placedObject = Instantiate(objectPrefab, spawnPosition, Quaternion.identity);
+            
             placedObject.SetActive(true);
         }
     }

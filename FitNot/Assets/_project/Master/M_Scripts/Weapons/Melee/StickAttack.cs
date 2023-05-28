@@ -37,11 +37,11 @@ namespace AyaOmar
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
             currentDurAbility = meleeStats.durability;
             player.runtimeAnimatorController = meleeGunAnimatorState;
-            
+
         }
         private void Update()
         {
-            Attack();
+             Attack();
             InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
 
         }
@@ -64,7 +64,7 @@ namespace AyaOmar
             {
                 StartAttack();
                 if (canAttack)
-                {   
+                {
                     player.SetBool("Melee", true);
                     canAttack = false;
                     StartCoroutine(ResetAttackCoolDown());
@@ -108,25 +108,32 @@ namespace AyaOmar
         }
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") && isAttacking)
+            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") || other.gameObject.CompareTag("LootBox") && isAttacking)
             {
                 if (currentDurAbility > 0)
                 {
                     currentDurAbility--;
 
                 }
-                
+
                 animator = other.gameObject.GetComponent<Animator>();
                 animator.SetTrigger("Hit");
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(meleeStats.damage);
-                GameObject clonehitVFX = Instantiate(hitEffectVFX,hitTarget.position, Quaternion.identity);
-                Destroy(clonehitVFX,1.5F);
+                GameObject clonehitVFX = Instantiate(hitEffectVFX, hitTarget.position, Quaternion.identity);
+                Destroy(clonehitVFX, 1.5F);
                 Mathf.Clamp(currentDurAbility, 0, meleeStats.durability);
                 Debug.Log("doability/      " + currentDurAbility);
                 player.transform.LookAt(other.gameObject.transform);
-                
+                if (currentDurAbility == 0)
+                {
+                    player.SetBool("Melee", false);
+                    gameObject.SetActive(false);
+                    animator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
+                    currentDurAbility = meleeStats.durability;
+                }
             }
 
         }
+
     }
 }

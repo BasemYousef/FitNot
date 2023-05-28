@@ -4,28 +4,34 @@ using Youssef;
 
 public class BombExplosion : MonoBehaviour
 {
+    [SerializeField] private GameObject bombFuse;
+    [SerializeField] private Transform bombfuseTransform;
     public GameObject explosionPrefab;
     public float explosionForce = 10f;
     public float explosionRadius = 5f;
     private float countdownSeconds = 5f;
     private bool isExploded = false;
     public Transform explosion;
-
     private List<GameObject> otherObjs = new List<GameObject>();
     private void Start()
     {
         StartCountdown();
+
     }
 
     private void StartCountdown()
     {
         Debug.Log("Bomb has been activated.");
-
+        GameObject cloneBombFuse = Instantiate(bombFuse, bombfuseTransform.position, bombfuseTransform.rotation);
+        
         Invoke("Explode", countdownSeconds);
+        Destroy(cloneBombFuse, countdownSeconds);
+
     }
 
     private void Explode()
     {
+       
         if (!isExploded)
         {
             isExploded = true;

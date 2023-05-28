@@ -8,8 +8,6 @@ namespace AyaOmar
     {
 
         [SerializeField] private Spit spitPrefab;
-
-
         [SerializeField] private float spitVelocity = 8f;
 
         private Animator animator;

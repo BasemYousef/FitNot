@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: -3681734625220496197}
   - component: {fileID: 7436835072130503951}
   - component: {fileID: 4300608019613550783}
+  - component: {fileID: -74091298596655618}
   m_Layer: 0
   m_Name: LootBox
   m_TagString: LootBox
@@ -33,7 +34,8 @@ Transform:
   m_LocalPosition: {x: -11.654069, y: 1.02, z: 8.3}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
-  m_Children: []
+  m_Children:
+  - {fileID: 3713220610262188852}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -65,7 +67,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 7dd6986a5befa2543ad1b485f28a006d, type: 2}
+  - {fileID: 2100000, guid: 4e80b5c8556560546870d359d910b9c5, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -98,7 +100,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
+  m_Size: {x: 1.1, y: 1.1, z: 1.1}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &-3681734625220496197
 Rigidbody:
@@ -143,12 +145,87 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootItems:
-  - itemPrefab: {fileID: 3832509235643078888, guid: 9dba6fbcdef6b914bae0917157299fac,
+  - itemPrefab: {fileID: 7007262433998892609, guid: 31b905b852c356d4aa7d8132acd022cf,
       type: 3}
-    dropPercentage: 55.1
-  - itemPrefab: {fileID: 2621203095834077110, guid: 14c55e1dfeaf797489a1df902a68a3a1,
+    dropPercentage: 40
+  - itemPrefab: {fileID: 3255458474792044863, guid: d821835ee681c6b4dbd73dbe1dd55363,
       type: 3}
-    dropPercentage: 18.9
+    dropPercentage: 25
   - itemPrefab: {fileID: 2972226999490830823, guid: e619d0ce6770225428ba6150e37c16ed,
       type: 3}
+    dropPercentage: 40
+  - itemPrefab: {fileID: 3832509235643078888, guid: 9dba6fbcdef6b914bae0917157299fac,
+      type: 3}
+    dropPercentage: 50
+  - itemPrefab: {fileID: 7487686896045188158, guid: 59ac4d22248ac2e469279eb19bf4a67c,
+      type: 3}
     dropPercentage: 39.8
+  - itemPrefab: {fileID: 7697469730018278857, guid: 8e11bacf688c1d14dac8bf47e6f30289,
+      type: 3}
+    dropPercentage: 39.8
+  - itemPrefab: {fileID: 7281481234599638419, guid: 2898d72f1950be8428cfd207ad814a2b,
+      type: 3}
+    dropPercentage: 39.8
+  destroyDelay: 10
+--- !u!114 &-74091298596655618
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2042248790015211142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b10d09e1d26136542b698eb3efc12855, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 1
+  healthBar: {fileID: 8567193186923194741, guid: deb9c87481ea38c40a9273e7caf248f7,
+    type: 3}
+  startingHealth: 0
+  isDead: 0
+--- !u!1 &3083773806916914861
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3713220610262188852}
+  - component: {fileID: 4897315422066107928}
+  m_Layer: 0
+  m_Name: Collider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3713220610262188852
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083773806916914861}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 153372466440259521}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &4897315422066107928
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3083773806916914861}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}

@@ -8,11 +8,11 @@ namespace AyaOmar
     public class Spit : MonoBehaviour
     {
 
-        [SerializeField] private float life = 15;
+        [SerializeField] private float lifeTime = 5;
         [SerializeField] private EnemyData spitterMummy;
         private void Awake()
         {
-            Destroy(gameObject, life);
+            Destroy(gameObject, lifeTime);
         }
         //private void OnTriggerStay(Collider other)
         //{

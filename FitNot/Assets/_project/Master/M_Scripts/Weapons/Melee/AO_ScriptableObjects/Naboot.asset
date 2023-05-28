@@ -9,12 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eced5430162bb0b458e154b1eb47a720, type: 3}
-  m_Name: EnemyWaveController
+  m_Script: {fileID: 11500000, guid: 9400c7759729ede41bbdca781e528e77, type: 3}
+  m_Name: Naboot
   m_EditorClassIdentifier: 
-  difficultyDamageMultiplier: 1.1
-  difficultyHealthMultiplier: 1.1
-  spawnRadius: 10
-  startingEnemyCount: 3
-  enemyIncreasePerWave: 1
-  waveCooldown: 4.660327
+  damage: 20
+  durability: 10
+  attackRange: 0
+  projectileCount: 0
