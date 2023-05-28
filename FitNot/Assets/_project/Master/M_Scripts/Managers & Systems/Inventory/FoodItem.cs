@@ -11,7 +11,7 @@ namespace AyaOmar
         protected Inventory inventory;
         void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player").transform;
+            player = GameManager.Instance.GetPlayerRef().transform;
             inventory = player.GetComponent<Inventory>();
         }
         public virtual void Use() { }

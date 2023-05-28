@@ -6,6 +6,7 @@ public class BombExplosion : MonoBehaviour
 {
     [SerializeField] private GameObject bombFuse;
     [SerializeField] private Transform bombfuseTransform;
+    
     public GameObject explosionPrefab;
     public float explosionForce = 10f;
     public float explosionRadius = 5f;
@@ -23,7 +24,7 @@ public class BombExplosion : MonoBehaviour
     {
         Debug.Log("Bomb has been activated.");
         GameObject cloneBombFuse = Instantiate(bombFuse, bombfuseTransform.position, bombfuseTransform.rotation);
-        
+        AudioManager.Instance.PlaySpatialSfx("fuse sizzle", transform.position);
         Invoke("Explode", countdownSeconds);
         Destroy(cloneBombFuse, countdownSeconds);
 
@@ -39,8 +40,9 @@ public class BombExplosion : MonoBehaviour
 
             // Instantiate explosion particle effect
             Instantiate(explosionPrefab, explosion.position, transform.rotation);
+            AudioManager.Instance.PlaySpatialSfx("explosion", transform.position);
+            
 
-           
             // Apply explosion force to surrounding objects
             Collider[] colliders = Physics.OverlapSphere(transform.position, explosionRadius);
             foreach (Collider hitCollider in colliders)

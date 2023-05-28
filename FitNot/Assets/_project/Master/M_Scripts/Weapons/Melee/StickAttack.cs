@@ -62,17 +62,18 @@ namespace AyaOmar
 
             if (meleeAttack.triggered)
             {
-                StartAttack();
+                //StartAttack();
                 if (canAttack)
                 {
                     player.SetBool("Melee", true);
+                    AudioManager.Instance.Play2DPingPongSfx("whoosh");
                     canAttack = false;
                     StartCoroutine(ResetAttackCoolDown());
                 }
             }
             else
             {
-                StopAttack();
+                //StopAttack();
                 player.SetBool("Melee", false);
 
             }
@@ -92,20 +93,20 @@ namespace AyaOmar
             isAttacking = false;
         }
 
-        private void StartAttack()
-        {
-            // Enable the attack collider
-            attackCollider.enabled = true;
-            isCollide = true;
+        //public void StartAttack()
+        //{
+        //    // Enable the attack collider
+        //    attackCollider.enabled = true;
+        //    isCollide = true;
 
-        }
-        private void StopAttack()
-        {
-            // Disable the attack collider
-            attackCollider.enabled = false;
-            isCollide = false;
+        //}
+        //public void StopAttack()
+        //{
+        //    // Disable the attack collider
+        //    attackCollider.enabled = false;
+        //    isCollide = false;
 
-        }
+        //}
         private void OnTriggerEnter(Collider other)
         {
             if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") || other.gameObject.CompareTag("LootBox") && isAttacking)
@@ -120,6 +121,7 @@ namespace AyaOmar
                 animator.SetTrigger("Hit");
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(meleeStats.damage);
                 GameObject clonehitVFX = Instantiate(hitEffectVFX, hitTarget.position, Quaternion.identity);
+                AudioManager.Instance.Play2DPingPongSfx("melee hit");
                 Destroy(clonehitVFX, 1.5F);
                 Mathf.Clamp(currentDurAbility, 0, meleeStats.durability);
                 Debug.Log("doability/      " + currentDurAbility);

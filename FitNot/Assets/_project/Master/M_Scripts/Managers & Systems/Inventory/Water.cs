@@ -36,7 +36,8 @@ namespace AyaOmar
         {
             base.Use();
            // GameObject gameEffect = Instantiate(waterItem.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HealthManager>().Heal(waterItem.healingAmount);
+            player.GetComponent<HungerSystem>().Eat(waterItem.healingAmount);
+            AudioManager.Instance.Play2DSfx("drink");
             Destroy(this.gameObject);
            // Destroy(gameEffect, waterItem.timeToDestroy);
         }

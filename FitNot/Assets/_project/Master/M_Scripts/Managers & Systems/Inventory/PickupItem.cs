@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Youssef;
 
 namespace AyaOmar
 {
@@ -36,7 +37,7 @@ namespace AyaOmar
                     }
                     
                 }
-                
+                AudioManager.Instance.Play2DSfx("item pick up");
             }
         }
     }

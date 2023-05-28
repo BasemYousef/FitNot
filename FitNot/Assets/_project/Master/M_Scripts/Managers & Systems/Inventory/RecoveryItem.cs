@@ -20,6 +20,7 @@ namespace AyaOmar
         {
            // GameObject gameEffect = Instantiate(recoveryItem.itemUseEffect, player.position, Quaternion.identity);
             player.GetComponent<HealthManager>().Heal(recoveryItem.healingAmount);
+            AudioManager.Instance.Play2DSfx("rivo");
             Destroy(gameObject);
           //  Destroy(gameEffect, recoveryItem.timeToDestroy);
         }

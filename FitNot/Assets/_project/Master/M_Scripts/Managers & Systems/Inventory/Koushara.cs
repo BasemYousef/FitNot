@@ -38,7 +38,8 @@ namespace AyaOmar
         {
             base.Use();
          //   GameObject gameEffect = Instantiate(koushariItem.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HealthManager>().Heal(koushariItem.healingAmount);
+            player.GetComponent<HungerSystem>().Eat(koushariItem.healingAmount);
+            AudioManager.Instance.Play2DSfx("eat");
             Destroy(this.gameObject);
           //  Destroy(gameEffect, koushariItem.timeToDestroy);
         }

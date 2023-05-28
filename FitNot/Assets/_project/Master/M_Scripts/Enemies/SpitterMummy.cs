@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Youssef;
 
 namespace AyaOmar
 {
@@ -25,18 +26,22 @@ namespace AyaOmar
         public void Attack()
         {
             animator.SetBool("isAttacking", true);
-            ///sound effect............
+            AudioManager.Instance.PlaySpatialSfx("spit ramp up", transform.position);
            
         }
         public void SpawnSpitprojectile()
         {
+            AudioManager.Instance.PlaySpatialSfx("spit", transform.position);
             Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
-            spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
+            Vector3 direction = GameManager.Instance.GetPlayerRef().transform.position - transform.position;
+            
+            //spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
+            spit.GetComponent<Rigidbody>().velocity = direction * spitVelocity;
 
 
             //spit = objectPool.GetObjectFromPool();
             //spit.transform.position = spitPosition.transform.position;
-            spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
+            //spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
             //StartCoroutine(SetPoolObject());
         }
         IEnumerator SetPoolObject()

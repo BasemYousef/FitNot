@@ -47,6 +47,7 @@ namespace Youssef
                 currentDurAbility--;
                 animator.SetBool("Ranged", true);
                 GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
+                AudioManager.Instance.PlaySpatialSfx("nail gun shot", transform.position);
                 Rigidbody projectileRigidbody = newProjectile.GetComponent<Rigidbody>();
                 projectileRigidbody.velocity = projectileSpawnPoint.up * projectileSpeed;
                

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 using Youssef;
 
@@ -10,7 +11,7 @@ namespace AyaOmar
     {
         //item scriptable object hold item data
         public Item ItemData;
-        
+        public Slider slider;
         void Update()
         {
             QuickSwitch();
@@ -42,12 +43,15 @@ namespace AyaOmar
             {
                 case 1:
                     SpawnItemUseEffect(ItemData);
+                    AudioManager.Instance.Play2DSfx("eat");
                     break;
                 case 2:
                     SpawnItemUseEffect(ItemData);
+                    AudioManager.Instance.Play2DSfx("eat");
                     break;
                 case 3:
                     SpawnItemUseEffect(ItemData);
+                    AudioManager.Instance.Play2DSfx("drink");
                     break;
                 default:
                     break;
@@ -57,8 +61,9 @@ namespace AyaOmar
         // function spawn effect when player use item
         private void SpawnItemUseEffect(Item item)
         {
-           // GameObject gameEffect = Instantiate(item.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HungerSystem>().Eat(item.healingAmount);
+            // GameObject gameEffect = Instantiate(item.itemUseEffect, player.position, Quaternion.identity);
+            //player.GetComponent<HungerSystem>().Eat(item.healingAmount);
+            GameManager.Instance.GetHungerSlider().value += item.healingAmount;
             Destroy(this.gameObject);
            // Destroy(gameEffect, item.timeToDestroy);
         }

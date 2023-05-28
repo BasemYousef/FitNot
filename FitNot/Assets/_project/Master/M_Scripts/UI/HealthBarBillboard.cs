@@ -11,7 +11,8 @@ namespace AyaOmar
 
         private void Update()
         {
-            transform.LookAt(mainCamera);
+            transform.LookAt(mainCamera.position);
+            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         }
     }
 }

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
-
+using Youssef;
 
 namespace AyaOmar
 {
@@ -45,7 +45,7 @@ namespace AyaOmar
             if (openInventory.triggered)
             {
                 HideInventory();
-                
+                AudioManager.Instance.Play2DSfx("inventory");
             }
         }
         private void HideInventory()

@@ -16,7 +16,8 @@ namespace AyaOmar
             if (other.CompareTag("Player"))
             {
                 other.GetComponent<HealthManager>().TakeDamage(mummyMeleeStats.damage);
-                GameObject cloneBloodVFX = Instantiate(bloodVFX, bloodVFXTransform.position, bloodVFXTransform.rotation); 
+                GameObject cloneBloodVFX = Instantiate(bloodVFX, bloodVFXTransform.position, bloodVFXTransform.rotation);
+                AudioManager.Instance.Play2DPingPongSfx("enemy melee hit");
                 Destroy(cloneBloodVFX,0.5f);
             }
         }

@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-
+using UnityEngine.UI;
 using Youssef;
 
 namespace AyaOmar
@@ -15,7 +15,7 @@ namespace AyaOmar
         [Header("index 0 melee, index 1 ranged")]
         public List<RuntimeAnimatorController> PlayerAnimatorStates = new List<RuntimeAnimatorController>();
 
-        
+        public Slider slider;
         private void Awake()
         {
             base.RegisterSingleton();
@@ -47,7 +47,10 @@ namespace AyaOmar
         {
             return PlayerAnimatorStates[1];
         }
-        
+        public Slider GetHungerSlider() 
+        {
+            return slider;
+        }
         private void Update()
         {
             CloseGame();
