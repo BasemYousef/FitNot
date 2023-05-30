@@ -2268,8 +2268,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09613aab00dadb49b1bd02b8d699fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 1068005436117733105, guid: f96b7520ca218ac4aa7118a93bc44f32,
-    type: 3}
+  mainCamera: {fileID: 0}
 --- !u!1 &8549730459886088036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2733,7 +2732,7 @@ CapsuleCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   m_Radius: 0.15
-  m_Height: 0.95522654
+  m_Height: 0.9
   m_Direction: 1
   m_Center: {x: 0, y: 0.4593075, z: 0}
 --- !u!195 &2867714513064152262
@@ -2755,7 +2754,7 @@ NavMeshAgent:
   m_AutoBraking: 1
   m_AutoRepath: 1
   m_Height: 0.88
-  m_BaseOffset: -0.01
+  m_BaseOffset: -0.15
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2867714513064152265
