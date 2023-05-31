@@ -15,6 +15,10 @@ namespace AyaOmar
         {
             SceneManager.LoadScene(index);
         }
+        public void LoadScene(int index)
+        {
+            SceneManager.LoadScene(index);
+        }
         public void QuitGame()
         {
             Application.Quit();
