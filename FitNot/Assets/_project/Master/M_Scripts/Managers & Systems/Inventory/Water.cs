@@ -10,36 +10,58 @@ namespace AyaOmar
     {
         public Item waterItem;
 
+        private int slotIndex;
+
         void Update()
         {
             QuickSwitch();
-            
+
         }
         private void QuickSwitch()
         {
             if (Input.GetKeyDown(KeyCode.Alpha3))
             {
-                for (int i = 0; i < inventory.itemType.Length; i++)
+                FindItem(waterItem);
+            }
+        }
+        public void FindItem(Item item)
+        {
+
+            for (int i = 0; i < inventory.itemType.Length; i++)
+            {
+                slotIndex = i;
+                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
                 {
-                    if (inventory.itemType[i] == waterItem.itemName)
+                    if (gameObject != null)
                     {
-                        if (gameObject != null)
-                        {
-                            this.Use();
-                        }
+                        this.Use();
                     }
+                    slotIndex = i;
+                    break;
                 }
             }
         }
-        
+        private void SpawnItemUseEffect()
+        {
+            GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
+            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
+            GameObject childObject = childTransform.gameObject;
+            Destroy(childObject);
+            // Destroy(gameEffect, item.timeToDestroy);
+        }
         public override void Use()
         {
-            base.Use();
-           // GameObject gameEffect = Instantiate(waterItem.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HungerSystem>().Eat(waterItem.healingAmount);
+            SpawnItemUseEffect();
             AudioManager.Instance.Play2DSfx("drink");
-            Destroy(this.gameObject);
-           // Destroy(gameEffect, waterItem.timeToDestroy);
+        }
+        public void UseFromInventory()
+        {
+            GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
+            if (gameObject != null)
+            {
+                Destroy(this.gameObject);
+            }
+
         }
     }
 }

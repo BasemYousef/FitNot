@@ -11,12 +11,11 @@ namespace AyaOmar
 
         public List<Image> QuickSwitchIcons = new List<Image>();
         public TMP_Text txt_Durability;
+        public Image img_Durability;
         private void Awake()
         {
             base.RegisterSingleton();
            
         }
-       
-        
     }
 }

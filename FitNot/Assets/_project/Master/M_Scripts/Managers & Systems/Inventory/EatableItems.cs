@@ -11,7 +11,9 @@ namespace AyaOmar
     {
         //item scriptable object hold item data
         public Item ItemData;
-        public Slider slider;
+
+        private int slotIndex;
+        
         void Update()
         {
             QuickSwitch();
@@ -25,15 +27,15 @@ namespace AyaOmar
             {
                 FindItem(ItemData, 1);
             }
-
-            if (Input.GetKeyDown(KeyCode.Alpha2))
+            else if (Input.GetKeyDown(KeyCode.Alpha2))
             {
                 FindItem(ItemData, 2);
             }
-            if (Input.GetKeyDown(KeyCode.Alpha3))
+            else if (Input.GetKeyDown(KeyCode.Alpha3))
             {
                 FindItem(ItemData, 3);
             }
+            
         }
 
         //switch ................
@@ -53,34 +55,49 @@ namespace AyaOmar
                     SpawnItemUseEffect(ItemData);
                     AudioManager.Instance.Play2DSfx("drink");
                     break;
+               
                 default:
                     break;
             }
             
         }
+        public void UseFromInventory()
+        {
+            GameManager.Instance.GetHungerSlider().value += ItemData.healingAmount;
+            if (gameObject != null)
+            {
+                Destroy(this.gameObject);
+            }
+
+        }
         // function spawn effect when player use item
         private void SpawnItemUseEffect(Item item)
         {
-            // GameObject gameEffect = Instantiate(item.itemUseEffect, player.position, Quaternion.identity);
-            //player.GetComponent<HungerSystem>().Eat(item.healingAmount);
             GameManager.Instance.GetHungerSlider().value += item.healingAmount;
-            Destroy(this.gameObject);
+            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
+            GameObject childObject = childTransform.gameObject;
+            Destroy(childObject);
            // Destroy(gameEffect, item.timeToDestroy);
         }
 
-        private void FindItem(Item item,int index)
+        public void FindItem(Item item,int index)
         {
+
             for (int i = 0; i < inventory.itemType.Length; i++)
             {
-                if (inventory.itemType[i] == item.itemName)
+                slotIndex = i;
+                if (inventory.isFull[i]==true && item.itemName == inventory.itemType[i])
                 {
                     if (gameObject != null)
                     {
                         this.Use(index);
                     }
+                    slotIndex = i;
+                    break;
                 }
-
+                
             }
+            Debug.Log(slotIndex + " sloooooooooooooooooooooot index");
         }
     }
 }

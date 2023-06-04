@@ -32,10 +32,12 @@ namespace AyaOmar
 
         private bool isCollide = false;
 
+        private float fillAmount;
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
             currentDurAbility = meleeStats.durability;
+            //InventoryUIManager.Instance.img_Durability.fillAmount = currentDurAbility / 10;
             player.runtimeAnimatorController = meleeGunAnimatorState;
 
         }
@@ -43,7 +45,8 @@ namespace AyaOmar
         {
              Attack();
             InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
-
+            fillAmount = currentDurAbility / 10f;
+            InventoryUIManager.Instance.img_Durability.fillAmount = fillAmount;
         }
 
         private void OnEnable()

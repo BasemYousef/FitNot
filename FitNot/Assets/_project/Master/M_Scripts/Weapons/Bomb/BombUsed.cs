@@ -9,6 +9,9 @@ namespace AyaOmar
         private Animator player;
         private Inventory inventory;
         public Item ItemData;
+
+        private int slotIndex;
+
         private void Start()
         {
             player = GameManager.Instance.GetPlayerRef().GetComponent<Animator>();
@@ -32,19 +35,27 @@ namespace AyaOmar
         {
             for (int i = 0; i < inventory.itemType.Length; i++)
             {
-                if (inventory.itemType[i] == item.itemName)
+                slotIndex = i;
+                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
                 {
                     if (gameObject != null)
                     {
-                        this.Use();
+                        UseFromSlots();
                     }
+                    slotIndex = i;
+                    break;
                 }
-
             }
+        }
+        private void UseFromSlots()
+        {
+            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
+            GameObject childObject = childTransform.gameObject;
+            player.SetTrigger("Bomb");
+            Destroy(childObject);
         }
         public void Use()
         {
-
             player.SetTrigger("Bomb");
             Destroy(gameObject);
         }

@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 5131416511876919466}
   - component: {fileID: 5374094961043014269}
   - component: {fileID: 2471477725213044006}
+  - component: {fileID: -1049853798082716957}
   - component: {fileID: 7462712313263860650}
-  - component: {fileID: 8950904675386138475}
   - component: {fileID: 2569171794476215671}
   m_Layer: 5
   m_Name: Btn_Water_Instantiate
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 8950904675386138475}
-        m_TargetAssemblyTypeName: AyaOmar.EatableItems, Assembly-CSharp
-        m_MethodName: Use
-        m_Mode: 3
+      - m_Target: {fileID: -1049853798082716957}
+        m_TargetAssemblyTypeName: AyaOmar.Water, Assembly-CSharp
+        m_MethodName: UseFromInventory
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -136,6 +136,19 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!114 &-1049853798082716957
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7620864081553730239}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421d7d0e73a18e741a020b24a096e288, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  waterItem: {fileID: 11400000, guid: a74051ae9e8e88944959a466740ba91a, type: 2}
 --- !u!114 &7462712313263860650
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -150,19 +163,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemPrefab: {fileID: 9156417425879514348, guid: 20012719c3b3a3c458421b9e413f41cc,
     type: 3}
---- !u!114 &8950904675386138475
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7620864081553730239}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 73b7b48b43f5e1b48a30bc62a6648d07, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemData: {fileID: 11400000, guid: a74051ae9e8e88944959a466740ba91a, type: 2}
+  itemDescription: {fileID: 0}
+  item: {fileID: 0}
+  txtDescription: {fileID: 0}
 --- !u!95 &2569171794476215671
 Animator:
   serializedVersion: 5

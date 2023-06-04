@@ -10,41 +10,59 @@ namespace AyaOmar
     public class FavaBeans : FoodItem
     {
         public Item beansItem;
-       
+
+        private int slotIndex;
+
         void Update()
         {
             QuickSwitch();
-            
+
         }
-        
         private void QuickSwitch()
         {
             if (Input.GetKeyDown(KeyCode.Alpha2))
             {
-                Debug.Log("FavaBeans used");
-                for (int i = 0; i < inventory.itemType.Length; i++)
+                FindItem(beansItem);
+            }
+        }
+        public void FindItem(Item item)
+        {
+
+            for (int i = 0; i < inventory.itemType.Length; i++)
+            {
+                slotIndex = i;
+                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
                 {
-                    if (inventory.itemType[i] == beansItem.itemName)
+                    if (gameObject != null)
                     {
-                        if (gameObject != null)
-                        {
-                            this.Use();
-                            
-                        }
+                        this.Use();
                     }
-                    
+                    slotIndex = i;
+                    break;
                 }
             }
         }
-        
+        private void SpawnItemUseEffect()
+        {
+            GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
+            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
+            GameObject childObject = childTransform.gameObject;
+            Destroy(childObject);
+            // Destroy(gameEffect, item.timeToDestroy);
+        }
         public override void Use()
         {
-            base.Use();
-           // GameObject gameEffect = Instantiate(beansItem.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HungerSystem>().Eat(beansItem.healingAmount);
+            SpawnItemUseEffect();
             AudioManager.Instance.Play2DSfx("eat");
-            Destroy(this.gameObject);
-          //  Destroy(gameEffect, beansItem.timeToDestroy);
+        }
+        public void UseFromInventory()
+        {
+            GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
+            if (gameObject != null)
+            {
+                Destroy(this.gameObject);
+            }
+
         }
     }
 }
