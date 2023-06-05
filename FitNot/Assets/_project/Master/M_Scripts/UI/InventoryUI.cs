@@ -13,15 +13,13 @@ namespace AyaOmar
         [SerializeField] private InputAction openInventory  = new InputAction();
 
         [SerializeField] bool Pressed;
-        
+        private Animator inventoryAnimator;
         private bool isOpen = false;
         
 
         private void Start()
         {
-            inventory.SetActive(false);
-            
-            
+            inventoryAnimator = inventory.GetComponent<Animator>();
         }
         private void OnEnable()
         {
@@ -40,8 +38,6 @@ namespace AyaOmar
         }
         private void ShowInventory()
         {
-
-
             if (openInventory.triggered)
             {
                 HideInventory();
@@ -52,9 +48,13 @@ namespace AyaOmar
         {
             
             isOpen = !isOpen;
-            inventory.SetActive(isOpen);
-            
-
+            inventoryAnimator.SetBool("isOpen", isOpen);
+            //inventory.SetActive(isOpen);
+        }
+        public void CloseInventory()
+        {
+            inventoryAnimator.SetBool("isOpen", false);
+            isOpen = false;
         }
     }
 }

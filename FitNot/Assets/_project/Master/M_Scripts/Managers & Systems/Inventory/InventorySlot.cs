@@ -12,7 +12,8 @@ namespace AyaOmar
         public int index;
         private void Start()
         {
-            inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+            //inventory = GameObject.FindGameObjectWithTag("Player").GetComponent<Inventory>();
+            inventory = GameManager.Instance.GetPlayerRef().GetComponent<Inventory>();
         }
         private void Update()
         {

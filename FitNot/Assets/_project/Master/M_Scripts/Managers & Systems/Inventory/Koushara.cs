@@ -11,7 +11,8 @@ namespace AyaOmar
     {
         public Item koushariItem;
         
-        
+        private int slotIndex;
+
         void Update()
         {
             QuickSwitch();
@@ -21,27 +22,47 @@ namespace AyaOmar
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                for (int i = 0; i < inventory.itemType.Length; i++)
+                FindItem(koushariItem);
+            }
+        }
+        public void FindItem(Item item)
+        {
+
+            for (int i = 0; i < inventory.itemType.Length; i++)
+            {
+                slotIndex = i;
+                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
                 {
-                    if (inventory.itemType[i] == koushariItem.itemName)
+                    if (gameObject != null)
                     {
-                        if (gameObject != null)
-                        {
-                            this.Use();
-                        }
+                        this.Use();
                     }
+                    slotIndex = i;
+                    break;
                 }
             }
         }
-        
+        private void SpawnItemUseEffect()
+        {
+            GameManager.Instance.GetHungerSlider().value += koushariItem.healingAmount;
+            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
+            GameObject childObject = childTransform.gameObject;
+            Destroy(childObject);
+            // Destroy(gameEffect, item.timeToDestroy);
+        }
         public override void Use()
         {
-            base.Use();
-         //   GameObject gameEffect = Instantiate(koushariItem.itemUseEffect, player.position, Quaternion.identity);
-            player.GetComponent<HungerSystem>().Eat(koushariItem.healingAmount);
+            SpawnItemUseEffect();
             AudioManager.Instance.Play2DSfx("eat");
-            Destroy(this.gameObject);
-          //  Destroy(gameEffect, koushariItem.timeToDestroy);
+        }
+        public void UseFromInventory()
+        {
+            GameManager.Instance.GetHungerSlider().value += koushariItem.healingAmount;
+            if (gameObject != null)
+            {
+                Destroy(this.gameObject);
+            }
+
         }
     }
 }

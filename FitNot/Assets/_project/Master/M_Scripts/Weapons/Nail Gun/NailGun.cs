@@ -20,6 +20,7 @@ namespace Youssef
         private bool isOutOfAmmo = false;
         private float fireTimer;
 
+        private float fillAmount;
         private void Start()
         {
            // player = GetComponentInParent<Animator>();  
@@ -40,6 +41,8 @@ namespace Youssef
         {
             fireTimer += Time.deltaTime;
             InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            fillAmount = currentDurAbility / 10f;
+            InventoryUIManager.Instance.img_Durability.fillAmount = fillAmount;
             if (shoot.triggered && fireTimer >= fireRate && currentDurAbility > 0)
             {
 

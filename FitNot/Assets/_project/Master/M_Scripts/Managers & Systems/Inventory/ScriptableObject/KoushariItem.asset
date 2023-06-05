@@ -13,8 +13,7 @@ MonoBehaviour:
   m_Name: KoushariItem
   m_EditorClassIdentifier: 
   itemName: Koushari
-  healingAmount: 15
-  itemUseEffect: {fileID: 8441092542751368906, guid: 2b9e3e977477ec046a5ac2077ca797e6,
-    type: 3}
-  description: 
+  healingAmount: 10
+  itemPrefab: {fileID: 0}
+  description: 'Koushari : consume to recover (20 amount) of hunger.'
   timeToDestroy: 5
