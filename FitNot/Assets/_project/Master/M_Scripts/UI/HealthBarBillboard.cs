@@ -11,8 +11,15 @@ namespace AyaOmar
 
         private void Update()
         {
-            transform.LookAt(mainCamera.position);
-            transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
+            Vector3 cameraDirection = mainCamera.transform.forward;
+
+            // Calculate the rotation required to face the camera
+            Quaternion rotation = Quaternion.LookRotation(cameraDirection, Vector3.up);
+
+            // Set the rotation of the health bar to face the camera
+            transform.rotation = rotation;
+            Quaternion.LookRotation(mainCamera.position,Vector3.up);
+            //transform.rotation = Quaternion.Euler(0f, transform.rotation.eulerAngles.y, 0f);
         }
     }
 }
