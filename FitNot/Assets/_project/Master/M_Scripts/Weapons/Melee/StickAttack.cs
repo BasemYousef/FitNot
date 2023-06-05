@@ -32,18 +32,21 @@ namespace AyaOmar
 
         private bool isCollide = false;
 
+        private float fillAmount;
         private void Start()
         {
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
             currentDurAbility = meleeStats.durability;
+            
             player.runtimeAnimatorController = meleeGunAnimatorState;
 
         }
         private void Update()
         {
-             Attack();
-         //   InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
-
+            Attack();
+            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            fillAmount = currentDurAbility / 10f;
+            InventoryUIManager.Instance.img_Durability.fillAmount = fillAmount;
         }
 
         private void OnEnable()
@@ -93,25 +96,11 @@ namespace AyaOmar
             isAttacking = false;
         }
 
-        //public void StartAttack()
-        //{
-        //    // Enable the attack collider
-        //    attackCollider.enabled = true;
-        //    isCollide = true;
-
-        //}
-        //public void StopAttack()
-        //{
-        //    // Disable the attack collider
-        //    attackCollider.enabled = false;
-        //    isCollide = false;
-
-        //}
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy")  && isAttacking)
+            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") || other.gameObject.CompareTag("LootBox") && isAttacking)
             {
-                if (currentDurAbility > 0)
+                if (currentDurAbility >= 0)
                 {
                     currentDurAbility--;
 
@@ -124,6 +113,8 @@ namespace AyaOmar
                 AudioManager.Instance.Play2DPingPongSfx("melee hit");
                 Destroy(clonehitVFX, 1.5F);
                 Mathf.Clamp(currentDurAbility, 0, meleeStats.durability);
+                
+                
                 Debug.Log("doability/      " + currentDurAbility);
                 player.transform.LookAt(other.gameObject.transform);
                 if (currentDurAbility == 0)
@@ -134,7 +125,7 @@ namespace AyaOmar
                     currentDurAbility = meleeStats.durability;
                 }
             }
-           
+
         }
 
     }

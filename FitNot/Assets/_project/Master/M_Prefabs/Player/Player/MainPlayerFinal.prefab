@@ -2306,10 +2306,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10d09e1d26136542b698eb3efc12855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 0
   health: 100
   healthBar: {fileID: 0}
-  startingHealth: 0
+  characterData: {fileID: 11400000, guid: 55e3bca83833a754291806cf6f02b108, type: 2}
   isDead: 0
+  isPlayer: 1
 --- !u!114 &4406066394121322700
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2499,6 +2501,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 7804715764904772087}
+  attackEffect: {fileID: 0}
 --- !u!1 &6957641904498900132
 GameObject:
   m_ObjectHideFlags: 0

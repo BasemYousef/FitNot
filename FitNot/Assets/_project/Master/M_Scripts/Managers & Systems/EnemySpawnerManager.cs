@@ -39,7 +39,7 @@ public class EnemySpawnerManager : MonoBehaviour
         {
             currentWave++;
 
-            int enemyCount = ((currentDay - 8) * spawnerManager.enemyIncreasePerWave);
+            int enemyCount = (currentDay * spawnerManager.enemyIncreasePerWave);
 
             for (int i = 0; i < enemyCount; i++)
             {
@@ -72,11 +72,11 @@ public class EnemySpawnerManager : MonoBehaviour
             healthMultiplier = GetHealthMultiplier();
             previousHealthMultiplier = healthMultiplier;
 
-           // Update the max health of existing enemies
+          
             foreach (GameObject enemy in activeEnemies)
             {
                 HealthManager enemyHealthManager = enemy.GetComponent<HealthManager>();
-               // float maxHealth = enemyHealthManager.startingHealth * healthMultiplier;
+               
 
             }
         }
