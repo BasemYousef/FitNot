@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using Youssef;
 
 public class EnemySpawnerManager : MonoBehaviour
@@ -8,17 +9,26 @@ public class EnemySpawnerManager : MonoBehaviour
     #region Serialized Private Variables
     [SerializeField] private GameObject[] enemyPrefabs;
     [SerializeField] private Transform player;
-    [HideInInspector] public SpawnerManager spawnerManager;
+    [SerializeField] private SpawnerManager spawnerManager;
     [SerializeField] private float playerRadius = 15f;
+    [SerializeField] private int maxEnemyCount = 15;
+    [SerializeField] private LayerMask enemyLayer;
+    [SerializeField] private float healthMultiplier = 1.1f;
+    [SerializeField] private EnemyData[] enemyDataArray;
     #endregion
 
     #region Private Variables
     private List<GameObject> activeEnemies = new List<GameObject>();
     private int currentWave = 0;
-    private int wavesSinceLastIncrement = 0;
+    private int currentDay = 0;
+    private float previousHealthMultiplier = 1f;
     #endregion
+
     private void Start()
     {
+        currentDay = DayTracker.Instance.Day;
+        previousHealthMultiplier = healthMultiplier;
+
         StartCoroutine(SpawnEnemies());
     }
 
@@ -28,66 +38,57 @@ public class EnemySpawnerManager : MonoBehaviour
         while (true)
         {
             currentWave++;
-            wavesSinceLastIncrement++;
-            if (currentWave % 3 == 0)
+
+            int enemyCount = ((currentDay - 8) * spawnerManager.enemyIncreasePerWave);
+
+            for (int i = 0; i < enemyCount; i++)
             {
-                int enemyCount = spawnerManager.startingEnemyCount + (spawnerManager.enemyIncreasePerThreeWaves * ((currentWave / 3) - 1));
+                int index = Random.Range(0, enemyPrefabs.Length);
+                if (activeEnemies.Count >= maxEnemyCount) break;
 
-                for (int i = 0; i < enemyCount; i++)
-                {
+                Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnerManager.spawnRadius;
+                Vector3 spawnPosition = player.position + new Vector3(randomCircle.x, 0f, randomCircle.y);
 
-                    Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnerManager.spawnRadius;
-                    Vector3 spawnPosition = player.position + new Vector3(randomCircle.x, 0f, randomCircle.y);
-
-
-                    GameObject enemyPrefab = enemyPrefabs[Random.Range(0, enemyPrefabs.Length)];
-
-                    GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
-                    activeEnemies.Add(spawnedEnemy);
-                }
+                GameObject enemyPrefab = enemyPrefabs[index];
+                EnemyData enemyData = enemyDataArray[index];
+                GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
+                spawnedEnemy.layer = enemyLayer;
+                HealthManager enemyHealthManager = spawnedEnemy.GetComponent<HealthManager>();
+                enemyHealthManager.SetMaxHealth(enemyData.maxHealth * GetHealthMultiplier()) ;
+                activeEnemies.Add(spawnedEnemy);
+                Debug.Log(spawnedEnemy.name);
             }
-            if (wavesSinceLastIncrement >= 10)
-            {
-                wavesSinceLastIncrement = 0;
 
-                // Increment the difficulty factors
-                spawnerManager.difficultyHealthMultiplier += 0.1f;
-                spawnerManager.difficultyDamageMultiplier += 0.1f;
-            }
             yield return new WaitForSeconds(spawnerManager.waveCooldown);
-
-            spawnerManager.waveCooldown *= 0.99f; // Decrease the cooldown by 1% each wave
         }
     }
+
     private void Update()
     {
-        // Disable enemies that are out of range of the player
-        for (int i = activeEnemies.Count - 1; i >= 0; i--)
+        int currentDay = DayTracker.Instance.Day;
+
+        if (currentDay % 10 == 0 && currentDay > 0 && healthMultiplier != previousHealthMultiplier)
         {
-            GameObject enemy = activeEnemies[i];
-            if (Vector3.Distance(enemy.transform.position, player.position) > playerRadius)
+            healthMultiplier = GetHealthMultiplier();
+            previousHealthMultiplier = healthMultiplier;
+
+           // Update the max health of existing enemies
+            foreach (GameObject enemy in activeEnemies)
             {
-              
-                DisableEnemy(enemy);
-            }
-            else if (!enemy.activeSelf && Vector3.Distance(enemy.transform.position, player.position) <= playerRadius)
-            {
-               
-                EnableEnemy(enemy);
+                HealthManager enemyHealthManager = enemy.GetComponent<HealthManager>();
+               // float maxHealth = enemyHealthManager.startingHealth * healthMultiplier;
+
             }
         }
     }
 
-    private void DisableEnemy(GameObject enemy)
+    private float GetHealthMultiplier()
     {
-        enemy.SetActive(false);
-       
-    }
+        int currentDay = DayTracker.Instance.Day;
+        int multiplierInterval = 10;
+        float multiplierValue = 1.1f;
 
-    private void EnableEnemy(GameObject enemy)
-    {
-        enemy.SetActive(true);
-      
+        int multiplierCount = Mathf.FloorToInt((currentDay - 1) / multiplierInterval);
+        return Mathf.Pow(multiplierValue, multiplierCount);
     }
-
 }

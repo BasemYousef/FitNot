@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Net.NetworkInformation;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,22 +7,28 @@ namespace Youssef
 {
     public class HealthManager : MonoBehaviour
     {
-        [SerializeField] public float health = 100f;
-        public Slider healthBar = null;
-
-        [HideInInspector]
         public float startingHealth = 0f;
-
+        public float health;
+        public Slider healthBar = null;
+        public EnemyData characterData;
         public bool isDead = false;
+
+        public bool isPlayer;
 
         private void Start()
         {
-            startingHealth = health;
-            if (healthBar != null)
+            if (isPlayer)
             {
-                healthBar.maxValue = startingHealth;
-                healthBar.value = health;
+                health = characterData.maxHealth;
+                startingHealth = health;
+                if (healthBar != null)
+                {
+                    healthBar.maxValue = startingHealth;
+                    healthBar.value = health;
+                }
+
             }
+            Debug.Log("health manager start");
         }
         public bool IsDead()
         {
@@ -32,10 +36,10 @@ namespace Youssef
         }
         public void TakeDamage(float damage)
         {
-            health -= damage; 
+            health -= damage;
             health = Mathf.Max(health, 0);
-            if(healthBar != null) { UpdateHealthLevel(health); }
-            print("Health :" +health);
+            if (healthBar != null) { UpdateHealthLevel(health); }
+            print("Health :" + health);
             if (health == 0)
             {
                 Die();
@@ -63,6 +67,18 @@ namespace Youssef
             health = newHealthLevel;
             health = Mathf.Clamp(health, 0, startingHealth);
             healthBar.value = health;
+        }
+
+        public void SetMaxHealth(float maxHealth)
+        {
+            startingHealth = maxHealth;
+            health = maxHealth;
+            Debug.Log(maxHealth);
+            if (healthBar != null)
+            {
+                healthBar.maxValue = maxHealth;
+                healthBar.value = health;
+            }
         }
     }
 }

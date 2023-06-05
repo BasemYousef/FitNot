@@ -1,26 +1,34 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using TMPro;
-using AyaOmar;
+
 namespace Youssef
 {
-    public class DayTracker : Singleton<DayTracker>
+    public class DayTracker : MonoBehaviour
     {
+        public static DayTracker Instance { get; private set; }
+
         public float incrementInterval = 20f;
         public TextMeshProUGUI daysCounterUI;
 
         private float timer = 0f;
-        private int day = 0;
+        private int day = 11;
 
         public int Day { get => day; set => day = value; }
+
         private void Awake()
         {
-            base.RegisterSingleton();
+            if (Instance == null)
+            {
+                Instance = this;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
 
-        void Update()
+        private void Update()
         {
             timer += Time.deltaTime;
 

@@ -43,7 +43,7 @@ namespace AyaOmar
             while (true)
             {
                 float distance = Vector3.Distance(player.position, transform.position);
-                Debug.Log("distance"+ distance + " enemy range" + enemy.attackRange);
+               // Debug.Log("distance"+ distance + " enemy range" + enemy.attackRange);
                 if (distance < enemy.attackRange)
                 {
                     Debug.Log("...............");

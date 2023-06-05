@@ -6,62 +6,74 @@ public class LootSystem : MonoBehaviour
 {
     public List<LootItem> lootItems;
     public float destroyDelay = 10f;
-    private List<GameObject> instantiatedItems = new List<GameObject>();
+    private GameObject instantiatedItem;
     private Coroutine destroyTimerCoroutine;
 
     public void DestroyBox()
     {
-        
-        float randomValue = Random.Range(0f, 100f);
+        if (lootItems.Count > 0)
+        {
+            LootItem selectedLootItem = GetRandomLootItem();
+
+            if (selectedLootItem != null && selectedLootItem.itemPrefab != null)
+            {
+                Debug.Log("Instantiating loot item: " + selectedLootItem.itemPrefab.name);
+
+                Vector3 spawnPosition = transform.position;
+                spawnPosition.y = 0.5f;
+
+                GameObject lootItemObject = Instantiate(selectedLootItem.itemPrefab, spawnPosition, Quaternion.identity);
+                instantiatedItem = lootItemObject;
+
+                destroyTimerCoroutine = StartCoroutine(DestroyItemAfterDelay(destroyDelay));
+            }
+            else
+            {
+                Debug.LogWarning("No valid loot item found!");
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No loot items defined!");
+        }
+
+        Destroy(gameObject);
+    }
+
+    private LootItem GetRandomLootItem()
+    {
+        float totalDropPercentage = 0f;
 
         foreach (LootItem lootItem in lootItems)
         {
-            
+            totalDropPercentage += lootItem.dropPercentage;
+        }
+
+        float randomValue = Random.Range(0f, totalDropPercentage);
+
+        foreach (LootItem lootItem in lootItems)
+        {
             if (randomValue <= lootItem.dropPercentage)
             {
-                if (lootItem.itemPrefab != null)
-                {
-                    Debug.Log("Instantiating loot item: " + lootItem.itemPrefab.name);
-
-                    Vector3 spawnPosition = transform.position;
-                    spawnPosition.y = 0.5f;
-
-                 
-                    GameObject lootItemObject = Instantiate(lootItem.itemPrefab, spawnPosition, Quaternion.identity);
-                    instantiatedItems.Add(lootItemObject);
-
-                    
-                    destroyTimerCoroutine = StartCoroutine(DestroyItemsAfterDelay(destroyDelay));
-                }
-                else
-                {
-                    Debug.LogWarning("Loot item prefab is null!");
-                }
-
-                break;
+                return lootItem;
             }
 
             randomValue -= lootItem.dropPercentage;
         }
 
-        
-        Destroy(gameObject);
+        return null;
     }
 
-    private IEnumerator DestroyItemsAfterDelay(float delay)
+    private IEnumerator DestroyItemAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
 
-        
-        foreach (GameObject item in instantiatedItems)
+        if (instantiatedItem != null)
         {
-            if (item != null)
-            {
-                Destroy(item);
-            }
+            Destroy(instantiatedItem);
         }
 
-        instantiatedItems.Clear();
+        instantiatedItem = null;
     }
 }
 

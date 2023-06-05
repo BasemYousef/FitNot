@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LootBox : MonoBehaviour
 {
-   [HideInInspector] public LootBoxSpawner lootBoxSpawner;
-   [HideInInspector] public LootSystem loot ;
+    [HideInInspector] public LootBoxSpawner lootBoxSpawner;
+    [HideInInspector] public LootSystem loot;
     private void Start()
     {
         loot = GetComponent<LootSystem>();
@@ -28,7 +28,7 @@ public class LootBox : MonoBehaviour
                 loot.DestroyBox();
             }
         }
-       
+
     }
-   
+
 }

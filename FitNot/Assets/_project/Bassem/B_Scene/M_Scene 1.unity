@@ -4096,6 +4096,7 @@ MonoBehaviour:
   PlayerAnimatorStates:
   - {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
   - {fileID: 9100000, guid: efa79085ea091534e80682c2661b1608, type: 2}
+  slider: {fileID: 0}
 --- !u!1 &162076089
 GameObject:
   m_ObjectHideFlags: 0
@@ -33259,11 +33260,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy Spawner Manager
       objectReference: {fileID: 0}
-    - target: {fileID: 5860826658669973649, guid: 605dc76020a214a4286b69ac4df92b11,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5860826658669973654, guid: 605dc76020a214a4286b69ac4df92b11,
         type: 3}
       propertyPath: player
@@ -33271,14 +33267,9 @@ PrefabInstance:
       objectReference: {fileID: 543450652309927821}
     - target: {fileID: 5860826658669973654, guid: 605dc76020a214a4286b69ac4df92b11,
         type: 3}
-      propertyPath: playerRadius
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 5860826658669973654, guid: 605dc76020a214a4286b69ac4df92b11,
-        type: 3}
       propertyPath: enemyPrefabs.Array.data[0]
       value: 
-      objectReference: {fileID: 2291707901803803831, guid: e3ef36d6538b513429c5f0a0395b60a2,
+      objectReference: {fileID: 9087545533677964024, guid: 62e47d7182f88f244a51209b036a11e9,
         type: 3}
     - target: {fileID: 5860826658669973655, guid: 605dc76020a214a4286b69ac4df92b11,
         type: 3}
@@ -56646,6 +56637,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: PoolingManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6875468956518676363, guid: 976b3ba82f767d1469cbd0d6a1ac6d69,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 976b3ba82f767d1469cbd0d6a1ac6d69, type: 3}

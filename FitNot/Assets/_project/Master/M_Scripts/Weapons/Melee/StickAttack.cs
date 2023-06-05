@@ -42,7 +42,7 @@ namespace AyaOmar
         private void Update()
         {
              Attack();
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+         //   InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
 
         }
 
@@ -109,7 +109,7 @@ namespace AyaOmar
         //}
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") || other.gameObject.CompareTag("LootBox") && isAttacking)
+            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy")  && isAttacking)
             {
                 if (currentDurAbility > 0)
                 {
@@ -134,7 +134,7 @@ namespace AyaOmar
                     currentDurAbility = meleeStats.durability;
                 }
             }
-
+           
         }
 
     }

@@ -14,8 +14,7 @@ GameObject:
   - component: {fileID: 7744646453480519078}
   - component: {fileID: -3681734625220496197}
   - component: {fileID: 7436835072130503951}
-  - component: {fileID: 4300608019613550783}
-  - component: {fileID: -74091298596655618}
+  - component: {fileID: 140777568375996148}
   m_Layer: 0
   m_Name: LootBox
   m_TagString: LootBox
@@ -132,7 +131,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lootBoxSpawner: {fileID: 0}
   loot: {fileID: 0}
---- !u!114 &4300608019613550783
+--- !u!114 &140777568375996148
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,45 +144,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootItems:
-  - itemPrefab: {fileID: 7007262433998892609, guid: 31b905b852c356d4aa7d8132acd022cf,
-      type: 3}
-    dropPercentage: 20
   - itemPrefab: {fileID: 3255458474792044863, guid: d821835ee681c6b4dbd73dbe1dd55363,
       type: 3}
-    dropPercentage: 15
+    dropPercentage: 21
   - itemPrefab: {fileID: 2972226999490830823, guid: e619d0ce6770225428ba6150e37c16ed,
       type: 3}
-    dropPercentage: 15
-  - itemPrefab: {fileID: 3832509235643078888, guid: 9dba6fbcdef6b914bae0917157299fac,
+    dropPercentage: 16
+  - itemPrefab: {fileID: 7007262433998892609, guid: 31b905b852c356d4aa7d8132acd022cf,
       type: 3}
-    dropPercentage: 20
-  - itemPrefab: {fileID: 7487686896045188158, guid: 59ac4d22248ac2e469279eb19bf4a67c,
-      type: 3}
-    dropPercentage: 10
-  - itemPrefab: {fileID: 7697469730018278857, guid: 8e11bacf688c1d14dac8bf47e6f30289,
-      type: 3}
-    dropPercentage: 10
+    dropPercentage: 30
   - itemPrefab: {fileID: 7281481234599638419, guid: 2898d72f1950be8428cfd207ad814a2b,
       type: 3}
-    dropPercentage: 10
-  destroyDelay: 10
---- !u!114 &-74091298596655618
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2042248790015211142}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b10d09e1d26136542b698eb3efc12855, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  health: 1
-  healthBar: {fileID: 8567193186923194741, guid: deb9c87481ea38c40a9273e7caf248f7,
-    type: 3}
-  startingHealth: 0
-  isDead: 0
+    dropPercentage: 8
+  destroyDelay: 6
 --- !u!1 &3083773806916914861
 GameObject:
   m_ObjectHideFlags: 0

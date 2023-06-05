@@ -1,17 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Youssef;
 
 
   [CreateAssetMenu(fileName ="EnemyWaveController",menuName ="CreateWaveController/EnemySpawner")]
     public class SpawnerManager : ScriptableObject
     {
-       [HideInInspector] public float difficultyDamageMultiplier = 1.0f;
-       [HideInInspector] public float difficultyHealthMultiplier = 1.0f;
-      
+
+        public float healthMultiplier = 1.0f;
         public float spawnRadius ;
-        public int startingEnemyCount = 0;
-        public int enemyIncreasePerThreeWaves ;
+        public int enemyIncreasePerWave = 1 ;
         public float waveCooldown;
     }
 
