@@ -11,6 +11,7 @@ public class LootSystem : MonoBehaviour
 
     public void DestroyBox()
     {
+        Debug.Log("method called ");
         if (lootItems.Count > 0)
         {
             LootItem selectedLootItem = GetRandomLootItem();
@@ -25,7 +26,7 @@ public class LootSystem : MonoBehaviour
                 GameObject lootItemObject = Instantiate(selectedLootItem.itemPrefab, spawnPosition, Quaternion.identity);
                 instantiatedItem = lootItemObject;
 
-                destroyTimerCoroutine = StartCoroutine(DestroyItemAfterDelay(destroyDelay));
+                
             }
             else
             {
@@ -37,7 +38,7 @@ public class LootSystem : MonoBehaviour
             Debug.LogWarning("No loot items defined!");
         }
 
-        Destroy(gameObject);
+        
     }
 
     private LootItem GetRandomLootItem()
@@ -64,17 +65,7 @@ public class LootSystem : MonoBehaviour
         return null;
     }
 
-    private IEnumerator DestroyItemAfterDelay(float delay)
-    {
-        yield return new WaitForSeconds(delay);
-
-        if (instantiatedItem != null)
-        {
-            Destroy(instantiatedItem);
-        }
-
-        instantiatedItem = null;
-    }
+    
 }
 
 [System.Serializable]

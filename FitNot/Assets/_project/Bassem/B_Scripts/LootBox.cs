@@ -6,6 +6,8 @@ public class LootBox : MonoBehaviour
 {
     [HideInInspector] public LootBoxSpawner lootBoxSpawner;
     [HideInInspector] public LootSystem loot;
+    private bool isTriggered = false;
+
     private void Start()
     {
         loot = GetComponent<LootSystem>();
@@ -16,9 +18,10 @@ public class LootBox : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon"))
+        if (other.CompareTag("Weapon") && isTriggered == false)
         {
-            Destroy(gameObject);
+            Debug.Log("hit" + gameObject.GetInstanceID());
+
             if (lootBoxSpawner != null)
             {
                 lootBoxSpawner.OnLootBoxDestroyed(gameObject);
@@ -27,8 +30,10 @@ public class LootBox : MonoBehaviour
             {
                 loot.DestroyBox();
             }
+            isTriggered = true;
+            Destroy(gameObject);
         }
-
+       
     }
 
 }

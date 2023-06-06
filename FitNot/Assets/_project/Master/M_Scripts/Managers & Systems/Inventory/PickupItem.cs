@@ -9,13 +9,21 @@ namespace AyaOmar
     {
         //public Item item; // Reference to the item scriptable object to be added to the inventory
         public GameObject itemButton;
-
+        private float countdown;
         private Inventory inventory;
 
         //private Inventory inventory;
         private void Start()
         {
             inventory = GameManager.Instance.GetPlayerRef().GetComponent<Inventory>();
+        }
+        private void Update()
+        {
+            countdown += Time.deltaTime;
+            if(countdown> 10)
+            {
+                Destroy(gameObject);
+            }
         }
         private void OnTriggerEnter(Collider other)
         {
