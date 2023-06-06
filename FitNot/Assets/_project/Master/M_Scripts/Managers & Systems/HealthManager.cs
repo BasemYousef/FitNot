@@ -14,7 +14,7 @@ namespace Youssef
         public bool isDead = false;
 
         public bool isPlayer;
-
+        [SerializeField] private GameObject deathEffect;
         private void Start()
         {
             if (isPlayer)
@@ -54,7 +54,9 @@ namespace Youssef
             Animator animator = GetComponent<Animator>();
             animator.SetTrigger("die"); // using trigger for the death animation
             isDead = true;
+            GameObject deathVFX = Instantiate(deathEffect,transform.position + Vector3.up *0.45f,deathEffect.transform.rotation);
             Destroy(animator.gameObject, 2.37f);
+            Destroy(deathVFX, 2.5f);
         }
         public void Heal(float healingAmount)
         {

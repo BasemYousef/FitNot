@@ -2122,8 +2122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09613aab00dadb49b1bd02b8d699fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 2112863282531700018, guid: caa48669d4c6ea1449dc68835354dc79,
-    type: 3}
+  mainCamera: {fileID: 0}
 --- !u!1 &8276520255431313074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2499,6 +2498,8 @@ MonoBehaviour:
   characterData: {fileID: 11400000, guid: 2e63d334c86651c4c9e4ee2d9a1d7910, type: 2}
   isDead: 0
   isPlayer: 0
+  deathEffect: {fileID: 1408916167051838, guid: db8e5e1cf4c43a4479b6a7ed83ced530,
+    type: 3}
 --- !u!114 &2573401449146714662
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2525,7 +2526,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b8b3728bf1f2b4db5743e6b845c0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemDrop: {fileID: 0}
+  itemDrop: {fileID: 1506457847439374273, guid: 8e415a59c10587d4f875d65e03f26da0,
+    type: 3}
 --- !u!114 &3577242293136337418
 MonoBehaviour:
   m_ObjectHideFlags: 0

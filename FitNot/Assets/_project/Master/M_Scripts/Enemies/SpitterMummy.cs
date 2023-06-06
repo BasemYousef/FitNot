@@ -10,47 +10,47 @@ namespace AyaOmar
 
         [SerializeField] private Spit spitPrefab;
         [SerializeField] private float spitVelocity = 8f;
+        [SerializeField] private GameObject itemDrop;
 
         private Animator animator;
         private Transform spitPosition;
+        private bool isDie;
+        private bool stopInstantiate;
 
-        public ObjectPool objectPool;
-        Spit spit;
         private void Awake()
         {
-            //base.RegisterSingleton();
+            stopInstantiate = true;
             animator = GetComponent<Animator>();
-            //spitPosition = gameObject.transform.GetChild(0).gameObject.transform;
             spitPosition = GameObject.FindWithTag("SpitPos").transform;
         }
         public void Attack()
         {
             animator.SetBool("isAttacking", true);
             AudioManager.Instance.PlaySpatialSfx("spit ramp up", transform.position);
-           
         }
         public void SpawnSpitprojectile()
         {
             AudioManager.Instance.PlaySpatialSfx("spit", transform.position);
             Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
             Vector3 direction = GameManager.Instance.GetPlayerRef().transform.position - transform.position;
-            
-            //spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
             spit.GetComponent<Rigidbody>().velocity = direction * spitVelocity;
-
-
-            //spit = objectPool.GetObjectFromPool();
-            //spit.transform.position = spitPosition.transform.position;
-            //spit.GetComponent<Rigidbody>().velocity = spitPosition.forward * spitVelocity;
-            //StartCoroutine(SetPoolObject());
         }
-        IEnumerator SetPoolObject()
+        private void Update()
         {
-            yield return new WaitForSeconds(5f);
-            //spit.transform.position = spitPosition.transform.position;
-            //objectPool.ReturnObjectToPool(spit);
-        } 
-       
+            DropItem();
+        }
+        private void DropItem()
+        {
+            isDie = gameObject.GetComponent<HealthManager>().isDead;
+            Vector3 itemPos = transform.position;
+            itemPos.y = transform.position.y + 1;
+            if (isDie && stopInstantiate)
+            {
+                Instantiate(itemDrop, itemPos, transform.rotation);
+                stopInstantiate = false;
+            }
+        }
+
     }
 
 }

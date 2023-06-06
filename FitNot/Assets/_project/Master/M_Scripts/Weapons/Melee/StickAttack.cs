@@ -117,16 +117,20 @@ namespace AyaOmar
                 
                 Debug.Log("doability/      " + currentDurAbility);
                 player.transform.LookAt(other.gameObject.transform);
-                if (currentDurAbility == 0)
-                {
-                    player.SetBool("Melee", false);
-                    gameObject.SetActive(false);
-                    animator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
-                    currentDurAbility = meleeStats.durability;
-                }
+                StartCoroutine(disableStick());
             }
 
         }
-
+        IEnumerator disableStick()
+        {
+            yield return new WaitForSeconds(1);
+            if (currentDurAbility == 0)
+            {
+                player.SetBool("Melee", false);
+                gameObject.SetActive(false);
+                animator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
+                currentDurAbility = meleeStats.durability;
+            }
+        }
     }
 }
