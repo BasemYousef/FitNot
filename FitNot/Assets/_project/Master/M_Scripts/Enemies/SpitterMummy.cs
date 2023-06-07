@@ -9,8 +9,11 @@ namespace AyaOmar
     {
 
         [SerializeField] private Spit spitPrefab;
+        [SerializeField] private GameObject _spitEffect;
         [SerializeField] private float spitVelocity = 8f;
         [SerializeField] private GameObject itemDrop;
+        [SerializeField] private GameObject spawnEffect;
+
 
         private Animator animator;
         private Transform spitPosition;
@@ -22,6 +25,7 @@ namespace AyaOmar
             stopInstantiate = true;
             animator = GetComponent<Animator>();
             spitPosition = GameObject.FindWithTag("SpitPos").transform;
+            StartCoroutine(SpawnEffect());
         }
         public void Attack()
         {
@@ -31,9 +35,11 @@ namespace AyaOmar
         public void SpawnSpitprojectile()
         {
             AudioManager.Instance.PlaySpatialSfx("spit", transform.position);
+            GameObject spitEffect = Instantiate(_spitEffect, spitPosition.position, spitPosition.rotation);
             Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
             Vector3 direction = GameManager.Instance.GetPlayerRef().transform.position - transform.position;
             spit.GetComponent<Rigidbody>().velocity = direction * spitVelocity;
+            Destroy(spitEffect, 1.5f);
         }
         private void Update()
         {
@@ -50,7 +56,11 @@ namespace AyaOmar
                 stopInstantiate = false;
             }
         }
-
+        IEnumerator SpawnEffect()
+        {
+            yield return new WaitForSeconds(2f);
+            spawnEffect.SetActive(false);
+        }
     }
 
 }
