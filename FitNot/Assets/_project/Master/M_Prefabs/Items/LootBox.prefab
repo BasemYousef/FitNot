@@ -33,8 +33,7 @@ Transform:
   m_LocalPosition: {x: -11.654069, y: 1.02, z: 8.3}
   m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_ConstrainProportionsScale: 1
-  m_Children:
-  - {fileID: 3713220610262188852}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -130,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lootBoxSpawner: {fileID: 0}
-  loot: {fileID: 0}
+  lootSystem: {fileID: 140777568375996148}
 --- !u!114 &140777568375996148
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -143,62 +142,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eeb32d61fef06614289b9b7f49ba90b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lootItems:
-  - itemPrefab: {fileID: 3255458474792044863, guid: d821835ee681c6b4dbd73dbe1dd55363,
-      type: 3}
-    dropPercentage: 21
-  - itemPrefab: {fileID: 2972226999490830823, guid: e619d0ce6770225428ba6150e37c16ed,
-      type: 3}
-    dropPercentage: 16
-  - itemPrefab: {fileID: 7007262433998892609, guid: 31b905b852c356d4aa7d8132acd022cf,
-      type: 3}
-    dropPercentage: 30
-  - itemPrefab: {fileID: 7281481234599638419, guid: 2898d72f1950be8428cfd207ad814a2b,
-      type: 3}
-    dropPercentage: 8
-  destroyDelay: 6
---- !u!1 &3083773806916914861
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 3713220610262188852}
-  - component: {fileID: 4897315422066107928}
-  m_Layer: 0
-  m_Name: Collider
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &3713220610262188852
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3083773806916914861}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 153372466440259521}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &4897315422066107928
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3083773806916914861}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  lootList:
+  - {fileID: 11400000, guid: 1bfd07e2f3e158548ad5c233d089543a, type: 2}
+  - {fileID: 11400000, guid: 95959bd038175f444be29f435d3fcf80, type: 2}
+  - {fileID: 11400000, guid: a703d96b6a291f0459ffe67cc9eeb220, type: 2}
+  - {fileID: 11400000, guid: 6a135b5f9e7f1ef4ab2a8d21949a27f0, type: 2}

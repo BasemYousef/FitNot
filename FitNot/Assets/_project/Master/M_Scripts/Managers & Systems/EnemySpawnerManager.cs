@@ -77,7 +77,6 @@ public class EnemySpawnerManager : MonoBehaviour
             {
                 HealthManager enemyHealthManager = enemy.GetComponent<HealthManager>();
                
-
             }
         }
     }

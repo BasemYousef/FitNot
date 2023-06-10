@@ -98,7 +98,7 @@ namespace AyaOmar
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") || other.gameObject.CompareTag("LootBox") && isAttacking)
+            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") && isAttacking)
             {
                 if (currentDurAbility >= 0)
                 {
@@ -125,7 +125,7 @@ namespace AyaOmar
                     currentDurAbility = meleeStats.durability;
                 }
             }
-
+            if (other.gameObject.CompareTag("LootBox")) Destroy(other.gameObject);
         }
 
     }

@@ -1,3 +1,4 @@
+using AyaOmar;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,35 +6,36 @@ using UnityEngine;
 public class LootBox : MonoBehaviour
 {
     [HideInInspector] public LootBoxSpawner lootBoxSpawner;
-    [HideInInspector] public LootSystem loot;
+
+    public LootSystem lootSystem; 
     private bool isTriggered = false;
 
     private void Start()
     {
-        loot = GetComponent<LootSystem>();
         if (lootBoxSpawner == null)
         {
-            lootBoxSpawner = FindObjectOfType<LootBoxSpawner>();
+            lootBoxSpawner = GameManager.Instance.GetLootBoxSpawnerRef();
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("Weapon") && isTriggered == false)
+        if (other.CompareTag("Weapon") && !isTriggered)
         {
-            Debug.Log("hit" + gameObject.GetInstanceID());
+            Debug.Log("Hit");
 
             if (lootBoxSpawner != null)
             {
                 lootBoxSpawner.OnLootBoxDestroyed(gameObject);
             }
-            if (loot != null)
+
+            if (lootSystem != null)
             {
-                loot.DestroyBox();
+                lootSystem.InstantiateLoot(transform.position);
             }
+
             isTriggered = true;
             Destroy(gameObject);
         }
-       
     }
-
 }

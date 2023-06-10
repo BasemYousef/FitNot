@@ -11,7 +11,7 @@ namespace AyaOmar
     {
         [Header("list of refrences player index 0,melee mummy index 1,ranged mummy index 2")]
         public List<GameObject> RefList = new List<GameObject>();
-
+        public List<LootBoxSpawner>managerList = new List<LootBoxSpawner>();
         [Header("index 0 melee, index 1 ranged")]
         public List<RuntimeAnimatorController> PlayerAnimatorStates = new List<RuntimeAnimatorController>();
 
@@ -31,6 +31,10 @@ namespace AyaOmar
         public GameObject GetRangedMummyRef()
         {
             return RefList[2];
+        }
+        public LootBoxSpawner GetLootBoxSpawnerRef()
+        {
+            return managerList[0];
         }
         public GameObject GetRangedMummySpitPosRef()
         {

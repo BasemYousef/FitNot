@@ -18,9 +18,11 @@ namespace AyaOmar
         public void StopAttack()
         {
             // Disable the attack collider
-            attackCollider.enabled = false;
-            attackEffect.SetActive(false);
-
+            if (attackCollider != null)
+            {
+                attackCollider.enabled = false;
+                attackEffect.SetActive(false);
+            }
         }
     }
 }
