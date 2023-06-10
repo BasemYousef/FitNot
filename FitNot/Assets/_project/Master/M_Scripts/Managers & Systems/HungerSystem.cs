@@ -1,3 +1,4 @@
+using AyaOmar;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -15,11 +16,13 @@ namespace Youssef
         public float currentHungerLevel;
         public Slider hungerSlider;
 
-        [SerializeField] private GameObject player;
+        private GameObject player;
         private bool isStarving = false;
+        private bool isHalfEmpty = true;
         private float timeSinceLastDamage = 0f;
         void Start()
         {
+            player = GameManager.Instance.GetPlayerRef();
             currentHungerLevel = startingHungerLevel;
             hungerSlider.maxValue = startingHungerLevel;
             hungerSlider.value = currentHungerLevel;
@@ -34,7 +37,11 @@ namespace Youssef
 
             UpdateHungerLevel(currentHungerLevel);
             //Debug.Log(string.Format("Current Hunger Level: {0:F0}", currentHungerLevel));
-
+            if (currentHungerLevel <= startingHungerLevel / 2f && currentHungerLevel > 49f && isHalfEmpty)
+            {
+                AudioManager.Instance.Play2DSfx("hunger");
+                isHalfEmpty = false;
+            }
             if (currentHungerLevel <= 0f)
             {
                 isStarving = true;

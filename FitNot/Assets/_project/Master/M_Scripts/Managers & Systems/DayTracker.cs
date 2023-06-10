@@ -44,6 +44,7 @@ namespace Youssef
         {
             daysTrackerUI.gameObject.SetActive(true);
             daysTrackerUI.text = "DAY " + Day.ToString();
+            AudioManager.Instance.Play2DSfx("rooster");
         }
         private void HideDayTrackerTxt()
         {

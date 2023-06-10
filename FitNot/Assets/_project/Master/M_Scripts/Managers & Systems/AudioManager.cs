@@ -90,7 +90,7 @@ namespace Youssef
             else
             {
                 sfxSource.clip = s.AudioClip;
-                sfxSource.pitch = UnityEngine.Random.Range(0.5f, 6f);
+                sfxSource.pitch = UnityEngine.Random.Range(0.5f, 2f);
                 sfxSource.PlayOneShot(sfxSource.clip);
             }
         }
