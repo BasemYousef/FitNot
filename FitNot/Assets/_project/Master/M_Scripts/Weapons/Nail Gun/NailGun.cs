@@ -60,7 +60,13 @@ namespace Youssef
             {
                 animator.SetBool("Ranged", false);
             }
-            if(currentDurAbility == 0)
+            StartCoroutine(disableStick());
+            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+        }
+        IEnumerator disableStick()
+        {
+            yield return new WaitForSeconds(1);
+            if (currentDurAbility == 0)
             {
                 animator.SetBool("Ranged", false);
                 isOutOfAmmo = true;
@@ -68,8 +74,7 @@ namespace Youssef
                 animator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
                 currentDurAbility = weaponStats.durability;
             }
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
         }
-        
+
     }
 }
