@@ -10,15 +10,13 @@ namespace AyaOmar
         private Animator animator;
         private string ATTACK_PARAM = "isAttacking";
         [SerializeField] private GameObject itemDrop;
-        [SerializeField] private GameObject spawnEffect;
+        
         private bool isDie;
         private bool stopInstantiate;
         private void Awake()
         {
             animator = GetComponent<Animator>();
             stopInstantiate = true;
-
-            StartCoroutine(SpawnEffect());
         }
         public void Attack()
         {
@@ -39,11 +37,6 @@ namespace AyaOmar
                 Instantiate(itemDrop, itemPos, transform.rotation);
                 stopInstantiate = false;
             }
-        }
-        IEnumerator SpawnEffect()
-        {
-            yield return new WaitForSeconds(2f);
-            spawnEffect.SetActive(false);
         }
     }
 }

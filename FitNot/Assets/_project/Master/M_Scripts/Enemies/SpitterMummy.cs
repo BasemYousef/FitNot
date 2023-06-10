@@ -12,9 +12,7 @@ namespace AyaOmar
         [SerializeField] private GameObject _spitEffect;
         [SerializeField] private float spitVelocity = 8f;
         [SerializeField] private GameObject itemDrop;
-        [SerializeField] private GameObject spawnEffect;
-
-
+        
         private Animator animator;
         private Transform spitPosition;
         private bool isDie;
@@ -25,7 +23,7 @@ namespace AyaOmar
             stopInstantiate = true;
             animator = GetComponent<Animator>();
             spitPosition = GameObject.FindWithTag("SpitPos").transform;
-            StartCoroutine(SpawnEffect());
+            
         }
         public void Attack()
         {
@@ -56,11 +54,11 @@ namespace AyaOmar
                 stopInstantiate = false;
             }
         }
-        IEnumerator SpawnEffect()
+        public void DestroyMummy()
         {
-            yield return new WaitForSeconds(2f);
-            spawnEffect.SetActive(false);
+            Destroy(gameObject);
         }
+        
     }
 
 }

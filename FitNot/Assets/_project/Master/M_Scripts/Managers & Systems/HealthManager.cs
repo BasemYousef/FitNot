@@ -55,8 +55,12 @@ namespace Youssef
             animator.SetTrigger("die"); // using trigger for the death animation
             isDead = true;
             GameObject deathVFX = Instantiate(deathEffect,transform.position + Vector3.up *0.45f,deathEffect.transform.rotation);
-            Destroy(animator.gameObject, 2.37f);
             Destroy(deathVFX, 2.5f);
+            if (isPlayer)
+            {
+                Destroy(gameObject, 1);
+
+            }
         }
         public void Heal(float healingAmount)
         {
@@ -70,7 +74,7 @@ namespace Youssef
             health = Mathf.Clamp(health, 0, startingHealth);
             healthBar.value = health;
         }
-
+       
         public void SetMaxHealth(float maxHealth)
         {
             startingHealth = maxHealth;
