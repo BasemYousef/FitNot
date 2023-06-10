@@ -32,6 +32,10 @@ namespace AyaOmar
         {
             return RefList[2];
         }
+        public GameObject GetAimObjectRef()
+        {
+            return RefList[3];
+        }
         public LootBoxSpawner GetLootBoxSpawnerRef()
         {
             return managerList[0];
