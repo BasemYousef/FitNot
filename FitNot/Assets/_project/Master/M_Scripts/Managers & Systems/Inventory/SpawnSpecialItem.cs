@@ -6,40 +6,32 @@ namespace AyaOmar
 {
     public class SpawnSpecialItem : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> koushariCar = new List<GameObject>();
-        [SerializeField] private List<GameObject> beansCar = new List<GameObject>();
-        [SerializeField] private List<GameObject> waterCooler = new List<GameObject>();
-
-        [SerializeField] private GameObject koushariPrefab;
-        [SerializeField] private GameObject beansPrefab;
-        [SerializeField] private GameObject waterPrefab;
+        [SerializeField] private List<GameObject> FoodCar = new List<GameObject>();
+        
+        [SerializeField] private GameObject itemPrefab;
+       
         void Start()
         {
-            SpawnKouItem();
-            SpawnBeansItem();
-            SpawnWaterItem();
+            SpawnItem();
         }
+        private Transform GetRandomPosition(List<GameObject> objects)
+        {
+            if (objects.Count == 0)
+            {
+                Debug.LogError("The list is empty.");
+            }
 
-        private void SpawnKouItem()
-        {
-            foreach(var kCar in koushariCar)
-            {
-                Instantiate(koushariPrefab, kCar.transform.position, kCar.transform.rotation);
-            }
+            int randomIndex = Random.Range(0, objects.Count);
+            GameObject randomObject = objects[randomIndex];
+
+            return randomObject.transform;
         }
-        private void SpawnBeansItem()
+        private void SpawnItem()
         {
-            foreach (var BCar in beansCar)
-            {
-                Instantiate(beansPrefab, BCar.transform.position + new Vector3(0, 0.5f, 1), BCar.transform.rotation);
-            }
+            Transform _item = GetRandomPosition(FoodCar);
+            Instantiate(itemPrefab, _item.position, itemPrefab.transform.rotation);
+            
         }
-        private void SpawnWaterItem()
-        {
-            foreach (var WCar in waterCooler)
-            {
-                Instantiate(waterPrefab, WCar.transform.position + new Vector3(0, 0.5f, 1), WCar.transform.rotation);
-            }
-        }
+        
     }
 }
