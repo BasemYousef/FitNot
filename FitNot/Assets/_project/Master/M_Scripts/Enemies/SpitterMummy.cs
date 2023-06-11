@@ -14,7 +14,7 @@ namespace AyaOmar
         [SerializeField] private GameObject itemDrop;
         
         private Animator animator;
-        private Transform spitPosition;
+        [SerializeField] private Transform spitPosition;
         private bool isDie;
         private bool stopInstantiate;
 
@@ -22,7 +22,7 @@ namespace AyaOmar
         {
             stopInstantiate = true;
             animator = GetComponent<Animator>();
-            spitPosition = GameObject.FindWithTag("SpitPos").transform;
+            //spitPosition = GameObject.FindWithTag("SpitPos").transform;
             
         }
         public void Attack()

@@ -54,24 +54,21 @@ public class EnemySpawnerManager : MonoBehaviour
                 EnemyData enemyData = enemyDataArray[index];
                 GameObject spawnedEffect = Instantiate(spawnEffect, spawnPosition, Quaternion.identity);
                 spawnedEffect.layer = enemyLayer;
-
-                StartCoroutine(SpawnEffect());
-                Destroy(spawnedEffect);
+                yield return new WaitForSeconds(2f);
                 GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 spawnedEnemy.layer = enemyLayer;
                 HealthManager enemyHealthManager = spawnedEnemy.GetComponent<HealthManager>();
                 enemyHealthManager.SetMaxHealth(enemyData.maxHealth * GetHealthMultiplier()) ;
                 activeEnemies.Add(spawnedEnemy);
+                yield return new WaitForSeconds(3f);
+                Destroy(spawnedEffect);
                 Debug.Log(spawnedEnemy.name);
             }
 
             yield return new WaitForSeconds(spawnerManager.waveCooldown);
         }
     }
-    private IEnumerator SpawnEffect()
-    {
-        yield return new WaitForSeconds(1.5f);
-    }
+    
     private void Update()
     {
         int currentDay = DayTracker.Instance.Day;
