@@ -46,7 +46,7 @@ namespace Youssef
         private void Update()
         {
             fireTimer += Time.deltaTime;
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            
             fillAmount = currentDurAbility / 10f;
             InventoryUIManager.Instance.img_Durability.fillAmount = fillAmount;
             if (shoot.triggered && fireTimer >= fireRate && currentDurAbility > 0)
@@ -72,7 +72,7 @@ namespace Youssef
                 animator.SetBool("Ranged", false);
             }
             StartCoroutine(disableStick());
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            
         }
         IEnumerator disableStick()
         {

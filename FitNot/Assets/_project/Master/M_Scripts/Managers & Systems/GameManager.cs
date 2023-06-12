@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -16,6 +17,9 @@ namespace AyaOmar
         public List<RuntimeAnimatorController> PlayerAnimatorStates = new List<RuntimeAnimatorController>();
 
         public Slider slider;
+
+        [Header("text appear when item is used")]
+        [SerializeField] private TMP_Text minus_Text;
         private void Awake()
         {
             base.RegisterSingleton();
@@ -58,6 +62,10 @@ namespace AyaOmar
         public Slider GetHungerSlider() 
         {
             return slider;
+        }
+        public TMP_Text GetMinusTxt()
+        {
+            return minus_Text;
         }
         private void Update()
         {

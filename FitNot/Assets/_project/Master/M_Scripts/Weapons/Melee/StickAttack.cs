@@ -44,7 +44,7 @@ namespace AyaOmar
         private void Update()
         {
             Attack();
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            
             fillAmount = currentDurAbility / 10f;
             InventoryUIManager.Instance.img_Durability.fillAmount = fillAmount;
         }

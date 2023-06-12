@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 using Youssef;
@@ -9,13 +10,11 @@ namespace AyaOmar
     public class Water : FoodItem
     {
         public Item waterItem;
-
         private int slotIndex;
 
         void Update()
         {
             QuickSwitch();
-
         }
         private void QuickSwitch()
         {
@@ -44,19 +43,20 @@ namespace AyaOmar
         private void SpawnItemUseEffect()
         {
             GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
+            ShowMinusTxt("drink");
             Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
             GameObject childObject = childTransform.gameObject;
             Destroy(childObject);
-            // Destroy(gameEffect, item.timeToDestroy);
         }
         public override void Use()
         {
             SpawnItemUseEffect();
-            AudioManager.Instance.Play2DSfx("drink");
         }
         public void UseFromInventory()
         {
             GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
+            ShowMinusTxt("drink");
+
             if (gameObject != null)
             {
                 Destroy(this.gameObject);

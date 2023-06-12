@@ -25,8 +25,7 @@ namespace AyaOmar
         private void Update()
         {
             Attack();
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
-
+           
         }
 
         private void OnEnable()
