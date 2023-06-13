@@ -12,6 +12,13 @@ namespace AyaOmar
         public GameObject itemPrefab;
         public string description;
         public float timeToDestroy;
-       
+        public int dropChance;
+
+        public Item(string itemName, int dropChance)
+        {
+            this.itemName = itemName;
+            this.dropChance = dropChance;
+        }
     }
 }
+

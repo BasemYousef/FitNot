@@ -44,7 +44,7 @@ namespace AyaOmar
         private void Update()
         {
             Attack();
-            InventoryUIManager.Instance.txt_Durability.text = currentDurAbility.ToString();
+            
             fillAmount = currentDurAbility / 10f;
             InventoryUIManager.Instance.img_Durability.fillAmount = fillAmount;
         }
@@ -98,7 +98,7 @@ namespace AyaOmar
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") || other.gameObject.CompareTag("LootBox") && isAttacking)
+            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") && isAttacking)
             {
                 if (currentDurAbility >= 0)
                 {
@@ -119,7 +119,7 @@ namespace AyaOmar
                 player.transform.LookAt(other.gameObject.transform);
                 StartCoroutine(disableStick());
             }
-
+            if (other.gameObject.CompareTag("LootBox")) Destroy(other.gameObject);
         }
         IEnumerator disableStick()
         {

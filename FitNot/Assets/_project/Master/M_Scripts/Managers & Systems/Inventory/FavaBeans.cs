@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,7 +11,6 @@ namespace AyaOmar
     public class FavaBeans : FoodItem
     {
         public Item beansItem;
-
         private int slotIndex;
 
         void Update()
@@ -45,6 +45,7 @@ namespace AyaOmar
         private void SpawnItemUseEffect()
         {
             GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
+            ShowMinusTxt("eat");
             Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
             GameObject childObject = childTransform.gameObject;
             Destroy(childObject);
@@ -53,11 +54,13 @@ namespace AyaOmar
         public override void Use()
         {
             SpawnItemUseEffect();
-            AudioManager.Instance.Play2DSfx("eat");
+            
         }
         public void UseFromInventory()
         {
             GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
+            ShowMinusTxt("eat");
+
             if (gameObject != null)
             {
                 Destroy(this.gameObject);

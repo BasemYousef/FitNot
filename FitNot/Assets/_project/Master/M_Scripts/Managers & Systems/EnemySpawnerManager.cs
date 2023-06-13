@@ -15,6 +15,7 @@ public class EnemySpawnerManager : MonoBehaviour
     [SerializeField] private LayerMask enemyLayer;
     [SerializeField] private float healthMultiplier = 1.1f;
     [SerializeField] private EnemyData[] enemyDataArray;
+    [SerializeField] private GameObject spawnEffect;
     #endregion
 
     #region Private Variables
@@ -51,18 +52,23 @@ public class EnemySpawnerManager : MonoBehaviour
 
                 GameObject enemyPrefab = enemyPrefabs[index];
                 EnemyData enemyData = enemyDataArray[index];
+                GameObject spawnedEffect = Instantiate(spawnEffect, spawnPosition, spawnEffect.gameObject.transform.rotation);
+                spawnedEffect.layer = enemyLayer;
+                yield return new WaitForSeconds(2f);
                 GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);
                 spawnedEnemy.layer = enemyLayer;
                 HealthManager enemyHealthManager = spawnedEnemy.GetComponent<HealthManager>();
                 enemyHealthManager.SetMaxHealth(enemyData.maxHealth * GetHealthMultiplier()) ;
                 activeEnemies.Add(spawnedEnemy);
+                yield return new WaitForSeconds(3f);
+                Destroy(spawnedEffect);
                 Debug.Log(spawnedEnemy.name);
             }
 
             yield return new WaitForSeconds(spawnerManager.waveCooldown);
         }
     }
-
+    
     private void Update()
     {
         int currentDay = DayTracker.Instance.Day;
@@ -77,7 +83,6 @@ public class EnemySpawnerManager : MonoBehaviour
             {
                 HealthManager enemyHealthManager = enemy.GetComponent<HealthManager>();
                
-
             }
         }
     }

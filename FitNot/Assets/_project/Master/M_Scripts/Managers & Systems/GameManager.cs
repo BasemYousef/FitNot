@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -11,11 +12,14 @@ namespace AyaOmar
     {
         [Header("list of refrences player index 0,melee mummy index 1,ranged mummy index 2")]
         public List<GameObject> RefList = new List<GameObject>();
-
+        public List<LootBoxSpawner>managerList = new List<LootBoxSpawner>();
         [Header("index 0 melee, index 1 ranged")]
         public List<RuntimeAnimatorController> PlayerAnimatorStates = new List<RuntimeAnimatorController>();
 
         public Slider slider;
+
+        [Header("text appear when item is used")]
+        [SerializeField] private TMP_Text minus_Text;
         private void Awake()
         {
             base.RegisterSingleton();
@@ -31,6 +35,14 @@ namespace AyaOmar
         public GameObject GetRangedMummyRef()
         {
             return RefList[2];
+        }
+        public GameObject GetAimObjectRef()
+        {
+            return RefList[3];
+        }
+        public LootBoxSpawner GetLootBoxSpawnerRef()
+        {
+            return managerList[0];
         }
         public GameObject GetRangedMummySpitPosRef()
         {
@@ -50,6 +62,10 @@ namespace AyaOmar
         public Slider GetHungerSlider() 
         {
             return slider;
+        }
+        public TMP_Text GetMinusTxt()
+        {
+            return minus_Text;
         }
         private void Update()
         {
