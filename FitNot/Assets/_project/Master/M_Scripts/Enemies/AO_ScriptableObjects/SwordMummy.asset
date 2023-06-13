@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022c43ceb8399e41bd3b2855cf8b7fa, type: 3}
   m_Name: SwordMummy
   m_EditorClassIdentifier: 
-  walkSpeed: 2
-  runSpeed: 4
-  maxHealth: 10
+  walkSpeed: 3
+  runSpeed: 4.5
+  maxHealth: 70
   currentHealth: 0
   damageValue: 1
   attackRange: 3.4
   chaseRange: 7
   waitingTimeToStartChasing: 2
-  waitingTimeToStartPatrolling: 2
+  waitingTimeToStartPatrolling: 3

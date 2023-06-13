@@ -2691,7 +2691,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemDrop: {fileID: 1506457847439374273, guid: 8e415a59c10587d4f875d65e03f26da0,
     type: 3}
-  spawnEffect: {fileID: 0}
+  weapon: {fileID: 8276520255431313074}
 --- !u!114 &3577242293136337418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2706,6 +2706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 8276520255431313073}
   attackEffect: {fileID: 676958373}
+  timeStopDuration: 0.2
 --- !u!114 &8014476647898975254
 MonoBehaviour:
   m_ObjectHideFlags: 0

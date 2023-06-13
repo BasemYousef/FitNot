@@ -10,6 +10,7 @@ namespace AyaOmar
         private Animator animator;
         private string ATTACK_PARAM = "isAttacking";
         [SerializeField] private GameObject itemDrop;
+        [SerializeField] private GameObject weapon;
         
         private bool isDie;
         private bool stopInstantiate;
@@ -37,6 +38,10 @@ namespace AyaOmar
                 Instantiate(itemDrop, itemPos, transform.rotation);
                 stopInstantiate = false;
             }
+        }
+        public void DestroyWeapon()
+        {
+            Destroy(weapon);
         }
     }
 }
