@@ -22,7 +22,6 @@ namespace AyaOmar
         public void Attack()
         {
             animator.SetBool(ATTACK_PARAM, true);
-            AudioManager.Instance.Play2DPingPongSfx("whoosh");
         }
         private void Update()
         {

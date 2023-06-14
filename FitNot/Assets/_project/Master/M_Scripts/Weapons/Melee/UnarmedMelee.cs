@@ -13,6 +13,9 @@ namespace Youssef
         [SerializeField] private GameObject hitEffectVFX;
         [SerializeField] private Transform hitTarget;
 
+        private GameObject aimPosition;
+        private GameObject playerRef;
+        private float rotationAngle;
         private bool canAttack = true;
         private float attackCoolDown = 1.3f;
         private bool isAttacking = true;
@@ -24,6 +27,8 @@ namespace Youssef
         void Start()
         {
             player = GameManager.Instance.GetPlayerRef().GetComponent<Animator>();
+            aimPosition = GameManager.Instance.GetAimObjectRef();
+            playerRef = GameManager.Instance.GetPlayerRef();
         }
 
         // Update is called once per frame
@@ -52,7 +57,7 @@ namespace Youssef
                 if (canAttack)
                 {
                     player.SetBool("unarmed", true);
-                    AudioManager.Instance.Play2DPingPongSfx("whoosh");
+                    SnapToAim();
                     canAttack = false;
                     StartCoroutine(ResetAttackCoolDown());
                 }
@@ -92,6 +97,12 @@ namespace Youssef
                 
                 player.transform.LookAt(other.gameObject.transform);
             }
+        }
+        private void SnapToAim()
+        {
+            Vector3 newdirection = new Vector3(aimPosition.transform.position.x - transform.position.x, 0f, aimPosition.transform.position.z - transform.position.z);
+            rotationAngle = Mathf.Atan2(newdirection.x, newdirection.z) * Mathf.Rad2Deg + 10f;
+            playerRef.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
         }
     }
 }
