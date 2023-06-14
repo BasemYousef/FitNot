@@ -14,6 +14,9 @@ namespace AyaOmar
         [SerializeField] private GameObject hitEffectVFX;
         [SerializeField] private Transform hitTarget;
         //private parameters
+        private GameObject aimPosition;
+        private GameObject playerRef;
+        private float rotationAngle;
         private Animator player;
         private int index;
         private int currentDurAbility;
@@ -35,7 +38,9 @@ namespace AyaOmar
         private float fillAmount;
         private void Start()
         {
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Animator>();
+            player = GameManager.Instance.GetPlayerRef().GetComponent<Animator>();
+            aimPosition = GameManager.Instance.GetAimObjectRef();
+            playerRef = GameManager.Instance.GetPlayerRef();
             currentDurAbility = meleeStats.durability;
             
             player.runtimeAnimatorController = meleeGunAnimatorState;
@@ -69,7 +74,7 @@ namespace AyaOmar
                 if (canAttack)
                 {
                     player.SetBool("Melee", true);
-                    AudioManager.Instance.Play2DPingPongSfx("whoosh");
+                    SnapToAim();
                     canAttack = false;
                     StartCoroutine(ResetAttackCoolDown());
                 }
@@ -131,6 +136,12 @@ namespace AyaOmar
                 animator.runtimeAnimatorController = GameManager.Instance.GetMeleePlayerAnimator();
                 currentDurAbility = meleeStats.durability;
             }
+        }
+        private void SnapToAim()
+        {
+            Vector3 newdirection = new Vector3(aimPosition.transform.position.x - transform.position.x, 0f, aimPosition.transform.position.z - transform.position.z);
+            rotationAngle = Mathf.Atan2(newdirection.x, newdirection.z) * Mathf.Rad2Deg + 10f;
+            playerRef.transform.rotation = Quaternion.Euler(0f, rotationAngle, 0f);
         }
     }
 }

@@ -2280,8 +2280,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e09613aab00dadb49b1bd02b8d699fdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCamera: {fileID: 2112863282531700018, guid: caa48669d4c6ea1449dc68835354dc79,
-    type: 3}
+  mainCamera: {fileID: 0}
 --- !u!1 &8276520255431313074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2345,8 +2344,7 @@ MonoBehaviour:
   mummyMeleeStats: {fileID: 11400000, guid: be2c8ec0add88704eb7c5162a56f80d5, type: 2}
   bloodVFX: {fileID: 8365603490497831191, guid: c97c40cd32d97b9409ac5b6715a1aa78,
     type: 3}
-  bloodVFXTransform: {fileID: 5578832679148697008, guid: 018cc781affaf4643bee20be1f270ebd,
-    type: 3}
+  bloodVFXTransform: {fileID: 0}
 --- !u!1 &8276520256203378518
 GameObject:
   m_ObjectHideFlags: 0
@@ -2705,7 +2703,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 8276520255431313073}
+  unarmedCollider: {fileID: 0}
   attackEffect: {fileID: 676958373}
+  footstep: {fileID: 0}
   timeStopDuration: 0.2
 --- !u!114 &8014476647898975254
 MonoBehaviour:

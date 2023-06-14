@@ -28,6 +28,9 @@ namespace AyaOmar
         public void Attack()
         {
             animator.SetBool("isAttacking", true);
+        }
+        public void SpitRampUpSFX()
+        {
             AudioManager.Instance.PlaySpatialSfx("spit ramp up", transform.position);
         }
         public void SpawnSpitprojectile()

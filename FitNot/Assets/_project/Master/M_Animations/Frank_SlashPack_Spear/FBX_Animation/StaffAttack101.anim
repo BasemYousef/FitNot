@@ -122901,7 +122901,14 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_Events:
-  - time: 0
+  - time: 0.033333335
+    functionName: PlayMeleeWhooshSFX
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.083333336
     functionName: StartAttack
     data: 
     objectReferenceParameter: {fileID: 0}
@@ -122910,6 +122917,13 @@ AnimationClip:
     messageOptions: 0
   - time: 0.16666667
     functionName: StopAttack
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 0.35
+    functionName: PlayMeleeWhooshSFX
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

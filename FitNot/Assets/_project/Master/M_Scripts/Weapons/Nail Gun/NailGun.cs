@@ -2,6 +2,7 @@ using AyaOmar;
 using Cinemachine;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,6 +16,7 @@ namespace Youssef
         [SerializeField] Transform projectileSpawnPoint;
         [SerializeField] float projectileSpeed = .1f;
         [SerializeField] float fireRate = 0.1f;
+        [SerializeField] GameObject muzzleFlashVFX;
        
         private GameObject aimPosition;
         private GameObject playerRef;
@@ -57,7 +59,8 @@ namespace Youssef
                 currentDurAbility--;
                 animator.SetBool("Ranged", true);
                 GameObject newProjectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, projectileSpawnPoint.rotation);
-                AudioManager.Instance.PlaySpatialSfx("nail gun shot", transform.position);
+                GameObject newmuzzleFlashVFX = Instantiate(muzzleFlashVFX, projectileSpawnPoint);
+                AudioManager.Instance.Play2DSfx("nail gun shot", 0.1f);
                 Rigidbody projectileRigidbody = newProjectile.GetComponent<Rigidbody>();
 
 

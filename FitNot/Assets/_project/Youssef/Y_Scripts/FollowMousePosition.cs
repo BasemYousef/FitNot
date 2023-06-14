@@ -16,7 +16,7 @@ namespace Youssef
 
             if (Physics.Raycast(ray, out hit, Mathf.Infinity, walkingLayer))
             {
-                transform.position = new Vector3(hit.point.x, 0.8f, hit.point.z);
+                transform.position = new Vector3(hit.point.x, 0.9f, hit.point.z);
             }
             //Vector3 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //mousePosition.y = 1f;

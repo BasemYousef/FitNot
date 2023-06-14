@@ -48,7 +48,7 @@ namespace Youssef
                 AudioSource.PlayClipAtPoint(sfxSource.clip, sfxPlayLocation);
             }
         }
-        public void Play2DSfx(string name)
+        public void Play2DSfx(string name, float volume = 1f)
         {
             sfxSource.spatialBlend = 0f;
             SoundScript s = Array.Find(sfxSound, x => x.Name == name);
@@ -60,7 +60,7 @@ namespace Youssef
             {
                 sfxSource.clip = s.AudioClip;
                 sfxSource.pitch = 1f;
-                sfxSource.PlayOneShot(sfxSource.clip);
+                sfxSource.PlayOneShot(sfxSource.clip, volume);
             }
         }
         public void PlaySpatialPingPongSfx(string name, Vector3 sfxPlayLocation)

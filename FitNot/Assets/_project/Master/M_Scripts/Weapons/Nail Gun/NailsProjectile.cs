@@ -21,7 +21,7 @@ namespace Youssef
             {
                 GameObject cloneEnemyImpactVFX = Instantiate(enemyImpactVFX, gameObject.transform.position, gameObject.transform.rotation); //vfx
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(weaponStats.damage);
-                AudioManager.Instance.PlaySpatialSfx("nail impact", transform.position);
+                AudioManager.Instance.PlaySpatialSfx("nail impact enemy", transform.position);
                 Destroy(gameObject);
                 Destroy(cloneEnemyImpactVFX, 2f);
             }
