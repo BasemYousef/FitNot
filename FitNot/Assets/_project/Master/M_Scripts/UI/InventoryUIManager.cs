@@ -16,6 +16,9 @@ namespace AyaOmar
         private void Awake()
         {
             base.RegisterSingleton();
+        }
+        private void Start()
+        {
             minusTxt = GameManager.Instance.GetMinusTxt();
         }
         public void ShowMinusTxt(string soundName)
