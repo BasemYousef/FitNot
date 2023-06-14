@@ -11,8 +11,7 @@ namespace AyaOmar
     public class FavaBeans : FoodItem
     {
         public Item beansItem;
-        private int slotIndex;
-
+        
         void Update()
         {
             QuickSwitch();
@@ -25,41 +24,15 @@ namespace AyaOmar
                 FindItem(beansItem);
             }
         }
-        public void FindItem(Item item)
-        {
-
-            for (int i = 0; i < inventory.itemType.Length; i++)
-            {
-                slotIndex = i;
-                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
-                {
-                    if (gameObject != null)
-                    {
-                        this.Use();
-                    }
-                    slotIndex = i;
-                    break;
-                }
-            }
-        }
-        private void SpawnItemUseEffect()
-        {
-            GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
-            ShowMinusTxt("eat");
-            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
-            GameObject childObject = childTransform.gameObject;
-            Destroy(childObject);
-            // Destroy(gameEffect, item.timeToDestroy);
-        }
         public override void Use()
         {
-            SpawnItemUseEffect();
+            SpawnItemUseEffect(beansItem,"eat");
             
         }
         public void UseFromInventory()
         {
             GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
-            ShowMinusTxt("eat");
+            InventoryUIManager.Instance.ShowMinusTxt("eat");
 
             if (gameObject != null)
             {

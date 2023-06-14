@@ -10,8 +10,6 @@ namespace AyaOmar
     public class Water : FoodItem
     {
         public Item waterItem;
-        private int slotIndex;
-
         void Update()
         {
             QuickSwitch();
@@ -23,39 +21,15 @@ namespace AyaOmar
                 FindItem(waterItem);
             }
         }
-        public void FindItem(Item item)
-        {
-
-            for (int i = 0; i < inventory.itemType.Length; i++)
-            {
-                slotIndex = i;
-                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
-                {
-                    if (gameObject != null)
-                    {
-                        this.Use();
-                    }
-                    slotIndex = i;
-                    break;
-                }
-            }
-        }
-        private void SpawnItemUseEffect()
-        {
-            GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
-            ShowMinusTxt("drink");
-            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
-            GameObject childObject = childTransform.gameObject;
-            Destroy(childObject);
-        }
+        
         public override void Use()
         {
-            SpawnItemUseEffect();
+            SpawnItemUseEffect(waterItem,"drink");
         }
         public void UseFromInventory()
         {
             GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
-            ShowMinusTxt("drink");
+            InventoryUIManager.Instance.ShowMinusTxt("drink");
 
             if (gameObject != null)
             {

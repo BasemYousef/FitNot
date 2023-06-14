@@ -10,27 +10,41 @@ namespace AyaOmar
         
         protected Transform player;
         protected Inventory inventory;
-        private TMP_Text minusTxt;
+        
+        private int slotIndex;
 
         private void Awake()
         {
             player = GameManager.Instance.GetPlayerRef().transform;
             inventory = player.GetComponent<Inventory>();
-            minusTxt = GameManager.Instance.GetMinusTxt();
-
         }
 
         public virtual void Use() { }
-        protected IEnumerator WaitForTime(TMP_Text minus_Text)
+
+        public void FindItem(Item item)
         {
-            yield return new WaitForSeconds(1f);
-            minus_Text.gameObject.SetActive(false);
+
+            for (int i = 0; i < inventory.itemType.Length; i++)
+            {
+                slotIndex = i;
+                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
+                {
+                    if (gameObject != null)
+                    {
+                        this.Use();
+                    }
+                    slotIndex = i;
+                    break;
+                }
+            }
         }
-        public void ShowMinusTxt(string soundName)
+        public void SpawnItemUseEffect(Item item, string soundName)
         {
-            minusTxt.gameObject.SetActive(true);
-            AudioManager.Instance.Play2DSfx(soundName);
-            StartCoroutine(WaitForTime(minusTxt));
+            GameManager.Instance.GetHungerSlider().value += item.healingAmount;
+            InventoryUIManager.Instance.ShowMinusTxt(soundName);
+            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
+            GameObject childObject = childTransform.gameObject;
+            Destroy(childObject);
         }
     }
 }

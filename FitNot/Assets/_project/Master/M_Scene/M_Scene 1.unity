@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657695, g: 0.49641258, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.4465767, g: 0.49641216, b: 0.5748174, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -4141,10 +4141,12 @@ MonoBehaviour:
   - {fileID: 919132148304407863}
   - {fileID: 9087545533677964024, guid: 62e47d7182f88f244a51209b036a11e9, type: 3}
   - {fileID: 0}
+  managerList: []
   PlayerAnimatorStates:
   - {fileID: 9100000, guid: 40db3173a05ae3242b1c182a09b0a183, type: 2}
   - {fileID: 9100000, guid: efa79085ea091534e80682c2661b1608, type: 2}
   slider: {fileID: 20493605}
+  minus_Text: {fileID: 0}
 --- !u!1 &162076089
 GameObject:
   m_ObjectHideFlags: 0
@@ -20788,7 +20790,6 @@ MonoBehaviour:
   hungerDamageRate: 5
   currentHungerLevel: 0
   hungerSlider: {fileID: 20493605}
-  player: {fileID: 919132148304407863}
 --- !u!4 &883797137
 Transform:
   m_ObjectHideFlags: 0

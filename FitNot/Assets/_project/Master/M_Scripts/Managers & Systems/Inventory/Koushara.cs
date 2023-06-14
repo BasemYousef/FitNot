@@ -11,7 +11,7 @@ namespace AyaOmar
     public class Koushara : FoodItem
     {
         public Item koushariItem;
-        private int slotIndex;
+        
         void Update()
         {
             QuickSwitch();
@@ -24,40 +24,16 @@ namespace AyaOmar
                 FindItem(koushariItem);
             }
         }
-        public void FindItem(Item item)
-        {
-
-            for (int i = 0; i < inventory.itemType.Length; i++)
-            {
-                slotIndex = i;
-                if (inventory.isFull[i] == true && inventory.itemType[i] == item.itemName)
-                {
-                    if (gameObject != null)
-                    {
-                        this.Use();
-                    }
-                    slotIndex = i;
-                    break;
-                }
-            }
-        }
-        private void SpawnItemUseEffect()
-        {
-            GameManager.Instance.GetHungerSlider().value += koushariItem.healingAmount;
-            ShowMinusTxt("eat");
-            Transform childTransform = inventory.slots[slotIndex].transform.GetChild(0);
-            GameObject childObject = childTransform.gameObject;
-            Destroy(childObject);
-        }
+       
         public override void Use()
         {
-            SpawnItemUseEffect();
+            SpawnItemUseEffect(koushariItem,"eat");
            
         }
         public void UseFromInventory()
         {
             GameManager.Instance.GetHungerSlider().value += koushariItem.healingAmount;
-            ShowMinusTxt("eat");
+            InventoryUIManager.Instance.ShowMinusTxt("eat");
             if (gameObject != null)
             {
                 Destroy(this.gameObject);

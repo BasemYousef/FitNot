@@ -6,12 +6,6 @@ public class PlaceBomb : MonoBehaviour
     [SerializeField]private Transform groundCheckOrigin;
     [SerializeField]private LayerMask groundLayer;
     
-    private void Start()
-    {
-        // Disable the object prefab initially
-       // objectPrefab.SetActive(false);
-    }
-
     public void PlaceObject()
     {
         // Raycast to check for ground
