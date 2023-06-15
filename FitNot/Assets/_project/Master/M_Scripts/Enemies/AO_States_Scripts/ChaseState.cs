@@ -19,8 +19,6 @@ namespace AyaOmar
 
         private SpitterMummy spitterRef;
 
-        //private float chaseRange = 15;
-
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
         override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
         {
@@ -49,17 +47,7 @@ namespace AyaOmar
             {
                 animator.SetBool(CHASING_PARAM, false);
             }
-            //if (distance <= enemy.attackRange)
-            //{
-            //    //animator.SetBool(ATTACKING_PARAM, true);
-            //    if (mummyType == MUMMY_TYPES.Spitter_Mummy)
-            //    {
-            //        if (spitterRef != null)
-            //        {
-            //            spitterRef.Attack();
-            //        }
-            //    }
-            //}
+           
         }
 
         // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

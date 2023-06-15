@@ -6,7 +6,7 @@ namespace AyaOmar
 {
     public class SpawnSpecialItem : MonoBehaviour
     {
-        [SerializeField] private List<GameObject> FoodCar = new List<GameObject>();
+        [SerializeField] private List<Transform> SpawnItemPositions = new List<Transform>();
         
         [SerializeField] private GameObject itemPrefab;
        
@@ -14,7 +14,7 @@ namespace AyaOmar
         {
             SpawnItem();
         }
-        private Transform GetRandomPosition(List<GameObject> objects)
+        private Transform GetRandomPosition(List<Transform> objects)
         {
             if (objects.Count == 0)
             {
@@ -22,13 +22,13 @@ namespace AyaOmar
             }
 
             int randomIndex = Random.Range(0, objects.Count);
-            GameObject randomObject = objects[randomIndex];
+            Transform randomObject = objects[randomIndex];
 
             return randomObject.transform;
         }
         private void SpawnItem()
         {
-            Transform _item = GetRandomPosition(FoodCar);
+            Transform _item = GetRandomPosition(SpawnItemPositions);
             Instantiate(itemPrefab, _item.position, itemPrefab.transform.rotation);
             
         }

@@ -52,7 +52,7 @@ public class EnemySpawnerManager : MonoBehaviour
 
                 GameObject enemyPrefab = enemyPrefabs[index];
                 EnemyData enemyData = enemyDataArray[index];
-                GameObject spawnedEffect = Instantiate(spawnEffect, spawnPosition, spawnEffect.gameObject.transform.rotation);
+                GameObject spawnedEffect = Instantiate(spawnEffect, spawnPosition + Vector3.up*.5f, spawnEffect.gameObject.transform.rotation);
                 spawnedEffect.layer = enemyLayer;
                 yield return new WaitForSeconds(2f);
                 GameObject spawnedEnemy = Instantiate(enemyPrefab, spawnPosition, Quaternion.identity);

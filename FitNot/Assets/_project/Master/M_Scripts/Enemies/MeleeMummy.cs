@@ -42,5 +42,10 @@ namespace AyaOmar
         {
             Destroy(weapon);
         }
+        public void HideMummyColider()
+        {
+            gameObject.GetComponent<BoxCollider>().enabled = false;
+
+        }
     }
 }

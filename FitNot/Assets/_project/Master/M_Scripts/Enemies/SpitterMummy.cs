@@ -21,9 +21,7 @@ namespace AyaOmar
         private void Awake()
         {
             stopInstantiate = true;
-            animator = GetComponent<Animator>();
-            //spitPosition = GameObject.FindWithTag("SpitPos").transform;
-            
+            animator = GetComponent<Animator>(); 
         }
         public void Attack()
         {

@@ -8,7 +8,8 @@ namespace AyaOmar
     {
         public EnemyData enemy;
         Transform player;
-        
+        string Attack_PARAM = "isAttacking";
+
         private AttackCoroutine attackCoroutine;
 
         // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
@@ -30,7 +31,7 @@ namespace AyaOmar
             float distance = Vector3.Distance(player.position, animator.transform.position);
             if (distance > enemy.attackRange)
             {
-                animator.SetBool("isAttacking", false);
+                animator.SetBool(Attack_PARAM, false);
                 
             }
         }

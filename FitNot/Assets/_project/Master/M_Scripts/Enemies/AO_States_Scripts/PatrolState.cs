@@ -27,7 +27,7 @@ namespace AyaOmar
             agent = animator.GetComponent<NavMeshAgent>();
             agent.speed = enemy.walkSpeed;
             timer = 0;
-            //GameObject go = GameObject.FindGameObjectWithTag("WayPoints");
+            
             foreach(Transform t in WayPoints.Instance.GetWayPoints())
             {
                 wayPoints.Add(t);
