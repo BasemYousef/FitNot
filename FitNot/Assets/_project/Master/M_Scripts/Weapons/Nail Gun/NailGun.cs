@@ -17,7 +17,8 @@ namespace Youssef
         [SerializeField] float projectileSpeed = .1f;
         [SerializeField] float fireRate = 0.1f;
         [SerializeField] GameObject muzzleFlashVFX;
-       
+
+        private CameraShake cam;
         private GameObject aimPosition;
         private GameObject playerRef;
         private int currentDurAbility;
@@ -28,7 +29,7 @@ namespace Youssef
         private float fillAmount;
         private void Start()
         {
-           // player = GetComponentInParent<Animator>();  
+           
             animator = GameManager.Instance.GetPlayerRef().GetComponent<Animator>();
             currentDurAbility = weaponStats.projectileCount;
             animator.runtimeAnimatorController = GameManager.Instance.GetRangedPlayerAnimator();
@@ -54,7 +55,7 @@ namespace Youssef
             if (shoot.triggered && fireTimer >= fireRate && currentDurAbility > 0)
             {
                 SnapToAim();
-                CameraShake.Invoke();
+               // cam.StartCoroutine(triggervibration());
                 fireTimer = 0f;
                 currentDurAbility--;
                 animator.SetBool("Ranged", true);

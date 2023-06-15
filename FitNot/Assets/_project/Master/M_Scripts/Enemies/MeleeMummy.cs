@@ -34,9 +34,11 @@ namespace AyaOmar
             itemPos.y = transform.position.y + 1;
             if (isDie && stopInstantiate)
             {
-                Instantiate(itemDrop, itemPos, transform.rotation);
+                GameObject cloneItem = Instantiate(itemDrop, itemPos, transform.rotation);
                 stopInstantiate = false;
+                Destroy(cloneItem, 6f);
             }
+            
         }
         public void DestroyWeapon()
         {
