@@ -48,7 +48,7 @@ namespace Youssef
                 AudioSource.PlayClipAtPoint(sfxSource.clip, sfxPlayLocation);
             }
         }
-        public void Play2DSfx(string name, float volume = 1f)
+        public void Play2DSfx(string name, float volume = 0.5f)
         {
             sfxSource.spatialBlend = 0f;
             SoundScript s = Array.Find(sfxSound, x => x.Name == name);
@@ -79,7 +79,7 @@ namespace Youssef
                 AudioSource.PlayClipAtPoint(sfxSource.clip, sfxPlayLocation);
             }
         }
-        public void Play2DPingPongSfx(string name)
+        public void Play2DPingPongSfx(string name, float volume = 0.5f)
         {
             sfxSource.spatialBlend = 1f;
             SoundScript s = Array.Find(sfxSound, x => x.Name == name);
@@ -91,7 +91,7 @@ namespace Youssef
             {
                 sfxSource.clip = s.AudioClip;
                 sfxSource.pitch = UnityEngine.Random.Range(0.5f, 2f);
-                sfxSource.PlayOneShot(sfxSource.clip);
+                sfxSource.PlayOneShot(sfxSource.clip, volume);
             }
         }
     }

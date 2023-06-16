@@ -115,7 +115,7 @@ namespace AyaOmar
                 animator.SetTrigger("Hit");
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(meleeStats.damage);
                 GameObject clonehitVFX = Instantiate(hitEffectVFX, hitTarget.position, Quaternion.identity);
-                AudioManager.Instance.Play2DPingPongSfx("melee hit");
+                AudioManager.Instance.Play2DPingPongSfx("melee hit", 0.1f);
                 Destroy(clonehitVFX, 1.5F);
                 Mathf.Clamp(currentDurAbility, 0, meleeStats.durability);
                 
