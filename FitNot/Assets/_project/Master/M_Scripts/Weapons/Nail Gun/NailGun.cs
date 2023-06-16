@@ -18,7 +18,7 @@ namespace Youssef
         [SerializeField] float fireRate = 0.1f;
         [SerializeField] GameObject muzzleFlashVFX;
 
-        private CameraShake cam;
+        
         private GameObject aimPosition;
         private GameObject playerRef;
         private int currentDurAbility;
@@ -55,7 +55,7 @@ namespace Youssef
             if (shoot.triggered && fireTimer >= fireRate && currentDurAbility > 0)
             {
                 SnapToAim();
-               // cam.StartCoroutine(triggervibration());
+               
                 fireTimer = 0f;
                 currentDurAbility--;
                 animator.SetBool("Ranged", true);
@@ -68,7 +68,7 @@ namespace Youssef
                 Vector3 direction = aimPosition.transform.position - transform.position;
                 //projectileRigidbody.velocity = projectileSpawnPoint.up * projectileSpeed;
                 projectileRigidbody.velocity = direction * projectileSpeed;
-               
+                BulletImpact.Instance.ShakeCamera(3f, 0.15f);
 
             }
             else
