@@ -48,8 +48,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.25906372, y: 0.6, z: 0.2293396}
-  m_Center: {x: 0.004211426, y: 0, z: 0.0033416748}
+  m_Size: {x: 0.43263245, y: 0.6, z: 0.43841553}
+  m_Center: {x: -0.0028762817, y: 0, z: -0.0115356445}
 --- !u!114 &3590860033762288855
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -328,6 +328,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 9214505335920914681}
     m_Modifications:
+    - target: {fileID: 1255968895767878, guid: 32563c1c7ddb94746889e29751f49ec9, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1554052670201816, guid: 32563c1c7ddb94746889e29751f49ec9, type: 3}
       propertyPath: m_Name
       value: RocketMeshMissileFire
