@@ -2113,6 +2113,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 430120856}
     m_Modifications:
+    - target: {fileID: 2040720752, guid: ad9b96b2e939d364387d4c886a4a2c27, type: 3}
+      propertyPath: meleeAttack.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/rightButton
+      objectReference: {fileID: 0}
     - target: {fileID: 4406066394121322700, guid: ad9b96b2e939d364387d4c886a4a2c27,
         type: 3}
       propertyPath: slots.Array.data[0]
@@ -2163,6 +2167,11 @@ PrefabInstance:
       propertyPath: hungerSlider
       value: 
       objectReference: {fileID: 20493605}
+    - target: {fileID: 6659285954986518948, guid: ad9b96b2e939d364387d4c886a4a2c27,
+        type: 3}
+      propertyPath: meleeAttack.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/rightButton
+      objectReference: {fileID: 0}
     - target: {fileID: 6957641903050244099, guid: ad9b96b2e939d364387d4c886a4a2c27,
         type: 3}
       propertyPath: m_Name
@@ -2222,6 +2231,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7804715765772138667, guid: ad9b96b2e939d364387d4c886a4a2c27,
+        type: 3}
+      propertyPath: shoot.m_SingletonActionBindings.Array.data[0].m_Path
+      value: <Mouse>/rightButton
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ad9b96b2e939d364387d4c886a4a2c27, type: 3}
@@ -22391,7 +22405,7 @@ PrefabInstance:
     - target: {fileID: 1122528498111490986, guid: beb97978aef43d544b0ca9d633c7510d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1122528498164781907, guid: beb97978aef43d544b0ca9d633c7510d,
         type: 3}
@@ -22947,7 +22961,7 @@ PrefabInstance:
     - target: {fileID: 6827971003554011966, guid: beb97978aef43d544b0ca9d633c7510d,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7263216056856961455, guid: beb97978aef43d544b0ca9d633c7510d,
         type: 3}
