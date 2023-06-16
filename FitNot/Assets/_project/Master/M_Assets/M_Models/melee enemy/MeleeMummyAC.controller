@@ -491,6 +491,9 @@ AnimatorStateMachine:
   - serializedVersion: 1
     m_State: {fileID: 1830277868726682443}
     m_Position: {x: 30, y: -80, z: 0}
+  - serializedVersion: 1
+    m_State: {fileID: 3496743429111842124}
+    m_Position: {x: 50, y: -160, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: -8839122026065722238}
@@ -515,6 +518,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemy: {fileID: 11400000, guid: 2e63d334c86651c4c9e4ee2d9a1d7910, type: 2}
+--- !u!1102 &3496743429111842124
+AnimatorState:
+  serializedVersion: 6
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: neleeSwordChasing
+  m_Speed: 1
+  m_CycleOffset: 0
+  m_Transitions: []
+  m_StateMachineBehaviours: []
+  m_Position: {x: 50, y: 50, z: 0}
+  m_IKOnFeet: 0
+  m_WriteDefaultValues: 1
+  m_Mirror: 0
+  m_SpeedParameterActive: 0
+  m_MirrorParameterActive: 0
+  m_CycleOffsetParameterActive: 0
+  m_TimeParameterActive: 0
+  m_Motion: {fileID: -203655887218126122, guid: 99057f4fdd82c834984d0d47d7cab5f2,
+    type: 3}
+  m_Tag: 
+  m_SpeedParameter: 
+  m_MirrorParameter: 
+  m_CycleOffsetParameter: 
+  m_TimeParameter: 
 --- !u!1102 &3583353815061072404
 AnimatorState:
   serializedVersion: 6
@@ -790,7 +820,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: 9c850972dc1363f468c15e28ded6c27c,
+  m_Motion: {fileID: -203655887218126122, guid: d9640d0fdd7ad3f4d827f6d3955a979c,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 
@@ -872,7 +902,7 @@ AnimatorState:
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
   m_TimeParameterActive: 0
-  m_Motion: {fileID: -203655887218126122, guid: d9640d0fdd7ad3f4d827f6d3955a979c,
+  m_Motion: {fileID: -203655887218126122, guid: 99057f4fdd82c834984d0d47d7cab5f2,
     type: 3}
   m_Tag: 
   m_SpeedParameter: 

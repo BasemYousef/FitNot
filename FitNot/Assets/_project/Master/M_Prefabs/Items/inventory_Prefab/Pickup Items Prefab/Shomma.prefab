@@ -31,8 +31,8 @@ Transform:
   m_GameObject: {fileID: 7007262433998892609}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -144.19533, y: 1.2181281, z: -468.7824}
-  m_LocalScale: {x: 3.0000002, y: 3.10416, z: 3.0000002}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 6, y: 3.5, z: 6}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 4414176246159201212}
   m_Father: {fileID: 0}
@@ -99,8 +99,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.022385022, y: 0.4219074, z: 0.02238509}
-  m_Center: {x: -6.920356e-15, y: 0.19399263, z: 0.000000034283246}
+  m_Size: {x: 0.039350256, y: 0.4219074, z: 0.04862324}
+  m_Center: {x: -0.0013820146, y: 0.19399263, z: 0.0008959175}
 --- !u!54 &7007262433998892614
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -161,15 +161,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4879215130675800, guid: b5721d7f00f3ff442b5edf5206e106ab, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.23
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 4879215130675800, guid: b5721d7f00f3ff442b5edf5206e106ab, type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.23
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 4879215130675800, guid: b5721d7f00f3ff442b5edf5206e106ab, type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.23
+      value: 0.43
       objectReference: {fileID: 0}
     - target: {fileID: 4879215130675800, guid: b5721d7f00f3ff442b5edf5206e106ab, type: 3}
       propertyPath: m_LocalPosition.x
@@ -218,17 +218,17 @@ PrefabInstance:
     - target: {fileID: 198834295314650878, guid: b5721d7f00f3ff442b5edf5206e106ab,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.b
-      value: 0.07450981
+      value: 0.31772873
       objectReference: {fileID: 0}
     - target: {fileID: 198834295314650878, guid: b5721d7f00f3ff442b5edf5206e106ab,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.g
-      value: 0.41960788
+      value: 0.5872495
       objectReference: {fileID: 0}
     - target: {fileID: 198834295314650878, guid: b5721d7f00f3ff442b5edf5206e106ab,
         type: 3}
       propertyPath: ColorModule.gradient.maxGradient.key0.r
-      value: 0.68235296
+      value: 0.7924528
       objectReference: {fileID: 0}
     - target: {fileID: 198834295314650878, guid: b5721d7f00f3ff442b5edf5206e106ab,
         type: 3}
