@@ -9,10 +9,20 @@ namespace AyaOmar
         [SerializeField] private List<Transform> SpawnItemPositions = new List<Transform>();
         
         [SerializeField] private GameObject itemPrefab;
-       
+        private float time = 0;
+        private float timeToSpawnItem = 15;
         void Start()
         {
             SpawnItem();
+        }
+        private void Update()
+        {
+            time += Time.deltaTime;
+            if (time >= timeToSpawnItem)
+            {
+                SpawnItem();
+                time = 0;
+            }
         }
         private Transform GetRandomPosition(List<Transform> objects)
         {
@@ -29,8 +39,8 @@ namespace AyaOmar
         private void SpawnItem()
         {
             Transform _item = GetRandomPosition(SpawnItemPositions);
-            Instantiate(itemPrefab, _item.position, itemPrefab.transform.rotation);
-            
+            GameObject item = Instantiate(itemPrefab, _item.position, itemPrefab.transform.rotation);
+            Destroy(item, timeToSpawnItem);
         }
         
     }
