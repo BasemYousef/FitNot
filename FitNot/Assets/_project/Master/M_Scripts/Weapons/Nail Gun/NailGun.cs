@@ -67,7 +67,7 @@ namespace Youssef
 
                 Vector3 direction = aimPosition.transform.position - transform.position;
                 //projectileRigidbody.velocity = projectileSpawnPoint.up * projectileSpeed;
-                projectileRigidbody.velocity = direction * projectileSpeed;
+                projectileRigidbody.velocity = direction.normalized * projectileSpeed;
                 BulletImpact.Instance.ShakeCamera(3f, 0.15f);
 
             }
