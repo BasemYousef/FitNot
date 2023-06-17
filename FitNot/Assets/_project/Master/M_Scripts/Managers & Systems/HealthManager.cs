@@ -58,7 +58,7 @@ namespace Youssef
             Destroy(deathVFX, 2.5f);
             if (isPlayer)
             {
-                Destroy(gameObject, 1);
+                Destroy(gameObject, .3f);
 
             }
         }

@@ -27,7 +27,10 @@ namespace AyaOmar
             // Move towards the current waypoint
             Transform currentWaypoint = waypoints[currentWaypointIndex];
             transform.position = Vector3.MoveTowards(transform.position, currentWaypoint.position, speed * Time.deltaTime);
-            transform.LookAt(waypoints[currentWaypointIndex]);
+            Vector3 targetPosition = waypoints[currentWaypointIndex].position; // Get the target's position
+            targetPosition.y = transform.position.y; // Restrict the target position to the same Y-axis as the object
+
+            transform.LookAt(targetPosition);
             // Check if the object has reached the current waypoint
             if (transform.position == currentWaypoint.position)
             {

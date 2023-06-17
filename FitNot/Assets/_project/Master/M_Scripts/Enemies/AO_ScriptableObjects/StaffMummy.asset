@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b022c43ceb8399e41bd3b2855cf8b7fa, type: 3}
   m_Name: StaffMummy
   m_EditorClassIdentifier: 
-  walkSpeed: 2.5
-  runSpeed: 3.5
+  walkSpeed: 4
+  runSpeed: 5
   maxHealth: 50
   currentHealth: 0
   damageValue: 6
-  attackRange: 5
-  chaseRange: 8
-  waitingTimeToStartChasing: 4
-  waitingTimeToStartPatrolling: 3
+  attackRange: 6
+  chaseRange: 10
+  waitingTimeToStartChasing: 2
+  waitingTimeToStartPatrolling: 6
