@@ -64,5 +64,9 @@ namespace Youssef
             footstep.pitch = Random.Range(0.5f, 6f);
             footstep.Play();
         }
+        public void PlayDashSFX()
+        {
+            AudioManager.Instance.Play2DSfx("dash");
+        }
     }
 }
