@@ -132,7 +132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: 2e4bc73db8f343541adc0f11319c4890, type: 2}
-  isGlobal: 0
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
@@ -151,7 +151,7 @@ MonoBehaviour:
   volumeTrigger: {fileID: 5654125712812135825}
   volumeLayer:
     serializedVersion: 2
-    m_Bits: 456
+    m_Bits: 2147483647
   stopNaNPropagation: 1
   finalBlitToCameraTarget: 0
   antialiasingMode: 1
