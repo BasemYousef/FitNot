@@ -12,7 +12,8 @@ namespace AyaOmar
         [SerializeField] private GameObject _spitEffect;
         [SerializeField] private float spitVelocity = 8f;
         [SerializeField] private GameObject itemDrop;
-        
+        [SerializeField] private GameObject mummyHealthBar;
+
         private Animator animator;
         [SerializeField] private Transform spitPosition;
         private bool isDie;
@@ -60,7 +61,10 @@ namespace AyaOmar
         {
             Destroy(gameObject);
         }
-        
+        public void HideMummyHealthBar()
+        {
+            mummyHealthBar.SetActive(false);
+        }
     }
 
 }
