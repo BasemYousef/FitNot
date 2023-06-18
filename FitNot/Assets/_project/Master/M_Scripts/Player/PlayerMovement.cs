@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.InputSystem;
@@ -12,17 +13,26 @@ namespace Youssef
         [SerializeField] private float _speed = 7;
         [SerializeField] private float _turnSpeed = 360;
 
-        private Vector3 _input;
+        private Vector3 _movementInput; // Changed to Vector3
         private Animator anim;
         private HealthManager health;
+        private InputAction _moveAction;
+
         private void Start()
         {
             anim = GetComponent<Animator>();
             health = GetComponent<HealthManager>();
+            _rb = GetComponent<Rigidbody>();
+
+            // Get the input action from the PlayerInput component
+            var playerInput = GetComponent<PlayerInput>();
+            _moveAction = playerInput.actions["Move"];
+            _moveAction.Enable();
         }
+
         private void Update()
         {
-            if(health.isDead) return;
+            if (health.isDead) return;
             GatherInput();
             Look();
         }
@@ -34,27 +44,30 @@ namespace Youssef
 
         private void GatherInput()
         {
-            _input = new Vector3(Input.GetAxisRaw("Horizontal"), 0f, Input.GetAxisRaw("Vertical"));
+            // Read the movement input value
+            _movementInput = new Vector3(_moveAction.ReadValue<Vector2>().x, 0f, _moveAction.ReadValue<Vector2>().y);
         }
 
         private void Look()
         {
-            if (_input == Vector3.zero) return;
-            var relative = (transform.position + _input.ToIso()) - transform.position;
+            if (_movementInput == Vector3.zero) return;
+
+            // Calculate the rotation towards the movement input
+            var relative = transform.position + _movementInput.ToIso() - transform.position;
             var rot = Quaternion.LookRotation(relative, Vector3.up);
             transform.rotation = Quaternion.RotateTowards(transform.rotation, rot, _turnSpeed * Time.deltaTime);
         }
 
         private void Move()
         {
-            _rb.MovePosition(transform.position + transform.forward * _input.normalized.magnitude * _speed * Time.deltaTime);
-            if(_input.x != 0f || _input.z != 0f)
+            _rb.MovePosition(transform.position + transform.forward * _movementInput.normalized.magnitude * _speed * Time.deltaTime);
+            if (_movementInput != Vector3.zero)
             {
-            anim.SetBool("Move", true);
+                anim.SetBool("Move", true);
             }
             else
             {
-            anim.SetBool("Move", false);
+                anim.SetBool("Move", false);
             }
         }
     }

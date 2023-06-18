@@ -15,21 +15,8 @@ namespace Youssef
         public void StartAttack()
         {
             // Enable the attack collider
-            StartCoroutine(PerformTimeStop());
             attackCollider.enabled = true;
             attackEffect.SetActive(true);
-        }
-
-        private IEnumerator PerformTimeStop()
-        {
-            
-            float initialTimeScale = Time.timeScale;
-
-            Time.timeScale = 0f;
-
-            yield return new WaitForSecondsRealtime(timeStopDuration);
-
-            Time.timeScale = initialTimeScale;
         }
 
         public void StopAttack()

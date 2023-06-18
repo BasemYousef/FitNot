@@ -57,6 +57,10 @@ namespace AyaOmar
             }
             else { return null; }
         }
+        public GameObject GetNabootRef()
+        {
+            return RefList[4];
+        }
         public LootBoxSpawner GetLootBoxSpawnerRef()
         {
             if (managerList[0] != null)
