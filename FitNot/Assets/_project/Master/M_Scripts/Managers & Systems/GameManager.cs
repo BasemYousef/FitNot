@@ -40,6 +40,10 @@ namespace AyaOmar
         {
             return RefList[3];
         }
+        public GameObject GetNabootRef()
+        {
+            return RefList[4];
+        }
         public LootBoxSpawner GetLootBoxSpawnerRef()
         {
             return managerList[0];

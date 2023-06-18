@@ -55,7 +55,7 @@ namespace Youssef
             animator.SetTrigger("die"); // using trigger for the death animation
             isDead = true;
             GameObject deathVFX = Instantiate(deathEffect,transform.position + Vector3.up *0.45f,deathEffect.transform.rotation);
-            Destroy(deathVFX, 2.5f);
+            Destroy(deathVFX, 1.5f);
             if (isPlayer)
             {
                 Destroy(gameObject, .3f);
