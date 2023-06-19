@@ -2692,6 +2692,7 @@ MonoBehaviour:
   itemDrop: {fileID: 1506457847439374273, guid: 8e415a59c10587d4f875d65e03f26da0,
     type: 3}
   weapon: {fileID: 8276520255431313074}
+  mummyHealthBar: {fileID: 8276520255322647714}
 --- !u!114 &3577242293136337418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2871,13 +2872,19 @@ RectTransform:
     type: 3}
   m_PrefabInstance: {fileID: 304225531327464918}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &8276520255322647714 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8567193186923194740, guid: deb9c87481ea38c40a9273e7caf248f7,
+    type: 3}
+  m_PrefabInstance: {fileID: 304225531327464918}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8276520255322647715 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8567193186923194741, guid: deb9c87481ea38c40a9273e7caf248f7,
     type: 3}
   m_PrefabInstance: {fileID: 304225531327464918}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 8276520255322647714}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 67db9e8f0e2ae9c40bc1e2b64352a6b4, type: 3}

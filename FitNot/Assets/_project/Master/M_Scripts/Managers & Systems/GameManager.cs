@@ -26,19 +26,36 @@ namespace AyaOmar
         }
         public GameObject GetPlayerRef()
         {
-            return RefList[0];
+            if (RefList[0] != null)
+            {
+                return RefList[0];
+            }
+            else { return null; }
+                
         }
         public GameObject GetMeleeMummyRef()
         {
-            return RefList[1];
+            if (RefList[1] != null)
+            {
+                return RefList[1];
+            }
+            else { return null; }
         }
         public GameObject GetRangedMummyRef()
         {
-            return RefList[2];
+            if (RefList[2] != null)
+            {
+                return RefList[2];
+            }
+            else { return null; }
         }
         public GameObject GetAimObjectRef()
         {
-            return RefList[3];
+            if (RefList[3] != null)
+            {
+                return RefList[3];
+            }
+            else { return null; }
         }
         public GameObject GetNabootRef()
         {
@@ -46,7 +63,11 @@ namespace AyaOmar
         }
         public LootBoxSpawner GetLootBoxSpawnerRef()
         {
-            return managerList[0];
+            if (managerList[0] != null)
+            {
+                return managerList[0];
+            }
+            else { return null; }
         }
         public GameObject GetRangedMummySpitPosRef()
         {
@@ -57,11 +78,19 @@ namespace AyaOmar
         }
         public RuntimeAnimatorController GetMeleePlayerAnimator()
         {
-            return PlayerAnimatorStates[0];
+            if (PlayerAnimatorStates[0] != null)
+            {
+                return PlayerAnimatorStates[0];
+            }
+            else { return null; }
         }
         public RuntimeAnimatorController GetRangedPlayerAnimator()
         {
-            return PlayerAnimatorStates[1];
+            if (PlayerAnimatorStates[1] != null)
+            {
+                return PlayerAnimatorStates[1];
+            }
+            else { return null; }
         }
         public Slider GetHungerSlider() 
         {

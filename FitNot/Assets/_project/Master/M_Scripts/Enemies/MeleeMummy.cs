@@ -11,6 +11,7 @@ namespace AyaOmar
         private string ATTACK_PARAM = "isAttacking";
         [SerializeField] private GameObject itemDrop;
         [SerializeField] private GameObject weapon;
+        [SerializeField] private GameObject mummyHealthBar;
         
         private bool isDie;
         private bool stopInstantiate;
@@ -48,6 +49,10 @@ namespace AyaOmar
         {
             gameObject.GetComponent<BoxCollider>().enabled = false;
 
+        }
+        public void HideMummyHealthBar()
+        {
+            mummyHealthBar.SetActive(false);
         }
     }
 }
