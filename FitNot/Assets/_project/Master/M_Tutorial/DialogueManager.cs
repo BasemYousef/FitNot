@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using TMPro;
 using AyaOmar;
+using Youssef;
 
 public class DialogueManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class DialogueManager : MonoBehaviour
     private int index;
     private int step;
     private bool tutorialSkipped = false;
-
+    
     private void Start()
     {
         StartCoroutine(Type());
@@ -210,6 +211,10 @@ public class DialogueManager : MonoBehaviour
                 managersPrefabs[0].SetActive(false);
                 managersPrefabs[1].SetActive(true);
                 managersPrefabs[2].SetActive(true);
+                managersPrefabs[3].SetActive(true);
+                managersPrefabs[4].SetActive(true);
+                managersPrefabs[5].SetActive(true);
+                GetComponent<HungerSystem>().enabled = true;
                 textDisplay.text = "";
                 break;
         }
@@ -220,6 +225,9 @@ public class DialogueManager : MonoBehaviour
         managersPrefabs[0].SetActive(false);
         managersPrefabs[1].SetActive(true);
         managersPrefabs[2].SetActive(true);
+        managersPrefabs[3].SetActive(true);
+        managersPrefabs[4].SetActive(true);
+        managersPrefabs[5].SetActive(true);
         tutorialSkipped = true;
         textDisplay.text = "";
     }
