@@ -82,10 +82,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -124,10 +124,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   textDisplay: {fileID: 4052845349175100788}
   sentences:
-  - marhaba Lone Survivor ,Try to Survive the relentless waves of mummies and strive
+  - Marhaba Lone Survivor ,Try to Survive the relentless waves of mummies and strive
     for the highest score. So let's Begin . Press"Enter" to Continue.
   - Press and hold "W" to move forward, "A" to move left, "S" to move backward, and
-    "D" to move right.
+    "D" to move right.Also You Can Dash while Moving by pressing "Space" Button .
   - Well Done, keep a close eye on your hunger gauge. It's constantly decreasing,
     so you must find and consume food to refill it. Press "Enter" to Continue.
   - There are 3 types of food (Beans,Koshary and water) that increase your Hunger
@@ -141,9 +141,7 @@ MonoBehaviour:
   - Keep in mind that the weapon has durability and can get destroyed after certain
     number of hits.Press"Enter" to Continue.
   - There is a gun ahead, go grab it.Don't Forget to Open Inventory to Equip it.
-  - Well Done, Now... try to kill this ranged enemy ahead by pointing your mouse
-    cursor toward it and shoot by using RMB . press "Enter" to Continue.
-  - The Tutorial Has Ended , Now ... SURVIVE!!!
+  - The Tutorial Has Ended , Now ... SURVIVE!!!. Press "Enter" to Begin
   enemyPrefab1: {fileID: 5054142539531806308}
   enemyPrefab2: {fileID: 3794315546619228726}
   arrowIndicators:
@@ -155,6 +153,8 @@ MonoBehaviour:
   gunPrefab: {fileID: 1518609602052200849}
   managersPrefabs:
   - {fileID: 4052845348435928605}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
 --- !u!1001 &632767666713667253
@@ -626,7 +626,7 @@ PrefabInstance:
     - target: {fileID: 566701561769916623, guid: b3ae3a4b7ca3bde478b740def854f0e3,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1091.3
+      value: -1101.63
       objectReference: {fileID: 0}
     - target: {fileID: 566701561769916623, guid: b3ae3a4b7ca3bde478b740def854f0e3,
         type: 3}
@@ -636,7 +636,7 @@ PrefabInstance:
     - target: {fileID: 566701561769916623, guid: b3ae3a4b7ca3bde478b740def854f0e3,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -444.26
+      value: -452.72
       objectReference: {fileID: 0}
     - target: {fileID: 566701561769916623, guid: b3ae3a4b7ca3bde478b740def854f0e3,
         type: 3}
@@ -1204,6 +1204,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4052845348435928594}
     m_Modifications:
+    - target: {fileID: 36750978031755956, guid: 6bd3fe20e860b134a8ccabbe14473304,
+        type: 3}
+      propertyPath: m_Name
+      value: Press E to Skip
+      objectReference: {fileID: 0}
+    - target: {fileID: 1595567751988625261, guid: 6bd3fe20e860b134a8ccabbe14473304,
+        type: 3}
+      propertyPath: m_text
+      value: Press E to Skip
+      objectReference: {fileID: 0}
     - target: {fileID: 8163512137770938258, guid: 6bd3fe20e860b134a8ccabbe14473304,
         type: 3}
       propertyPath: gunPrefab
