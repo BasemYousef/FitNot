@@ -1747,7 +1747,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 0.04
   m_BaseOffset: 0
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &4139214779891508591
 MonoBehaviour:
@@ -1761,11 +1761,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10d09e1d26136542b698eb3efc12855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 0
   health: 50
   healthBar: {fileID: 7501840571711063019}
   characterData: {fileID: 11400000, guid: 1877211ea2bd8a943b468982b0602f5b, type: 2}
-  startingHealth: 0
   isDead: 0
+  isPlayer: 0
+  deathEffect: {fileID: 0}
 --- !u!114 &4139214779891508590
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1792,6 +1794,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70b8b3728bf1f2b4db5743e6b845c0bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  itemDrop: {fileID: 0}
+  weapon: {fileID: 0}
+  mummyHealthBar: {fileID: 0}
 --- !u!114 &7200042978998284736
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1805,6 +1810,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCollider: {fileID: 7501840571836164607}
+  unarmedCollider: {fileID: 0}
+  attackEffect: {fileID: 0}
+  footstep: {fileID: 0}
+  timeStopDuration: 0.2
 --- !u!1 &7382959692353532308
 GameObject:
   m_ObjectHideFlags: 0

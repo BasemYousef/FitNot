@@ -31,7 +31,8 @@ namespace AyaOmar
         }
         public void UseFromInventory()
         {
-            GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
+            //GameManager.Instance.GetHungerSlider().value += beansItem.healingAmount;
+            HungerSystem.Instance.Eat(beansItem.healingAmount);
             InventoryUIManager.Instance.ShowMinusTxt("eat");
 
             if (gameObject != null)

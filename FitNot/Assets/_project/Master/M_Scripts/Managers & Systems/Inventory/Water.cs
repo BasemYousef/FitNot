@@ -28,7 +28,8 @@ namespace AyaOmar
         }
         public void UseFromInventory()
         {
-            GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
+            //GameManager.Instance.GetHungerSlider().value += waterItem.healingAmount;
+            HungerSystem.Instance.Eat(waterItem.healingAmount);
             InventoryUIManager.Instance.ShowMinusTxt("drink");
 
             if (gameObject != null)

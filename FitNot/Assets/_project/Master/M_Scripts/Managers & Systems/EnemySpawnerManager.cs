@@ -47,7 +47,7 @@ public class EnemySpawnerManager : MonoBehaviour
                 int index = Random.Range(0, enemyPrefabs.Length);
                 if (activeEnemies.Count >= maxEnemyCount) break;
 
-                Vector2 randomCircle = Random.insideUnitCircle.normalized * spawnerManager.spawnRadius;
+                Vector2 randomCircle = Random.insideUnitCircle.normalized * Random.Range(spawnerManager.minSpawnRadius,spawnerManager.maxSpawnRadius);
                 Vector3 spawnPosition = player.position + new Vector3(randomCircle.x, 0f, randomCircle.y);
 
                 GameObject enemyPrefab = enemyPrefabs[index];
@@ -64,7 +64,7 @@ public class EnemySpawnerManager : MonoBehaviour
                 Destroy(spawnedEffect);
                 Debug.Log(spawnedEnemy.name);
             }
-
+            activeEnemies.Clear();
             yield return new WaitForSeconds(spawnerManager.waveCooldown);
         }
     }

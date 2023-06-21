@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eced5430162bb0b458e154b1eb47a720, type: 3}
   m_Name: EnemyWaveController
   m_EditorClassIdentifier: 
-  spawnRadius: 13
-  enemyIncreasePerWave: 1
+  minSpawnRadius: 8
+  maxSpawnRadius: 16
+  enemyIncreasePerWave: 2
   waveCooldown: 5
