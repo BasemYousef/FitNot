@@ -533,11 +533,11 @@ GameObject:
   - component: {fileID: 566701561769916623}
   - component: {fileID: 5853967882039960245}
   - component: {fileID: 5853967882039960243}
-  - component: {fileID: 5853967882039960242}
   - component: {fileID: 5853967882039960240}
   - component: {fileID: 5853967882039960255}
   - component: {fileID: 5853967882039960254}
   - component: {fileID: 5853967882039960241}
+  - component: {fileID: 6308549773193475565}
   m_Layer: 7
   m_Name: SpitterMummy
   m_TagString: SpitterMummy
@@ -554,7 +554,7 @@ Transform:
   m_GameObject: {fileID: 907058326410633845}
   m_LocalRotation: {x: 0, y: 0.9967156, z: -0, w: -0.080981694}
   m_LocalPosition: {x: -171.9, y: -0.0000009536743, z: -422.3}
-  m_LocalScale: {x: 4, y: 4, z: 4}
+  m_LocalScale: {x: 3.5, y: 3.5, z: 3.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 5444015074462799963}
@@ -599,21 +599,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 1
---- !u!136 &5853967882039960242
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 907058326410633845}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  m_Radius: 0.23266259
-  m_Height: 0.8244805
-  m_Direction: 1
-  m_Center: {x: 6.1358935e-10, y: 0.49706727, z: 0.073179886}
+  m_CollisionDetection: 0
 --- !u!195 &5853967882039960240
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -632,9 +618,9 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 0.88
+  m_Height: 0.7
   m_BaseOffset: -0.15
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 1
   m_ObstacleAvoidanceType: 4
 --- !u!114 &5853967882039960255
 MonoBehaviour:
@@ -683,7 +669,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b10d09e1d26136542b698eb3efc12855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 30
   health: 30
   healthBar: {fileID: 24749373225803461}
   characterData: {fileID: 11400000, guid: f1588bbf33fe796488b877341b9dbf0f, type: 2}
@@ -691,6 +677,20 @@ MonoBehaviour:
   isPlayer: 0
   deathEffect: {fileID: 1408916167051838, guid: db8e5e1cf4c43a4479b6a7ed83ced530,
     type: 3}
+--- !u!136 &6308549773193475565
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 907058326410633845}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  m_Radius: 0.35
+  m_Height: 1.549183
+  m_Direction: 1
+  m_Center: {x: 0, y: 0.2745882, z: -0}
 --- !u!1 &1024995069233542737
 GameObject:
   m_ObjectHideFlags: 0
@@ -733,7 +733,7 @@ GameObject:
   - component: {fileID: 5444015074462799963}
   m_Layer: 7
   m_Name: mixamorig:Hips
-  m_TagString: Untagged
+  m_TagString: SpitterMummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5620,7 +5620,7 @@ GameObject:
   - component: {fileID: 5757288120310590408}
   m_Layer: 7
   m_Name: mixamorig:Spine
-  m_TagString: Untagged
+  m_TagString: SpitterMummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6071,7 +6071,7 @@ GameObject:
   - component: {fileID: 2581553820057018663}
   m_Layer: 7
   m_Name: mixamorig:LeftUpLeg
-  m_TagString: Untagged
+  m_TagString: SpitterMummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30559,7 +30559,7 @@ GameObject:
   - component: {fileID: 8144925967611703140}
   m_Layer: 7
   m_Name: mixamorig:RightUpLeg
-  m_TagString: Untagged
+  m_TagString: SpitterMummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -30814,7 +30814,7 @@ GameObject:
   - component: {fileID: 3808301598289459777}
   m_Layer: 7
   m_Name: Nickz_humanMaleAverage
-  m_TagString: Untagged
+  m_TagString: SpitterMummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31303,7 +31303,7 @@ GameObject:
   - component: {fileID: 1222801487716810528}
   m_Layer: 7
   m_Name: mixamorig:Spine1
-  m_TagString: Untagged
+  m_TagString: SpitterMummy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -40880,6 +40880,14 @@ PrefabInstance:
     - target: {fileID: 1343425844583092, guid: 12779f4ab4369fa469e2c9090d6d5a47, type: 3}
       propertyPath: m_Name
       value: AuraSoftYellow
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343425844583092, guid: 12779f4ab4369fa469e2c9090d6d5a47, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343425844583092, guid: 12779f4ab4369fa469e2c9090d6d5a47, type: 3}
+      propertyPath: m_TagString
+      value: SpitterMummy
       objectReference: {fileID: 0}
     - target: {fileID: 4664119039206506, guid: 12779f4ab4369fa469e2c9090d6d5a47, type: 3}
       propertyPath: m_RootOrder

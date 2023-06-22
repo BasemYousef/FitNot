@@ -7,7 +7,8 @@ using Youssef;
   [CreateAssetMenu(fileName ="EnemyWaveController",menuName ="CreateWaveController/EnemySpawner")]
     public class SpawnerManager : ScriptableObject
     {
-        public float spawnRadius ;
+        public float minSpawnRadius;
+        public float maxSpawnRadius;
         public int enemyIncreasePerWave = 1 ;
         public float waveCooldown;
     }

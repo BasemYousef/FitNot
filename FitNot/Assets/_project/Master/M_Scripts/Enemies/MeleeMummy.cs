@@ -19,6 +19,7 @@ namespace AyaOmar
         {
             animator = GetComponent<Animator>();
             stopInstantiate = true;
+          //  Destroy(gameObject, 30f);
         }
         public void Attack()
         {

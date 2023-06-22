@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 namespace Youssef
 {
-    public class HungerSystem : MonoBehaviour
+    public class HungerSystem : AyaOmar.Singleton<HungerSystem>
     {
         public float startingHungerLevel = 100f;
         public float hungerDrainRate = 0.5f;
@@ -28,12 +28,15 @@ namespace Youssef
             hungerSlider.value = currentHungerLevel;
             hungerSlider.onValueChanged.AddListener(UpdateHungerLevel);
         }
-
+        private void Awake()
+        {
+            base.RegisterSingleton();
+        }
         // Update is called once per frame
         void Update()
         {
-            currentHungerLevel -= hungerDrainRate * Time.deltaTime;
-            timeSinceLastDamage += Time.deltaTime;
+            currentHungerLevel -= hungerDrainRate * Time.fixedDeltaTime / 2f;
+            timeSinceLastDamage += Time.fixedDeltaTime / 2f;
 
             UpdateHungerLevel(currentHungerLevel);
             //Debug.Log(string.Format("Current Hunger Level: {0:F0}", currentHungerLevel));

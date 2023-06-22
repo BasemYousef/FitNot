@@ -25,7 +25,8 @@ namespace AyaOmar
 
         private bool canAttack = true;
         private float attackCoolDown = 1.0f;
-        private bool isAttacking = true;
+        [SerializeField]
+        public bool isAttacking = true;
         private float attackAnimationTime = 0.29f;
         public LayerMask targetLayer;
 
@@ -98,19 +99,21 @@ namespace AyaOmar
         IEnumerator ResetAttackBool()
         {
             yield return new WaitForSeconds(attackAnimationTime);
-            isAttacking = false;
+            //isAttacking = false;
         }
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy") && isAttacking)
+            Debug.Log("1" + isAttacking + other.gameObject.tag);
+            if (other.gameObject.CompareTag("MeleeMummy") || other.gameObject.CompareTag("SpitterMummy"))// && isAttacking)
             {
+                Debug.Log("2" + isAttacking);
                 if (currentDurAbility >= 0)
                 {
                     currentDurAbility--;
 
                 }
-
+               
                 animator = other.gameObject.GetComponent<Animator>();
                 animator.SetTrigger("Hit");
                 other.gameObject.GetComponent<HealthManager>().TakeDamage(meleeStats.damage);
