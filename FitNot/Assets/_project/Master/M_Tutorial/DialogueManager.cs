@@ -132,8 +132,8 @@ public class DialogueManager : MonoBehaviour
                  // Check if enemyPrefab1 is killed 
                 if (enemyPrefab1 != null)
                 {
-                   enemyPrefab1.SetActive(true); 
-                   if (!enemyPrefab1.activeSelf) 
+                    enemyPrefab1.SetActive(true);
+                   if (!enemyPrefab1.activeInHierarchy) 
                    {
                       index++;
                       StartCoroutine(Type());
@@ -213,8 +213,7 @@ public class DialogueManager : MonoBehaviour
                 managersPrefabs[2].SetActive(true);
                 managersPrefabs[3].SetActive(true);
                 managersPrefabs[4].SetActive(true);
-                managersPrefabs[5].SetActive(true);
-                GetComponent<HungerSystem>().enabled = true;
+                managersPrefabs[5].SetActive(true);   
                 textDisplay.text = "";
                 break;
         }
