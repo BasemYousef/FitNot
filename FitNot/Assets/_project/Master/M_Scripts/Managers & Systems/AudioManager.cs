@@ -4,6 +4,12 @@ using UnityEngine;
 using AyaOmar;
 using System;
 
+/*
+    to be updated to either use bro audio or fmod.
+    to be updated to use events instead of being a singleton. (either observer pattern or my EventHub(not in project yet))
+    
+    11-20-2026
+*/
 namespace Youssef
 {
     public class AudioManager : Singleton<AudioManager>

@@ -32,7 +32,7 @@ namespace Youssef
                 Day++;
                 timer = 0f;
                 UpdateDayTrackerText();
-                Invoke("HideDayTrackerTxt", 5);
+                Invoke("HideDayTrackerTxt", 5);  // to be updated to a coroutine or unitask async 20-11-2026
             }
             if (daysCounterUI != null)
             {
