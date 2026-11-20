@@ -11,7 +11,7 @@ namespace AyaOmar
     public class GameManager : Singleton<GameManager>
     {
         [Header("list of refrences player index 0,melee mummy index 1,ranged mummy index 2")]
-        public List<GameObject> RefList = new List<GameObject>();
+        public List<GameObject> RefList = new List<GameObject>(); // ya masa2 el hard coding ta7t when getting the references 20-11-2026
         public List<LootBoxSpawner>managerList = new List<LootBoxSpawner>();
         [Header("index 0 melee, index 1 ranged")]
         public List<RuntimeAnimatorController> PlayerAnimatorStates = new List<RuntimeAnimatorController>();
