@@ -1,5 +1,5 @@
 using AyaOmar;
-using Cinemachine;
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +7,7 @@ using UnityEngine;
 
     public class CameraFader : MonoBehaviour
    {
-    public CinemachineVirtualCamera virtualCamera;
+    public Unity.Cinemachine.CinemachineVirtualCamera virtualCamera;
     public List<Renderer> objectRenderers;
     public Material ditherMaterial;
     private List<Material> originalMaterials;

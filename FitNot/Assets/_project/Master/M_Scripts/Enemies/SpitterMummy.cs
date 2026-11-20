@@ -40,7 +40,7 @@ namespace AyaOmar
             Spit spit = Instantiate(spitPrefab, spitPosition.position, spitPosition.rotation);
             Vector3 direction = GameManager.Instance.GetPlayerRef().transform.position - spitPosition.transform.position;
             direction = new Vector3(direction.x, Mathf.Max(direction.y, 0.75f), direction.z);
-            spit.GetComponent<Rigidbody>().velocity = direction.normalized * spitVelocity;
+            spit.GetComponent<Rigidbody>().linearVelocity = direction.normalized * spitVelocity;
             Destroy(spitEffect, 1.5f);
         }
         private void Update()
